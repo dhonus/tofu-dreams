@@ -2,12 +2,11 @@ baseURL = 'tofudreams.com/'
 languageCode = 'en-us'
 title = 'Tofu Dreams'
 description = "Vegan recipes to dream about"
-copyright = "2024 Tofu Dreams"
+copyright = "2025 Tofu Dreams"
 theme = 'bean'
 
 relativeURLs = true
 summaryLength = 10
-paginate = 12
 capitalizeListTitles = false
 
 [markup.goldmark.renderer]
@@ -37,6 +36,9 @@ capitalizeListTitles = false
     pre = "oatmeal"
     pageref = "/categories/oatmeal/"
     weight = 4
+
+[pagination]
+  pagerSize = 12
 
 [params]
   logo = "logo.png"
