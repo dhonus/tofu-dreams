@@ -8,12 +8,29 @@ categories: ["Sweet"]
 
 This is cake that is baked with peaches at the bottom, and then inverted after baking. Every square centimeter of this cake hits you with a new flavor, the mixture of chocolate, peach and nuts is just unbelievable. Also, no sugar added here. If you want, you can even skip the chicory - it was still overly sweet for me, but I wanted to try it out :) Enjoy!
 
+<div class="image-split">
+
+![](image.png)
+
+<span class="caption">Final product</span>
+</div>
+
+Here you can see how to arrange it. It might look like it will burn, but trust the process.
+
+<div class="image-split">
+
+![](1.jpg)
+![](2.jpg)
+
+<span class="caption">Base layer - Peach arrangement</span>
+</div>
+
 <div class="recipe" id="recipe">
 Prep time: 15 minutes
 
-Cooking time: 20 minutes
+Cooking time: 1 hour
 
-### Ingredients for 1 tray
+### Ingredients for 1 of em
 - [ ] 150g All-Purpose Flour
 - [ ] 100g butter + 40g buttter
 - [ ] 25g chicory syrup

@@ -1,6 +1,6 @@
 ---
 title: "Banana bread"
-date: 2025-06-13T12:00:00Z
+date: 2025-06-13T11:00:00Z
 draft: false
 tags: ["baked"]
 categories: ["Sweet"]
@@ -11,7 +11,7 @@ Need I say more about this classic? Very simple to make, delicious with peanut b
 <div class="recipe" id="recipe">
 Prep time: 15 minutes
 
-Cooking time: 20 minutes
+Cooking time: 1 hour
 
 ### Ingredients for 1 tray
 - [ ] 225g All-Purpose Flour
