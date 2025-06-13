@@ -48,7 +48,7 @@
                         {{ end }}
                         <span><a href="{{ .RelPermalink }}">
                             {{ with .Resources }}
-                                {{ $image := .GetMatch "{cover.*,*.jpg,*.webp,*.png,*.jpeg}" }}
+                                {{ $image := .GetMatch "{cover.*}" }}
                                 {{ $image := $image.Process "resize 800x" }}
                                 {{ if $image }}
                                         <div class="cover_image" style="background-image: url({{ $image.RelPermalink }});"></div>
