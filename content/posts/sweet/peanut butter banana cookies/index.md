@@ -25,11 +25,11 @@ Cooking time: 15 minutes
 ### Steps
 
 1. Preheat your oven to 180˚C and line your baking tray with parchment paper.
-2. In a bowl, mash up the 2 bananas, add the peanut butter and chicory syrup and mix it well until u have a brownish paste.
-3. In a separate bowl, combine the flour, baking powder and cinnamon
-4. Add the wet to the dry gradually, also add in the chocolate chips. Combine until u have a big ball of cookie dough
-5. Take an ice-cream scooper (or if you're build different just use hands) and make golf ball sized balls onto your tray and flatten them a bit because they won´t really expand much.
-6. Add a round slice of banana to each cookie and push it in a bit.
+2. In a bowl, mash up the 2 bananas, add the peanut butter and chicory syrup and mix it well until you have a brownish paste.
+3. In a separate bowl, combine the flour, baking powder and cinnamon.
+4. Add the wet to the dry gradually, also add in the chocolate chips. Combine until you have a big ball of cookie dough.
+5. Take an icecream scooper (or if you're built different just use your hands) and make golf ball sized balls onto your tray and flatten them a bit because they won´t really expand much.
+6. Add a round slice of banana onto each cookie and push it in a bit.
 7. Put the cookies in the oven for 10-15 minutes or until they're a bit golden on the top.
 
 </div>
