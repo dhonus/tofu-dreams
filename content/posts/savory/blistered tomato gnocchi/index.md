@@ -14,14 +14,14 @@ Prep time: 15 minutes
 Cooking time: 25 minutes
 
 ### Ingredients for 2 servings
-- [ ] 300g potatoes, peeled
-- [ ] 160g flour
+- [ ] 300g potatoes, peeled
+- [ ] 160g flour
 - [ ] 40g olive oil
-- [ ] 300g oyster mushrooms
-- [ ] 10 medium size tomatoes
-- [ ] 40g cashew nuts, soaked
-- [ ] 2 garlic cloves
-- [ ] 10g chopped parsley
+- [ ] 300g oyster mushrooms
+- [ ] 10 medium size tomatoes
+- [ ] 40g cashew nuts, soaked
+- [ ] 2 garlic cloves
+- [ ] 10g chopped parsley
 
 ### Steps
 1. Boil the potatoes in salted water until soft, about 20 minutes. Drain and let them cool down a bit. Grate them finely or pass through a ricer. Add the flour and 20g of olive oil, pinch of salt and mix well. Knead the dough for 90 seconds or so, it should be soft and not sticky. If it is too sticky, add a bit more flour. Do not over-knead it, otherwise the gnocchi will be tough.
