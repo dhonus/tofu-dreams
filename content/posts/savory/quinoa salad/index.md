@@ -1,5 +1,5 @@
 ---
-title: "Quinoa Salad"
+title: "Quinoa, chickpea and pomegranate salad"
 date: 2025-06-17T12:00:00+01:00
 draft: false
 tags: ["quinoa", "salad"]
