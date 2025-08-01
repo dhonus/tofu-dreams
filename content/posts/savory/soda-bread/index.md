@@ -1,8 +1,8 @@
 ---
 title: "Irish Soda Bread"
-date: 2025-05-12T20:00:00+01:00
+date: 2025-08-01T00:00:00+01:00
 draft: false
-tags: ["baking", "bread", "irish"]
+tags: ["baked", "bread"]
 categories: ["Savory"]
 ---
 
@@ -13,11 +13,11 @@ Prep time: 10 minutes
 
 Cooking time: 35 minutes
 ### Ingredients
-- [ ] 200 g plain white flour
-- [ ] 200 g plain wholemeal flour
+- [ ] 250 g plain white flour
+- [ ] 250 g plain wholemeal flour
 - [ ] 2 tsp salt
 - [ ] 1½ tsp baking soda
-- [ ] 350 ml unsweetened soy milk (or oat milk)
+- [ ] 350-400 ml unsweetened soy milk (or oat milk)
 - [ ] 2 tbsp apple cider vinegar or lemon juice
 
 ### Steps
