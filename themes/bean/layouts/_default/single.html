@@ -6,10 +6,11 @@
                 <div class="meta">
                     <h1>{{ strings.Title .Title }}</h1>
                     <div class="cover">
-                        {{ with .Resources.GetMatch "cover.*" }}
+                        {{ with .Resources.GetMatch "{cover.*}" }}
+                            {{ $image := .Process "resize 1200x" }}
                             <div class="wrapper">
-                                <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-                                <meta name="og:image" content="{{ .RelPermalink }}" />
+                                <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="">
+                                <meta name="og:image" content="{{ $image.RelPermalink }}" />
                             </div>
                         {{ end }}
                     </div>
