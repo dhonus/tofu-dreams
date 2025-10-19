@@ -7,7 +7,7 @@
                     <h1>{{ strings.Title .Title }}</h1>
                     <div class="cover">
                         {{ with .Resources.GetMatch "{cover.*}" }}
-                            {{ $image := .Process "resize 1200x" }}
+                            {{ $image := .Process "resize 1200x jpg q75" }}
                             <div class="wrapper">
                                 <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="">
                                 <meta name="og:image" content="{{ $image.RelPermalink }}" />
