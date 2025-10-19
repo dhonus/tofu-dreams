@@ -2,7 +2,7 @@
 title: "Fig banana bread"
 date: 2025-10-14T11:00:00Z
 draft: false
-tags: ["baked"]
+tags: ["baked", "banana"]
 categories: ["Sweet"]
 ---
 
