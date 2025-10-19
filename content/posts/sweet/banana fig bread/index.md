@@ -6,7 +6,7 @@ tags: ["baked"]
 categories: ["Sweet"]
 ---
 
-Need I say more about this classic? Very simple to make, delicious with peanut butter and just a fun time really.
+This is an improved variation of my previou banana bread recipe. It uses only spelt flour and a higher proportion of whole wheat for, I think, better texture. The figs really make this bread so specia, the seeds add texture and the flavor of the figs just works incredible well here. Probably my favorite thing I have baked yet.
 
 <div class="recipe" id="recipe">
 Prep time: 15 minutes
