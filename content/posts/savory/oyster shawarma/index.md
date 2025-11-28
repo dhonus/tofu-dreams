@@ -2,7 +2,7 @@
 title: "Oyster mushroom shawarma"
 date: 2025-11-28T10:00:00+01:00
 draft: false
-tags: ["lunch", "shawarma", "middle-eastern", "vegan"]
+tags: ["lunch", "middle-eastern"]
 categories: ["Savory"]
 ---
 
@@ -16,7 +16,7 @@ Cooking time: 20 minutes
 
 ### Ingredients for 2 servings
 
-<small> You will have leftovers. I recommend just commiting to it, buying a kilo of mushrooms and making someone else happy :) </small>
+<small> You will have leftovers. I recommend just commiting to it, buying a kilo of mushrooms and making someone happy :) </small>
 
 - [ ] 300 g oyster mushrooms, torn into strips
 - [ ] 2–3 tbsp olive oil (plus more for frying)
