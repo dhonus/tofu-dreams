@@ -15,11 +15,11 @@ Cooking time: 60 minutes
 
 ### Ingredients for 4–5 servings
 - [ ] 1 cup green or brown lentils
-- [ ] 250–300g mushrooms (champignons), sliced
-- [ ] 2–3 leeks, cleaned and sliced into half-moons
-- [ ] ~300g cabbage, thinly sliced
-- [ ] 1–2 potatoes, chopped
-- [ ] 1–2 carrots (optional), sliced
+- [ ] 300g mushrooms (champignons), sliced
+- [ ] 1–2 leeks, cleaned and sliced into half-moons
+- [ ] ~500g cabbage, thinly sliced
+- [ ] 3-4 potatoes, chopped
+- [ ] 2-3 carrots (optional), sliced
 - [ ] 2–3 tbsp oil
 - [ ] ~1.2–1.5L water
 - [ ] salt
