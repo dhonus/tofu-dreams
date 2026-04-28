@@ -29,9 +29,10 @@ Cooking time: 30 minutes
 - [ ] salt, black pepper
 
 ### Steps
-1. Boil the potatoes in salted water until soft (~20 min). Drain, cool slightly, then grate or rice. Add flour, 20g olive oil, and salt. Mix and knead briefly (~90 sec) until soft but not sticky. Do not overwork.
-2. Roll into logs (~1.5cm thick), cut into pieces, and shape using a fork. Set aside.
-3. Preheat oven to 200°C. Roast cubed and sliced butternut squash with garlic, الزيت and salt for 20–25 min until caramelized. Roast pumpkin seeds separately until crispy (optional: paprika + salt).
+
+1. Boil the potatoes in salted water until soft, about 20 minutes. Drain and let them cool down a bit. Grate them finely or pass through a ricer. Add the flour and 20g of olive oil, pinch of salt and mix well. Knead the dough for 90 seconds or so, it should be soft and not sticky. If it is too sticky, add a bit more flour. Do not over-knead it, otherwise the gnocchi will be tough.
+2. Divide the dough into 2 parts and roll each into a long tube, about 1.5cm in diameter. Cut the tube into 2cm pieces and roll each piece over a fork to create the gnocchi shape. Set aside. You can adjust the size of the gnocchi to your liking.
+3. Preheat oven to 200°C. Roast cubed and sliced butternut squash with garlic and salt for 20–25 min until caramelized. Roast pumpkin seeds separately until crispy.
 4. Tear oyster mushrooms. Sear in a hot pan with a little oil until deeply browned. Season at the end with salt and black pepper. Set aside.
 5. Blend soaked cashews with ~150–200ml hot water until completely smooth.
 6. Blend roasted squash (flesh only), garlic, cashew cream and stock/water until silky. Adjust thickness and seasoning.
