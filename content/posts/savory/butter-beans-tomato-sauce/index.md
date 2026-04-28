@@ -14,9 +14,9 @@ Prep time: 10 minutes
 Cooking time: 15 minutes
 
 ### Ingredients for 2 servings
-- [ ] 1 can (400g) butter beans, drained and rinsed
+- [ ] 2 cans canned butter beans, drained and rinsed
 - [ ] 50g tomato purée
-- [ ] 1 small onion, finely chopped
+- [ ] 1 red onion, finely chopped
 - [ ] 1 bell pepper, chopped
 - [ ] 2 cloves garlic, minced
 - [ ] 50g cashews, soaked in hot water for 10 minutes
