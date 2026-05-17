@@ -1,37 +1,44 @@
-<script type="application/ld+json">
-    {{ if eq .Section "posts" }}
-    {
-      "@context": "https://schema.org",
-      "@type": "Recipe",
-      "name": {{ .Title }},
-      "headline": {{ .Title }},
-      "category": {{ .Params.categories }},
-      {{ with .Resources.GetMatch "cover.*" }}"image": {{ .Permalink | absURL }},{{ end }}
-      "datePublished": {{ .PublishDate }},
-      "dateModified": {{ .Lastmod }},
-      "author": {
-        "@type": "Person",
-        "name": {{ "Tofu Dreams" }}
-      },
-      "mainEntityOfPage": { "@type": "WebPage" },
-       "publisher": {
-        "@type": "Organization",
-        "name": {{ "Tofu Dreams" }},
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://tofudreams.com/logo.png"
-        }
-      },
-      "description": {{ .Summary | plainify | safeHTML }},
-      "keywords": [{{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
-    }
-    {{ end }}
-</script>
+{{ if eq .Section "posts" }}
+{{ $recipe := dict
+    "@context" "https://schema.org"
+    "@type" "Recipe"
+    "name" .Title
+    "headline" .Title
+    "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" (dict "@type" "Person" "name" "Tofu Dreams")
+    "publisher" (dict
+        "@type" "Organization"
+        "name" "Tofu Dreams"
+        "logo" (dict "@type" "ImageObject" "url" "https://tofudreams.com/logo.png")
+    )
+    "mainEntityOfPage" (dict "@type" "WebPage")
+    "description" (.Summary | plainify)
+    "keywords" .Params.tags
+}}
+{{ with .Params.categories }}{{ $recipe = merge $recipe (dict "recipeCategory" (index . 0)) }}{{ end }}
+{{ with .Resources.GetMatch "cover.*" }}{{ $recipe = merge $recipe (dict "image" (.Permalink | absURL)) }}{{ end }}
+{{ with .Params.prepTime }}{{ $recipe = merge $recipe (dict "prepTime" (printf "PT%dM" .)) }}{{ end }}
+{{ with .Params.cookTime }}{{ $recipe = merge $recipe (dict "cookTime" (printf "PT%dM" .)) }}{{ end }}
+{{ if and .Params.prepTime .Params.cookTime }}{{ $recipe = merge $recipe (dict "totalTime" (printf "PT%dM" (add .Params.prepTime .Params.cookTime))) }}{{ end }}
+{{ with .Params.servings }}{{ $recipe = merge $recipe (dict "recipeYield" .) }}{{ end }}
+{{ if .Params.ingredients }}
+    {{ $ingr := slice }}
+    {{ range .Params.ingredients }}{{ if not (strings.HasPrefix . "## ") }}{{ $ingr = $ingr | append . }}{{ end }}{{ end }}
+    {{ $recipe = merge $recipe (dict "recipeIngredient" $ingr) }}
+{{ end }}
+{{ if .Params.steps }}
+    {{ $steps := slice }}
+    {{ range .Params.steps }}{{ $steps = $steps | append (dict "@type" "HowToStep" "text" .) }}{{ end }}
+    {{ $recipe = merge $recipe (dict "recipeInstructions" $steps) }}
+{{ end }}
+<script type="application/ld+json">{{ $recipe | jsonify }}</script>
+{{ end }}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Tofu Dreams",
-    "url": "https://tofudreams.com",
+    "url": "https://tofudreams.com"
 }
 </script>

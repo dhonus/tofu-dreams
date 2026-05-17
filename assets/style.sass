@@ -135,7 +135,7 @@ nav.pagination
     flex-wrap: wrap
     grid-gap: .3rem
     grid-template-columns: 1fr 1fr 1fr
-    span.article
+    a.article
       position: relative
       text-align: center
       padding: 10px 10px 15px 10px
@@ -146,14 +146,11 @@ nav.pagination
       display: flex
       flex-direction: column
       justify-content: space-between
+      color: inherit
+      text-decoration: none
       // min-height: 26rem
       &:hover
-        a
-          color: $link
-      div.bottom-link
-        position: relative
-        text-align: right
-        margin-top: 1rem
+        color: $link
       div.cover_image
         width: 100%
         aspect-ratio: 4 / 3
@@ -206,7 +203,7 @@ div.round-teasers
       transition: color .2s ease-in-out
 div.recent-posts
   border-top: 1px solid silver
-  div.article
+  a.article
     display: flex
     flex-direction: column
     padding: 1rem
@@ -214,10 +211,11 @@ div.recent-posts
     gap: .5rem
     cursor: pointer
     position: relative
+    color: inherit
+    text-decoration: none
     &:hover
       background: #e6dfcd
-      a
-        color: $link
+      color: $link
     h2
       margin: 0
       font-size: 1.35rem
@@ -414,14 +412,17 @@ div.recipe
       margin-top: 0
   h4
     margin-top: .6rem
-  ul 
+  ul
     margin: .6rem 0 0 0
     padding: 0 0 0 .6rem
     list-style-type: none
     li
       margin: .3rem 0
-      input
-        accent-color: #2a2926
+    li.ingredient-section
+      font-weight: 600
+      margin-top: .8rem
+      list-style-type: none
+      color: #2a2926
   ol
     margin-top: 0
     li
@@ -600,7 +601,7 @@ div#statusDiv
         div.wrapper
           width: 75%
           margin: auto
-  div.recent-posts div.article h2
+  div.recent-posts a.article h2
     font-size: 1.2rem
 
 @media screen and (max-width: 1400px)
@@ -673,7 +674,7 @@ div#statusDiv
       flex-direction: column
       display: flex
       gap: 1rem
-      span.article
+      a.article
         width: 93%
         margin: auto
         div.cover_image
@@ -705,7 +706,7 @@ div#statusDiv
     p
       img
         width: 75%
-  div.recent-posts div.article h2
+  div.recent-posts a.article h2
     font-size: revert
   .masonry-gallery
     column-count: 1

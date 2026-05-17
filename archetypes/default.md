@@ -4,17 +4,12 @@ date: {{ .Date }}
 draft: false
 tags: []
 categories: []
+prepTime: 0
+cookTime: 0
+servings: "2 servings"
+ingredients:
+  - ""
+steps:
+  - ""
 ---
 
-
-
-<div class="recipe" id="recipe">
-Prep time: X minutes
-
-Cooking time: X minutes
-
-- [ ]
-
-1. 
-
-</div>

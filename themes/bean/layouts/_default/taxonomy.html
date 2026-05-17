@@ -41,32 +41,23 @@
             <h1>{{ $title }}</h1>
             <div class="category">
                 {{ range .Paginator.Pages.ByDate.Reverse }}
-                <span class="article" onclick="location.href='{{ .RelPermalink }}';">
-                        {{ $diff := now.Sub .Lastmod }}
-                        {{ if lt $diff.Hours 120 }}
-                            <div class="new">NEW</div>
-                        {{ end }}
-                        <span><a href="{{ .RelPermalink }}">
-                            {{ with .Resources }}
-                                {{ $image := .GetMatch "{cover.*}" }}
-                                {{ $image := $image.Process "resize 800x" }}
-                                {{ if $image }}
-                                        <div class="cover_image" style="background-image: url({{ $image.RelPermalink }});"></div>
-                                {{ end }}
+                <a class="article" href="{{ .RelPermalink }}">
+                    {{ $diff := now.Sub .Lastmod }}
+                    {{ if lt $diff.Hours 120 }}
+                        <div class="new">NEW</div>
+                    {{ end }}
+                    <span>
+                        {{ with .Resources }}
+                            {{ $image := .GetMatch "{cover.*}" }}
+                            {{ $image := $image.Process "resize 800x" }}
+                            {{ if $image }}
+                                <div class="cover_image" style="background-image: url({{ $image.RelPermalink }});"></div>
                             {{ end }}
-                        </a>
-                        <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
-                        {{ .Summary | truncate 200 }}
-                        </span>                        
-                        <span>
-                        {{ if .Truncated }}
-                            <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-                        <!--<div class="bottom-link">
-                            <a href="{{ .RelPermalink }}">Continue reading…</a>
-                        </div>-->
                         {{ end }}
-                        </span>
+                        <h2>{{ strings.Title .Title }}</h2>
+                        {{ .Summary | truncate 200 }}
                     </span>
+                </a>
                 {{ end }}
             </div>
         </div>

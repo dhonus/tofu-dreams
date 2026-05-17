@@ -12,10 +12,8 @@
     <title>{{ strings.Title $title }} – {{.Site.Params.description}}</title>
     <meta property="og:title" content="{{ $title }}" />
     <meta property="og:description" content="{{.Site.Params.description}}" />
-    {{ $seed := now.Unix }}
-    {{ $css := resources.Get "style.sass" }}
-    {{ $css = $css | css.Sass }}
-    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}?{{ printf "%.12s" (md5 $seed) }}">
+    {{ $css := resources.Get "style.sass" | css.Sass | fingerprint }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="32x32" href="{{.Site.BaseURL}}{{ .Site.Params.icon }}">
     <link rel="alternate" type="application/rss+xml" href="{{.Site.BaseURL }}/index.xml" title="{{ .Site.Title }}">
     {{ partial "schema.html" . }}

@@ -23,7 +23,7 @@
                             </p>
                         </span>
                         <p class="dark-gray-text" id="wordcount"> {{ .WordCount }} Words - reading time: {{ math.Round (div (countwords .Content) 180.0) }} minutes. </p>
-                        {{ if .Params.tags }}
+                        {{ if .Params.ingredients }}
                             <a href="#recipe">
                                 <button class="jump-to-recipe">Jump to recipe</button>
                             </a>
@@ -31,7 +31,33 @@
                     </section>
                 </div>
                 <span class="main-content">
-                    {{ replace .Content "disabled" "" | safeHTML }}
+                    {{ .Content | safeHTML }}
+                    {{ if .Params.ingredients }}
+                    <div class="recipe" id="recipe">
+                        <div class="recipe-times">
+                            {{ with .Params.prepTime }}<p><strong>Prep time:</strong> {{ . }} minutes</p>{{ end }}
+                            {{ with .Params.cookTime }}<p><strong>Cook time:</strong> {{ . }} minutes</p>{{ end }}
+                        </div>
+                        <h3>Ingredients{{ with .Params.servings }} for {{ . }}{{ end }}</h3>
+                        <ul>
+                            {{ range .Params.ingredients }}
+                                {{ if strings.HasPrefix . "## " }}
+                                <li class="ingredient-section">{{ strings.TrimPrefix "## " . }}</li>
+                                {{ else }}
+                                <li>{{ . }}</li>
+                                {{ end }}
+                            {{ end }}
+                        </ul>
+                        {{ if .Params.steps }}
+                        <h3>Steps</h3>
+                        <ol>
+                            {{ range .Params.steps }}
+                            <li>{{ . }}</li>
+                            {{ end }}
+                        </ol>
+                        {{ end }}
+                    </div>
+                    {{ end }}
                 </span>
             </article>
         </section>
@@ -67,35 +93,24 @@
         </div>
         <div class="recent-posts">
             {{ range ( where .Site.RegularPages "Type" "posts" | first 5 ) }}
-                <div class="article" onclick="location.href='{{ .RelPermalink }}';">
+                <a class="article" href="{{ .RelPermalink }}">
                     {{ $diff := now.Sub .Lastmod }}
                     {{ if lt $diff.Hours 120 }}
                         <div class="new">NEW</div>
                     {{ end }}
-                        <div class="vertical"><a href="{{ .RelPermalink }}">
-                            {{ with .Resources }}
-                                {{ $image := .GetMatch "{cover.*}" }}
-                                {{ $image := $image.Process "resize 250x" }}
-                                {{ if $image }}
-                                    <div class="cover_image"
-                                            style="background-image: url({{ $image.RelPermalink }});"></div>
-                                {{ end }}
+                    <div class="vertical">
+                        {{ with .Resources }}
+                            {{ $image := .GetMatch "{cover.*}" }}
+                            {{ $image := $image.Process "resize 250x" }}
+                            {{ if $image }}
+                                <div class="cover_image"
+                                        style="background-image: url({{ $image.RelPermalink }});"></div>
                             {{ end }}
-                        </a>
-                        <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
-                    </div>
-                    <span>
-                        {{ .Summary | truncate 200 }}
-                        </span>
-                        <span>
-                        {{ if .Truncated }}
-                            <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-                        <!--<div class="bottom-link">
-                            <a href="{{ .RelPermalink }}">Continue reading…</a>
-                        </div>-->
                         {{ end }}
-                        </span>
-                </div>
+                        <h2>{{ strings.Title .Title }}</h2>
+                    </div>
+                    <span>{{ .Summary | truncate 200 }}</span>
+                </a>
             {{ end }}
         </div>
     </div>
