@@ -6,7 +6,7 @@ tags: ["gluten-free", "legumes", "soup", "simple"]
 categories: ["Savory"]
 ---
 
-A simple and hearthy soup full of protein and fiber. One pot preparation guaranteed. Good with bread, or some croutons if you're feeling fancy.
+A simple and hearty soup full of protein and fiber. One pot preparation guaranteed. Good with bread, or some croutons if you're feeling fancy.
 
 *Tip: While cooking, the peas will initially produce some nasty foam. Skim this off periodically.*
 
@@ -21,7 +21,7 @@ Cooking time: 45 minutes
 - [ ] 3 medium carrots
 - [ ] 2 cloves of garlic
 - [ ] 1 tbsp olive oil
-- [ ] 1 tbsp majoram
+- [ ] 1 tbsp marjoram
 - [ ] salt and pepper to taste
 
 ### Steps
@@ -31,7 +31,7 @@ Cooking time: 45 minutes
 4. Bring to a boil and then reduce the heat to a simmer.
 5. Add the carrots in medium chunks.
 6. Cook for 30 minutes on medium or until the peas are soft.
-7. Add the majoram, salt and pepper.
+7. Add the marjoram, salt and pepper.
 8. Mash slightly with a potato masher or give a quick blend with a hand blender.
 9. Serve hot.
 

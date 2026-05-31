@@ -13,7 +13,7 @@ Prep time: 15 minutes
 
 Baking time: 1 hour
 
-### Ingredients for 1 bred
+### Ingredients for 1 bread
 - [ ] 225g all-purpose flour
 - [ ] 100g spelt flour
 - [ ] 360g mashed ripe banana (about 3 medium bananas)
@@ -32,7 +32,7 @@ Baking time: 1 hour
 
 ### Steps
 1. Mash the bananas in a bowl until smooth.
-2. Mix the banans with the remaining wet ingredients (milk, syrup, oil, lemon juice, vanilla).
+2. Mix the bananas with the remaining wet ingredients (milk, syrup, oil, lemon juice, vanilla).
 3. Add the dry ingredients (flours, baking powder, baking soda, salt, cinnamon) to the wet mixture and stir until just combined. Do not overmix.
 4. If using, fold in the chopped nuts.
 5. Preheat the oven to 180°C (350°F) and line a baking tray with parchment paper.

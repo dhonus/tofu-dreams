@@ -6,7 +6,7 @@ tags: ["cooked", "lunch", "polish", "tofu"]
 categories: ["Savory"]
 ---
 
-I've been to Poland and they really do speak like that. But aside from the very funny name, these dumpligs are delicious indeed. With a smoky tofu filling, theyy aren't very hard to make either.
+I've been to Poland and they really do speak like that. But aside from the very funny name, these dumplings are delicious indeed. With a smoky tofu filling, they aren't very hard to make either.
 
 <div class="recipe" id="recipe">
 Prep time: 20 minutes + 30 minutes wait time

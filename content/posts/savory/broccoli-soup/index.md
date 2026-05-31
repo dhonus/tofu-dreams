@@ -25,10 +25,10 @@ Cooking time: 10 minutes
 - [ ] salt and pepper to taste
 
 ### Steps
-No need to chop the onion and garlic too finely as we are will end by blending the soup. Do not overcook the broccoli, it is about the healthiest thing you can eat but not if you destroy all the nutrients.
+No need to chop the onion and garlic too finely as we will end by blending the soup. Do not overcook the broccoli, it is about the healthiest thing you can eat but not if you destroy all the nutrients.
 1. Heat the oil in the pan and sauté the onions until translucent together with the mustard seeds.
 2. Add the garlic and get some color on both.
-3. Add your broccoli in large chunks and pour over boiling water to stop the onions from burning. The broccoli should be covered by a bit of water. This will depends on how think you like your soup.
+3. Add your broccoli in large chunks and pour over boiling water to stop the onions from burning. The broccoli should be covered by a bit of water. This will depends on how thick you like your soup.
 4. Cook until the broccoli has softened, but not completely soft.
 5. Add salt, pepper and coconut milk (possible other spices (paprika, nutmeg)) and blend with an immersion blender until smooth.
 

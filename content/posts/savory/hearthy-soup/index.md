@@ -1,12 +1,12 @@
 ---
-title: "Hearthy carrot, sweet potato and pumpkin soup"
+title: "Hearty carrot, sweet potato and pumpkin soup"
 date: 2023-05-13T00:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "sweet-potato", "pumpkin"]
 categories: ["Savory"]
 ---
 
-Today I have for you an absolutely delicous soup made from all the beautiful orange vegetables that I could get my hands on. It is perfect for a cold winter day, or a light dinner. Just hearthy enough, not to kill your energy for the rest of the day. It is a wonderful mix of sweet and savory flavors, with a hint of ginger and lemon.
+Today I have for you an absolutely delicious soup made from all the beautiful orange vegetables that I could get my hands on. It is perfect for a cold winter day, or a light dinner. Just hearty enough, not to kill your energy for the rest of the day. It is a wonderful mix of sweet and savory flavors, with a hint of ginger and lemon.
 
 If you want to make it a bit more special, you can add half an orange and a piece of the peel. This will give it a bit more of a citrusy flavor. I have tried it both ways and I like them both.
 

@@ -32,7 +32,7 @@ Baking time: 1 hour
 
 ### Ingredients for 1 of em
 - [ ] 150g All-Purpose Flour
-- [ ] 100g butter + 40g buttter
+- [ ] 100g butter + 40g butter
 - [ ] 25g chicory syrup
 - [ ] 50g peanut butter
 - [ ] 4-5 peaches
@@ -55,7 +55,7 @@ Baking time: 1 hour
 2. In a large skillet, melt 100g of butter over medium heat. Cook it while stirring with a rubber spatula until it turns a deep golden brown, about 5-7 minutes. Remove from heat, pour it into a bowl, and let it cool slightly.
 3. In the same, now empty, pan, add the 40g butter, chicory syrup, and peanut butter. Stir until melted and well combined.
 4. Pour mixture into the prepared cake pan, spreading it evenly. It will be a bit runny, this is fine.
-5. Cut peaches into slices as seen in the image above. The bigger you go the better (the large peache chunks are the best part). Arrange the peach slices on top of the base mixture in a circular pattern.
+5. Cut peaches into slices as seen in the image above. The bigger you go the better (the large peach chunks are the best part). Arrange the peach slices on top of the base mixture in a circular pattern.
 6. In a mixing bowl, whisk together the flour, baking powder, and salt. Add cocoa powder and mix well.
 7. Grate an apple into the brown butter mixture, add milk, espresso, and mix until well combined.
 8. Add the dry ingredients to the wet mixture and stir until just combined. Do not overmix.

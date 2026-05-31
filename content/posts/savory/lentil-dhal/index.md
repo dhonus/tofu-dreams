@@ -56,7 +56,7 @@ Cooking time: 20 minutes
 8. Bring to a boil and then reduce the heat to a simmer.
 9. Cook for 15 minutes or until the lentils are soft. Stir occasionally and add water if needed.
 10. Add the coconut milk and turmeric and stir until combined.
-11. Add the lemon juice and season with salt and petter to taste.
+11. Add the lemon juice and season with salt and pepper to taste.
 12. Serve with rice or bread and garnish with fresh herbs.
 
 </div>

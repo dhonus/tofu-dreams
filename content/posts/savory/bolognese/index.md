@@ -8,7 +8,7 @@ categories: ["Savory"]
 
 Today I have for you a red lentil bolognese sauce. It is my own approximation of the traditional recipe. It is made from red lentils,
 because they have more of a subtle flavor, and they cook really quickly. In this recipe I had used bucatini, but any long pasta
-such as spaghettoni or spahgetti will do. You could top it with some vegan parmesan if you like.
+such as spaghettoni or spaghetti will do. You could top it with some vegan parmesan if you like.
 
 <div class="recipe" id="recipe">
 Prep time: 5 minutes

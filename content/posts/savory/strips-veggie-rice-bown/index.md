@@ -32,7 +32,7 @@ Cooking time: 10 minutes
 If the strips come without any seasoning, marinate the strips for 1 hour in a mixture of soy sauce, curry powder, nutmeg and chilli powder and water.
 1. Cook the rice according to your preferences.
 2. Heat the oil in the pan and sauté the onions until translucent together with the garlic.
-3. When translucent add the zuccini and bell pepper.
+3. When translucent add the zucchini and bell pepper.
 4. After all have cooked through, add in the marinated strips and mix around.
 4. Add a dash of soy sauce and salt and pepper.
 5. Cook for 2 minutes, occasionally adding water if needed.

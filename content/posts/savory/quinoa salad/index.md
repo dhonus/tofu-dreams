@@ -34,7 +34,7 @@ For the dressing:
 - [ ] anything else really, I'm not your mother
 
 ### Steps
-1. Rinse the quinoa under cold water. Cook covered in a pot with 600ml water for about 15 minutes, or until the quinoa is fluffy and the water is absorbed. Let it cool or rinse under cold water to stop the cooking process. (that's what I did becuase why not)
+1. Rinse the quinoa under cold water. Cook covered in a pot with 600ml water for about 15 minutes, or until the quinoa is fluffy and the water is absorbed. Let it cool or rinse under cold water to stop the cooking process. (that's what I did because why not)
 2. In a large bowl, combine the cooked quinoa, cucumber, bell pepper, cherry tomatoes, pomegranate seeds, and chickpeas.
 3. In a small mason jar or a covered glass, mix the olive oil, lime juice, salt, and pepper. Shake well to emulsify.
 4. Pour the dressing over the quinoa salad and toss gently to combine.

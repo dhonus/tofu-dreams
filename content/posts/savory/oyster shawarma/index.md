@@ -16,7 +16,7 @@ Cooking time: 20 minutes
 
 ### Ingredients for 2 servings
 
-<small> You will have leftovers. I recommend just commiting to it, buying a kilo of mushrooms and making someone happy :) </small>
+<small> You will have leftovers. I recommend just committing to it, buying a kilo of mushrooms and making someone happy :) </small>
 
 - [ ] 300 g oyster mushrooms, torn into strips
 - [ ] 2–3 tbsp olive oil (plus more for frying)
@@ -45,7 +45,7 @@ Cooking time: 20 minutes
 1. In a bowl combine olive oil, lemon juice, soy sauce, grated garlic, all the spices and salt. Mix until it becomes a thick, aromatic paste.
 2. Tear the oyster mushrooms into long strips. Add them to the bowl and massage the marinade in. Let sit for 10 minutes.
 3. Heat a wide pan with a bit of olive oil. Shake excess marinade off the mushrooms and add them **in one layer**. Press with a spatula and leave them alone until they brown. If they leak water, just crank the heat and let it evaporate. Add the rest of the marinade in at the last minute of cooking to glaze them.
-4. Remove the mushrooms from the pain and heat your flatbread for a few seconds on each side. It has to be soft, otherwise it rips when you roll it.
+4. Remove the mushrooms from the pan and heat your flatbread for a few seconds on each side. It has to be soft, otherwise it rips when you roll it.
 5. Build the wrap
    - Spread tahini on the bottom third of the bread.  
    - Add parsley and mint.  

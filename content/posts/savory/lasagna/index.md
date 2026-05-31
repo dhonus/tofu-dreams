@@ -27,7 +27,7 @@ Cooking time: 1 hour
 #### For the ragu
 - [ ] 1 large red onion, chopped
 - [ ] 3 cloves of garlic, minced
-- [ ] 1 medium zuccini, ~1cm cubes
+- [ ] 1 medium zucchini, ~1cm cubes
 - [ ] 1/2 medium eggplant, ~1cm cubes
 - [ ] 1 cup finely chopped mushrooms (I've used champignon)
 - [ ] 1 large stick of celery, finely chopped

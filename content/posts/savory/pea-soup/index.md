@@ -25,7 +25,7 @@ Cooking time: 10 minutes
 
 ### Steps
 1. Heat the oil in a pan over medium high heat and add your garlic, finely chopped.
-2. After the garlic has a some color, add the paprika powder.
+2. After the garlic has some color, add the paprika powder.
 3. Do not cook the dry paprika for too long as it will become bitter.
 4. Quickly add the frozen peas and mix.
 5. Sauteé the peas for about a minute and then pour in boiling water.

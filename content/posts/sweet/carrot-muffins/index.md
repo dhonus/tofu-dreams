@@ -25,7 +25,7 @@ Cooking time: 45 minutes
 - [ ] 100g light brown sugar
 - [ ] 1 tsp baking powder
 - [ ] 1/2 tsp baking soda
-- [ ] 1/22 tsp fine sea salt
+- [ ] 1/2 tsp fine sea salt
 - [ ] 1 1/2 tsp ground cinnamon
 - [ ] 1/2 tsp ground nutmeg
 - [ ] 35g neutral oil (sunflower or similar)
