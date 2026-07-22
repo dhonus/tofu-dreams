@@ -4,14 +4,13 @@ date: 2025-12-23T10:00:00+01:00
 draft: false
 tags: ["baked", "czech", "christmas"]
 categories: ["Sweet"]
+prep_time: 90
+cook_time: 60
 ---
 I don't really do holidays, but baking needlessly elaborate bread *is* something I can fuck with.
 Vánočka is a type of Czech braided loaf with nuts and enough sugar to qualify as a substance problem. This one is heavily sugar reduced.
 
 <div class="recipe" id="recipe">
-Prep time: 1 hour 30 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 1
 - [ ] 500g all-purpose flour

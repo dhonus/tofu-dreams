@@ -4,6 +4,8 @@ date: 2023-09-22T12:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "red-lentils", "legumes", "spicy", "sweet-potato"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 45
 ---
 
 I find myself in a bit of a curry rush lately, especially with the weather turning so chilly. As a natural reaction, of course, I have started cooking dense and filling dishes again. I also happen to like the way they look, albeit quite bare.
@@ -11,9 +13,6 @@ I find myself in a bit of a curry rush lately, especially with the weather turni
 Here today is a *very* simple curry recipe even the most frostbitten of us can cook up in a heartbeat.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 45 minutes
 
 ### Ingredients for 4 servings
 - [ ] 1.5 cups uncooked red lentils, rinsed

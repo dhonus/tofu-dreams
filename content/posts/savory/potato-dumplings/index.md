@@ -4,6 +4,8 @@ date: 2023-04-24T10:00:00+01:00
 draft: false
 tags: ["legumes", "czech", "lunch"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 This is a take on a Czech (I assume) recipe for potato dumplings with red cabbage. This took some thought because the filling is usually done with tofu and that's not something I find appealing in a dumpling.
@@ -13,9 +15,6 @@ Therefore, these use some protein powder with spices as filling. It is inspired 
 In this recipe I cheated and used premade potato dumpling flour. You can make them yourself, they are actually quite simple to make. I thought it would take too much time.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 60 minutes
 
 ### Ingredients for 2 servings
 #### For the cabbage

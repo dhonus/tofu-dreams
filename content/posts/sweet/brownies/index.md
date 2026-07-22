@@ -4,6 +4,8 @@ date: 2023-01-27T12:45:00Z
 draft: false
 tags: ["baked", "chocolate"]
 categories: ["Sweet"]
+prep_time: 10
+cook_time: 30
 ---
 
 I am always in a mood for brownies! I had to tweak a bunch of recipes to get them not to be 50% sugar, which I can't stand (how can Americans do this?). 
@@ -11,9 +13,6 @@ They are very chocolatey, the espresso is mandatory. It is a good idea to use hi
 I also added a bit of coconut oil to the mix, which I think makes them smell nicer.
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 1 tray
 - [ ] 200g All Purpose Flour

@@ -4,6 +4,8 @@ date: 2023-01-22T14:11:41+01:00
 draft: false
 tags: ["lunch", "gluten-free", "beans", "legumes", "spicy", "pressure-cooker"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 Chili is something I take very seriously. There are quite a few recipes on the internet,
@@ -13,9 +15,6 @@ many years, and I am very proud of it.
 It is a great dish to make in bulk and freeze for later. It keeps in the fridge for about 5 days max.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 10 servings
 - [ ] 1 cup kidney beans

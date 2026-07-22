@@ -4,6 +4,8 @@ date: 2024-09-07T00:00:00Z
 draft: false
 tags: ["pasta", "broccoli", "nuts"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 30
 ---
 
 I've enjoyed this pasta salad largely thanks to the walnuts, which I haven't used with pasta before. When blended with the herbs, it tastes kind of like a pesto, I couldn't taste the walnuts that much. Perfect for some spare broccoli!
@@ -11,9 +13,6 @@ I've enjoyed this pasta salad largely thanks to the walnuts, which I haven't use
 You can sub the oregano for cilantro or any other herb you like :)
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 1 tray
 - [ ] 200g dried pasta

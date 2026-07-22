@@ -4,14 +4,13 @@ date: 2025-06-20T21:00:00+01:00
 draft: false
 tags: ["baked", "sugar-free", "cookies", "chocolate", "banana"]
 categories: ["Sweet"]
+prep_time: 10
+cook_time: 15
 ---
 
 I mean if you like bananas and peanut butter, this is the cookie for you really. And the fact that they have no added sugar and you still haven't made them is just not acceptable :)
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 15 minutes
 
 ### Ingredients
 - [ ] 2 Bananas + 1 for topping (very ripe)

@@ -4,6 +4,8 @@ date: 2023-03-23T22:22:00+01:00
 draft: false
 tags: ["stove-cooked", "berries"]
 categories: ["Oatmeal"]
+prep_time: 4
+cook_time: 2
 ---
 
 In this oatmeal the blueberries are cooked for a bit, and then they are added at the end. This helps
@@ -11,9 +13,6 @@ out a lot with the goopy texture of the oatmeal. Good balance, also the strawber
 Topped with some shredded coconut and maple syrup.
 
 <div class="recipe" id="recipe">
-Prep time: 4 minutes
-
-Cooking time: 2 minutes
 
 ### Ingredients for 1 serving
 - [ ] 1 cup rolled oats

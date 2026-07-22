@@ -4,14 +4,13 @@ date: 2025-07-07T12:00:00+01:00
 draft: false
 tags: ["cooked", "lunch", "polish", "tofu"]
 categories: ["Savory"]
+prep_time: 50
+cook_time: 15
 ---
 
 These pierogi are green and really that is the only difference to the plain recipe. But, as a true business man I have split them into two. I mean, can you blame me in this economy?
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes + 30 minutes wait time
-
-Cooking time: 15 minutes
 
 ### Ingredients for 10 pierogi
 - [ ] 180 g all-purpose flour  

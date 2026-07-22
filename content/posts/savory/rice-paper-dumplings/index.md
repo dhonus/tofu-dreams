@@ -4,6 +4,8 @@ date: 2024-01-14T12:00:00+01:00
 draft: false
 tags: ["rice-paper", "dumplings", "asian"]
 categories: ["Savory"]
+prep_time: 20
+cook_time: 15
 ---
 
 This recipe is brought to you by: The long shelf life of rice paper; Made by finally using up my old pack of partially shattered rice paper. Tasty rice paper dumplings, filled with a simple tofu & cabbage filling.
@@ -23,9 +25,6 @@ Here's a quick video on how to wrap these. You don't have to double wrap, but th
 </video>
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes
-
-Cooking time: 15 minutes
 
 ### Ingredients for 8 dumplings
 - [ ] 1/4 cabbage (~250g)

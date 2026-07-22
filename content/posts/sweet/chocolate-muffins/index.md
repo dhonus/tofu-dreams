@@ -4,6 +4,8 @@ date: 2023-01-22T23:11:13Z
 draft: false
 tags: ["baked", "muffins", "chocolate"]
 categories: ["Sweet"]
+prep_time: 10
+cook_time: 20
 ---
 
 Another muffin recipe? No complaining, these are delicious! Similar to the apple muffins, these are 
@@ -11,9 +13,6 @@ a bit more on the sweet side. This recipe has apple sauce in it, which makes it 
 and gives us an excuse not to put in as much sugar.
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 1 tray
 - [ ] 300g All Purpose Flour

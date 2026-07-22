@@ -4,14 +4,14 @@ date: 2025-08-01T00:00:00+01:00
 draft: false
 tags: ["baked", "bread"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 35
 ---
 
 Irish soda bread is a traditional quick bread from Ireland, made without yeast and using baking soda as a leavening agent. It is known for its dense texture and slightly tangy flavor, typically achieved by combining flour, salt, baking soda, and buttermilk. This version is with a buttermilk alternative of course.
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
 
-Cooking time: 35 minutes
 ### Ingredients
 - [ ] 250 g plain white flour
 - [ ] 250 g plain wholemeal flour

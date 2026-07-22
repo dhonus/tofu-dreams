@@ -4,6 +4,8 @@ date: 2023-01-19T23:11:13Z
 draft: false
 tags: ["quick", "breakfast"]
 categories: ["Sweet"]
+prep_time: 5
+cook_time: 10
 ---
 
 Who doesn't like a good waffle! This recipe is a great way to start your day. It's quick and easy to make, and it's a great way to use up leftover bananas.
@@ -19,9 +21,6 @@ The milk may be substituted for water in dire need.
 
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for 5 waffles
 - [ ] 120g all purpose flour

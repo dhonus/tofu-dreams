@@ -4,15 +4,14 @@ date: 2023-03-27T11:00:41+01:00
 draft: false
 tags: ["lunch", "gluten-free", "tofu", "rice-noodles"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 For a cooking site calling itself after tofu, I sure rarely add any tofu recipes!
 Today we are changing that with a pretty simple recipe for fried tofu with rice noodles.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 2 servings
 - [ ] 1 block firm tofu

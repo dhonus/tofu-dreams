@@ -4,6 +4,8 @@ date: 2023-02-01T12:00:00Z
 draft: false
 tags: ["baked", "chocolate", "cookies"]
 categories: ["Sweet"]
+prep_time: 10
+cook_time: 20
 ---
 
 Continuing on my little sweet baking spree, I could never get cookies to taste nice until my girlfriend found a recipe that works. With the usual sugar reduction and switch to plant-based milk, these cookies are oh so good!
@@ -11,9 +13,6 @@ Continuing on my little sweet baking spree, I could never get cookies to taste n
 It is important not to overbake them as they will become very dry and hard (I sadly know this from experience, my cookies used to be real tooth breakers).
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 1 tray
 - [ ] 250g All Purpose Flour

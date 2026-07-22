@@ -4,14 +4,13 @@ date: 2025-07-07T12:00:00+01:00
 draft: false
 tags: ["cooked", "lunch", "polish", "tofu"]
 categories: ["Savory"]
+prep_time: 50
+cook_time: 15
 ---
 
 I've been to Poland and they really do speak like that. But aside from the very funny name, these dumplings are delicious indeed. With a smoky tofu filling, they aren't very hard to make either.
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes + 30 minutes wait time
-
-Cooking time: 15 minutes
 
 ### Ingredients for 10 pierogi
 - [ ] 180 g all-purpose flour  

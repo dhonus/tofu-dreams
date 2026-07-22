@@ -4,14 +4,13 @@ date: 2023-04-06T12:22:00+01:00
 draft: false
 tags: ["microwave", "fruit"]
 categories: ["Oatmeal"]
+prep_time: 4
+cook_time: 2
 ---
 
 This is an unusual flavor combination. Kiwi is actually a very decent oatmeal topping, as any fruit. I think the sourness is quite important to balance out the texture of the oatmeal. Almond milk is one of the better ones for oatmeal.
 
 <div class="recipe" id="recipe">
-Prep time: 4 minutes
-
-Cooking time: 2 minutes
 
 ### Ingredients for 1 serving
 - [ ] 1 cup rolled oats

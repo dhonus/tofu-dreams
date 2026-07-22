@@ -4,14 +4,13 @@ date: 2024-07-10T12:00:00+01:00
 draft: false
 tags: ["gluten-free", "legumes", "curry", "cauliflower", "simple"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 30
 ---
 
 Long time no post! To remedy this, only a very yellow recipe for my very yellow site can do. On today's menu is a yellow curry with red lentils and cauliflower (both are important!). I've posted a similar one before, but this one is a bit more well rounded. To yellow!
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 2 servings
 - [ ] 250g split red lentils

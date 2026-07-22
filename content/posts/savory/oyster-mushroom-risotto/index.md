@@ -4,6 +4,8 @@ date: 2023-02-17T11:11:41+01:00
 draft: false
 tags: ["lunch", "gluten-free", "risotto", "mushrooms", "spinach", "italian"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 30
 ---
 
 Risotto is an exercise in patience and knife skill. Today we have a simple oyster mushroom risotto with spinach that is 
@@ -14,9 +16,6 @@ Also, the finer you chop the onion and garlic, the better. You want them to esse
 
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 2 servings
 - [ ] 300g arborio rice

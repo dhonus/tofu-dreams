@@ -4,15 +4,13 @@ date: 2025-11-28T10:00:00+01:00
 draft: false
 tags: ["lunch", "middle-eastern"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 20
 ---
 
 I sat in my bed after eating this contemplating my life choices. How did I get here? Is being unemployed, making music and cooking oyster mushroom shawarma wraps at 3pm on a weekday the pinnacle of my existence? Maybe. Definitely tasted good though.
 
 <div class="recipe" id="recipe">
-
-Prep time: 10 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 2 servings
 

@@ -4,6 +4,8 @@ date: 2023-01-20T23:11:13Z
 draft: false
 tags: ["baked", "muffins"]
 categories: ["Sweet"]
+prep_time: 15
+cook_time: 20
 ---
 
 Are you craving something sweet and filling? Look no further! 
@@ -14,9 +16,6 @@ aroma of fresh baked goods.
 And for an added touch, you can garnish each muffin with your favorite berry on top.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 1 tray
 - [ ] 250g All Purpose Flour

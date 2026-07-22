@@ -4,6 +4,8 @@ date: 2024-02-28T11:00:00+01:00
 draft: false
 tags: ["lunch", "asian", "ramen", "chili", "tempeh"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 25
 ---
 
 As my first attempt at anything resembling ramen, this recipe for a chili ramen with tempeh turned out great! Ramen is a sort of a mysterious ingredient to me. It's from a different culture and cuisine and isn't served in my country. What better reason to try it out!? Maybe one day I will get to try the real deal, but for now, this will do :) .
@@ -11,9 +13,6 @@ As my first attempt at anything resembling ramen, this recipe for a chili ramen 
 Features a broth, some coconut/cashew cream, and a bunch of veggies.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 25 minutes
 
 ### Ingredients for 2 servings
 - [ ] 1/2 onion, finely chopped

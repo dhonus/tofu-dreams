@@ -4,14 +4,13 @@ date: 2023-03-16T14:11:41+01:00
 draft: false
 tags: ["gluten-free", "rice-bowl", "rice", "zucchini"]
 categories: ["Savory"]
+prep_time: 3
+cook_time: 10
 ---
 
 This simple dish makes use of some premade vegan soy/seitan strips. They are quite inexpensive and when mixed with a few different veggies, they can taste quite good!
 
 <div class="recipe" id="recipe">
-Prep time: 3 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for 1 serving
 - [ ] 200g white rice

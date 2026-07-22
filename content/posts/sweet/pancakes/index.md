@@ -4,14 +4,13 @@ date: 2023-06-02T00:00:13Z
 draft: false
 tags: ["quick", "breakfast"]
 categories: ["Sweet"]
+prep_time: 5
+cook_time: 10
 ---
 
 This is a sister recipe to my [waffles](/posts/sweet/waffles/). It's your shortest path to delicious pancakes, made from a pretty versatile batter. It's a great way to use up leftover bananas and an even better way to start your day.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for 4 medium pancakes
 - [ ] 100g all purpose flour

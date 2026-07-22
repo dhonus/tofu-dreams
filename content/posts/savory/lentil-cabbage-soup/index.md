@@ -4,14 +4,13 @@ date: 2026-04-25T12:00:00+01:00
 draft: false
 tags: ["lunch", "soup", "simple"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 I was playing skyrim and the sludge of a soup in some random dude's house caught my eye. In a lot of ways we're all just scandinavian peasants aren't we? Ignore the fact I added potatoes and orange modern age carrots. I'm really undercutting the authenticity of this whole thing. I'll shut up.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 60 minutes
 
 ### Ingredients for 4–5 servings
 - [ ] 1 cup green or brown lentils

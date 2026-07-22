@@ -4,14 +4,13 @@ date: 2023-01-24T14:11:41+01:00
 draft: false
 tags: ["gluten-free", "legumes", "soup", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 10
 ---
 
 This very simple pea soup is everything you need after a long day in the coldness of this world. It tastes fresh, which is an achievement considering it is made from frozen peas!
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for 5 servings
 - [ ] 500g frozen peas

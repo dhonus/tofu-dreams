@@ -4,6 +4,8 @@ date: 2023-12-31T12:00:00+01:00
 draft: false
 tags: ["gluten-free", "broccoli", "soup", "simple", "spinach"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 20
 ---
 
 This delicious creamy soup is quite green. Did I mention it's green? Don't get discouraged by the color, it's really tasty and easy to make. I served it with some air fried tofu and pumpkin seeds.
@@ -13,9 +15,6 @@ Don't throw away the broccoli stem! It's perfectly edible and tastes great in th
 Don't cook the spinach for too long, it will lose its color and taste. Just add it at the end and cook until wilted.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 2 servings
 - [ ] 1 head of broccoli

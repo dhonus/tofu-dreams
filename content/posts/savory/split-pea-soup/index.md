@@ -4,6 +4,8 @@ date: 2024-04-15T12:00:00+01:00
 draft: false
 tags: ["gluten-free", "legumes", "soup", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 45
 ---
 
 A simple and hearty soup full of protein and fiber. One pot preparation guaranteed. Good with bread, or some croutons if you're feeling fancy.
@@ -11,9 +13,6 @@ A simple and hearty soup full of protein and fiber. One pot preparation guarante
 *Tip: While cooking, the peas will initially produce some nasty foam. Skim this off periodically.*
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 45 minutes
 
 ### Ingredients for 2 servings
 - [ ] 500g dry split peas

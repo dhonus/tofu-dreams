@@ -4,14 +4,13 @@ date: 2025-10-14T11:00:00Z
 draft: false
 tags: ["baked", "banana"]
 categories: ["Sweet"]
+prep_time: 15
+cook_time: 60
 ---
 
 This is an improved variation of my previous banana bread recipe. It uses only spelt flour and a higher proportion of whole wheat for, I think, better texture. The figs really make this bread so special, the seeds add texture and the flavor of the figs just works incredible well here. Probably my favorite thing I have baked yet.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Baking time: 1 hour
 
 ### Ingredients for 1 bread
 - [ ] 175g white spelt flour

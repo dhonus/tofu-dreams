@@ -4,16 +4,15 @@ date: 2023-12-28T11:00:00+01:00
 draft: false
 tags: ["lunch", "italian", "pasta", "soup"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 45
 ---
 
 Pasta in soup will always be a favorite of mine. Especially if I have any leftovers. This recipe is for a kind of lasagna-like soup using a lot of tomatoes, cashew ricotta and farfalle pasta.
 
 <div class="recipe" id="recipe">
+
 <h3 class="title">Farfalle soup</h3>
-
-Prep time: 15 minutes
-
-Cooking time: 45 minutes
 
 ### Ingredients for 4 servings
 - [ ] 500g cooked pasta
@@ -41,6 +40,7 @@ Cooking time: 45 minutes
 </div>
 
 <div class="recipe" id="recipe">
+
 <h3 class="title">Cashew ricotta</h3>
 
 Prep time: 5 minutes

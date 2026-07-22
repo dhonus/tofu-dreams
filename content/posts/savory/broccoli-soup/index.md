@@ -4,6 +4,8 @@ date: 2023-01-20T14:11:41+01:00
 draft: false
 tags: ["gluten-free", "soup", "greens", "broccoli"]
 categories: ["Savory"]
+prep_time: 3
+cook_time: 10
 ---
 
 I love broccoli, but sometimes it is left around for a bit longer than ideal and starts to break apart. It is impossible to use it then for anything unless you love random bits of broccoli everywhere.
@@ -11,9 +13,6 @@ I love broccoli, but sometimes it is left around for a bit longer than ideal and
 Therefore, the best thing to do to it is blend it up! This recipe is for a simple soup made of broccoli and coconut milk.
 
 <div class="recipe" id="recipe">
-Prep time: 3 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for 5 servings
 - [ ] 1 head of broccoli (1kg)

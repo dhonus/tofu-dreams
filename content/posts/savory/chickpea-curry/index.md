@@ -4,14 +4,13 @@ date: 2025-06-12T12:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "chickpeas", "legumes"]
 categories: ["Savory"]
+prep_time: 7
+cook_time: 20
 ---
 
 If you think I'm just clutching at straws with this recipe, you are indeed correct. So to feel like I am not wasting money on a domain name, here is a very fancy curry recipe :)
 
 <div class="recipe" id="recipe">
-Prep time: 7 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 4 servings
 - [ ] 1 can chickpeas (without the water duh)

@@ -4,14 +4,13 @@ date: 2024-01-16T12:00:00+01:00
 draft: false
 tags: ["soup", "broccoli", "gluten-free", "simple", "sweet-potato", "mushrooms"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 40
 ---
 
 Not to sound overly modest, but this is one my best soups and it's my personal favorite for a reason. It came about by mixing a few ingredients that are available in winter and it turned out to be a very satisfying soup. I make this on the regular with little to no variation.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 40 minutes
 
 ### Ingredients for 5 servings
 - [ ] 1 onion, chopped

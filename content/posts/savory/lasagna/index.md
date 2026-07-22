@@ -4,6 +4,8 @@ date: 2024-01-22T12:00:00+01:00
 draft: false
 tags: ["pasta", "italian", "zucchini", "mushrooms", "lunch"]
 categories: ["Savory"]
+prep_time: 30
+cook_time: 60
 ---
 
 Oh but lasagna, what a beautiful dish. There surely isn't anyone who doesn't love good hot slice! I must say though, it disappears very quickly. This is an adaptation of the exquisite [avantgardevegan](https://www.gazoakleychef.com/recipes/lasagne/) recipe, but with more mushrooms and smaller measurements. Turned out great!
@@ -19,9 +21,6 @@ I made the ragu a day in advance and apart from making this dish a bit less daun
 </div>
 
 <div class="recipe" id="recipe">
-Prep time: 30 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 1 tray (~8 servings)
 #### For the ragu

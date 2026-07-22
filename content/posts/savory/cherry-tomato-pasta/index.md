@@ -4,14 +4,13 @@ date: 2023-07-12T14:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "pasta", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 25
 ---
 
 Very simple recipe today for some pasta that looks blander than it was. Sometimes, though, you just want to eat something that is not too complicated and that you can make in 30 minutes. This is one of those recipes. I grew the chard myself, so i was very happy to be able to use it in a recipe.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 25 minutes
 
 ### Ingredients for 2 servings
 - [ ] 250g dry pasta

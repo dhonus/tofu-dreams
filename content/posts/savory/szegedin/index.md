@@ -4,14 +4,13 @@ date: 2024-04-26T12:00:00+01:00
 draft: false
 tags: ["lunch", "simple"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 I will gladly be the first to admit that a lot of my recipes lately have been looking a little beige. But no matter! This is a classic Hungarian comfort food. I bought the dumplings pre-made, but you can make them yourself. They're quite simple. I might have a recipe for them soon.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 5 servings
 - [ ] 500g sauerkraut

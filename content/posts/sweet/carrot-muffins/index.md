@@ -4,6 +4,8 @@ date: 2024-03-22T12:00:00Z
 draft: false
 tags: ["baked", "muffins", "simple"]
 categories: ["Sweet"]
+prep_time: 20
+cook_time: 45
 ---
 
 As the self-proclaimed muffin expert I am, I present to you a very easy to follow recipe for carrot muffins. They are very filling actually and delicious. Even though, to me, there's just something about carrot cake and muffins that feels odd, but it actually works pretty well.
@@ -13,9 +15,6 @@ I don't think coconut oil would work in this, but you're free to try. Especially
 The batter will be slightly runny and that's completely OK. The muffins will rise and be fluffy. This can make about 7 muffins if you fill the cases to the top.
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes
-
-Cooking time: 45 minutes
 
 ### Ingredients for 7 muffins
 - [ ] 180ml non-dairy milk

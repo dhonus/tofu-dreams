@@ -4,6 +4,8 @@ date: 2024-04-05T00:00:00Z
 draft: false
 tags: ["czech", "baked", 'pie']
 categories: ["Sweet"]
+prep_time: 30
+cook_time: 30
 ---
 
 A traditional Czech pie that is close to my heart. It's not as hard to make as it may seem and it's quite a fun recipe. Sooo simple to make vegan too!
@@ -15,9 +17,6 @@ There is a variety of different fillings you can use, in this recipe I will show
 <i>Tip: Homemade jams vary in thickness and sweetness, adjust accordingly.</i>
 
 <div class="recipe" id="recipe">
-Prep time: 30 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 1 frgál
 #### Dough
@@ -49,6 +48,7 @@ Cooking time: 30 minutes
 </div>
 
 <div class="recipe">
+
 <h3 class="title">Plum jam filling (1 frgál)</h3>
 Prep time: 5 minutes
 
@@ -62,6 +62,7 @@ Mix the jam with the vanilla sugar and rum. The filling should be only slightly 
 </div>
 
 <div class="recipe">
+
 <h3 class="title">Pear jam filling (1 frgál)</h3>
 Prep time: 5 minutes
 

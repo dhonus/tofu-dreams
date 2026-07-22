@@ -4,14 +4,13 @@ date: 2026-04-28T10:00:00+01:00
 draft: false
 tags: ["lunch", "gnocchi", "pasta"]
 categories: ["Savory"]
+prep_time: 20
+cook_time: 30
 ---
 
 This is an adaptation of a friend's recipe. There is something about gnocchi in a creamy sauce that just really works for me. Everything is roasted together, blended and the gnocchi is seared before mixing. Fancy stuff!
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 2 servings
 - [ ] 300g potatoes, peeled

@@ -4,15 +4,14 @@ date: 2023-01-19T14:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "pasta", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 5
 ---
 
 Not sure how to describe this recipe. I usually make this because of how incredibly filling it is. It's also very
 simple to make. Italians look away!
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 5 minutes
 
 ### Ingredients for 1 serving
 - [ ] 250g dry pasta

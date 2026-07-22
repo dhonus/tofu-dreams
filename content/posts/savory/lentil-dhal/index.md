@@ -4,6 +4,8 @@ date: 2023-01-22T11:11:41+01:00
 draft: false
 tags: ["lunch", "gluten-free", "red-lentils", "legumes", "zucchini"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 20
 ---
 
 Dhal is a traditional indian dish made of lentils and spices, often served with rice or bread and garnished with fresh herbs. It's super easy to make and just absolutely delicious! 
@@ -20,9 +22,6 @@ used some zucchini, sweet potato and a tomato.
 
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 20 minutes
 
 ### Ingredients for 2 servings
 - [ ] 2 cups boiling water

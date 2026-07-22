@@ -4,6 +4,8 @@ date: 2024-01-07T11:00:00+01:00
 draft: false
 tags: ["gluten-free", "soup", "broccoli", "buckwheat", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 30
 ---
 
 Winter is the ideal season for soup. Full of squash and buckwheat, this is quite a healthy one too.
@@ -11,9 +13,6 @@ Winter is the ideal season for soup. Full of squash and buckwheat, this is quite
 Feel free to alter the greens here, kale or spinach would work well too.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 4 servings
 - [ ] 1/2 butternut squash

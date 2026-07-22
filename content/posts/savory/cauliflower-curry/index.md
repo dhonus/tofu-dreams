@@ -4,15 +4,14 @@ date: 2023-03-31T11:00:41+01:00
 draft: false
 tags: ["lunch", "gluten-free", "cauliflower", "red-lentils"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 60
 ---
 
 I make this recipe quite regularly. It's a great way to use up leftover cauliflower, and it's also very filling. I usually make a big batch and eat it for lunch for a few days.
 You can experiment with different spices and vegetables. I've tried it with carrots in place of the sweet potato and it was also very good.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 1 hour
 
 ### Ingredients for 5 servings
 - [ ] 1 head medium cauliflower, cut into florets

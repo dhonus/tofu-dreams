@@ -4,15 +4,13 @@ date: 2025-06-17T12:00:00+01:00
 draft: false
 tags: ["quinoa", "salad"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 15
 ---
 
 Just so you know, quinoa triples in size when cooked. I could feed an army. Quinoa is healthy stuff and a salad like this is my favorite way to eat it :)
 
 <div class="recipe" id="recipe">
-
-Cooking time: 15 minutes
-
-Prep time: 10 minutes
 
 ### Ingredients for 3 servings
 - [ ] 200g dry quinoa

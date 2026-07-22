@@ -4,16 +4,16 @@ date: 2026-05-24T12:00:00Z
 draft: false
 tags: ["baked", "muffins", "chocolate"]
 categories: ["Sweet"]
+prep_time: 20
+cook_time: 24
 ---
 
 Chocolate tastes better with strawberries. Maybe everything does, now that I think about it. Freestyle recipe. I would probably add a bit more liquid in.
 
 <div class="recipe" id="recipe">
-Prep time: 20 minutes
-Cooking time: 20-24 minutes
 
 ### Ingredients for 12 muffins
-**Dry**
+#### Dry
 - [ ] 275g All Purpose Flour
 - [ ] 45g Cocoa Powder
 - [ ] 140g Sugar
@@ -22,14 +22,14 @@ Cooking time: 20-24 minutes
 - [ ] 1/2 teaspoon Salt
 - [ ] 1 teaspoon Instant Espresso Powder (optional)
 
-**Wet**
+#### Wet
 - [ ] 2 medium ripe Bananas
 - [ ] 240ml plant based milk
 - [ ] 90ml neutral oil
 - [ ] 1 teaspoon Vanilla Extract
 - [ ] 1-2 teaspoons Lime Juice
 
-**Add-ins**
+#### Add-ins
 - [ ] 120g Dark Chocolate, chopped (for the batter)
 - [ ] 40g Dark Chocolate, chopped (for topping)
 - [ ] Strawberries, diced (for topping)

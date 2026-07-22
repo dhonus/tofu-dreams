@@ -4,14 +4,13 @@ date: 2025-07-06T10:00:00+01:00
 draft: false
 tags: ["lunch", "gnocchi", "italian", "pasta"]
 categories: ["Savory"]
+prep_time: 15
+cook_time: 25
 ---
 
 I resisted the urge to buy ready-made gnocchi and it is definitely a much simpler process than I expected. They are very soft, fluffy and paired with the creamy sauce and hit of sour from the tomatoes they make a very balanced dish.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 25 minutes
 
 ### Ingredients for 2 servings
 - [ ] 300g potatoes, peeled

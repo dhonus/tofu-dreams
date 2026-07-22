@@ -4,6 +4,8 @@ date: 2022-12-29T12:41:27+01:00
 draft: false
 tags: ["christmas", "party-food"]
 categories: ["Sweet"]
+prep_time: 5
+cook_time: 10
 ---
 
 Christmas! We all know how dire the vegan Christmas
@@ -23,9 +25,6 @@ They keep well in the fridge for a few weeks.
 </div>
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 10 minutes
 
 ### Ingredients for a whole bunch of 'em
 - [ ] 100g walnuts

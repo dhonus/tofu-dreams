@@ -4,6 +4,8 @@ date: 2023-03-05T14:12:00+01:00
 draft: false
 tags: ["lunch", "red-lentils", "italian", "pasta"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 25
 ---
 
 Today I have for you a red lentil bolognese sauce. It is my own approximation of the traditional recipe. It is made from red lentils,
@@ -11,9 +13,6 @@ because they have more of a subtle flavor, and they cook really quickly. In this
 such as spaghettoni or spaghetti will do. You could top it with some vegan parmesan if you like.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 25 minutes
 
 ### Ingredients for 2 servings
 - [ ] 1 tablespoon olive oil

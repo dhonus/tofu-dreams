@@ -4,14 +4,13 @@ date: 2026-02-01T10:00:00+01:00
 draft: false
 tags: ["lunch", "beans"]
 categories: ["Savory"]
+prep_time: 10
+cook_time: 15
 ---
 
 As a long time butter bean hater, I feel slightly ashamed to publish this recipe and call it the fastest way to induce a blissful food coma, but I think we all deserve to know. Maybe it's the tomato purée or the cashews. Either way, I always fall asleep.
 
 <div class="recipe" id="recipe">
-Prep time: 10 minutes
-
-Cooking time: 15 minutes
 
 ### Ingredients for 2 servings
 - [ ] 2 cans canned butter beans, drained and rinsed

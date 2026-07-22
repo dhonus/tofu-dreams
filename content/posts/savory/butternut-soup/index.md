@@ -4,14 +4,13 @@ date: 2025-08-31T00:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "sweet-potato", "pumpkin"]
 categories: ["Savory"]
+prep_time: 7
+cook_time: 75
 ---
 
 The time of orange soups is nigh again. With the end of summer these finally grow in abundance again. This is a pretty simple soup, using the entire squash including the skin and roasting the chickpeas together with it.
 
 <div class="recipe" id="recipe">
-Prep time: 7 minutes
-
-Cooking time: 1 hour 15 minutes
 
 ### Ingredients for 2 servings
 - [ ] 1 butternut squash (about 500g)

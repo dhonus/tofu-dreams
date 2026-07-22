@@ -4,14 +4,13 @@ date: 2025-06-13T11:00:00Z
 draft: false
 tags: ["baked", "banana"]
 categories: ["Sweet"]
+prep_time: 15
+cook_time: 60
 ---
 
 Need I say more about this classic? Very simple to make, delicious with peanut butter and just a fun time really.
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Baking time: 1 hour
 
 ### Ingredients for 1 bread
 - [ ] 225g all-purpose flour

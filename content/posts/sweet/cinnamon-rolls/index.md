@@ -4,6 +4,8 @@ date: 2023-02-14T12:00:00Z
 draft: false
 tags: ["baked", "yeast", "cinnamon", "satisfying"]
 categories: ["Sweet"]
+prep_time: 45
+cook_time: 30
 ---
 
 As it stands I try to publish recipes that I have come up with, or at least significantly altered. This time, however, a recipe is so
@@ -14,9 +16,6 @@ I have eaten these for breakfast, lunch and dinner, and they are just so good ðŸ
 
 
 <div class="recipe" id="recipe">
-Prep time: 45 minutes
-
-Cooking time: 30 minutes
 
 ### Ingredients for 12 rolls
 - [ ] 700g All Purpose Flour

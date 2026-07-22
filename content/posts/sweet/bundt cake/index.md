@@ -4,6 +4,8 @@ date: 2023-10-17T00:00:00Z
 draft: false
 tags: ["czech", "baked", "chocolate"]
 categories: ["Sweet"]
+prep_time: 15
+cook_time: 45
 ---
 
 In my inevitable descent into becoming a housewife I have turned to the humble marble bundt cake. It's a fairly typical dessert to eat in the Czech Republic and I haven't had it in years. Hence, I present a recipe for this delicious staple of the mundane Sunday family occasion. Loosely inspired by [this recipe](https://web.archive.org/web/20230401104615/https://plantifulbakery.com/cs/vegan-mramorova-babovka/).
@@ -18,9 +20,6 @@ In my inevitable descent into becoming a housewife I have turned to the humble m
 </div>
 
 <div class="recipe" id="recipe">
-Prep time: 15 minutes
-
-Cooking time: 45 minutes
 
 ### Ingredients for 1 bundt cake
 - [ ] 320g all purpose flour

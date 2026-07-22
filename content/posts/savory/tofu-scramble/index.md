@@ -4,6 +4,8 @@ date: 2023-01-18T14:00:00+01:00
 draft: false
 tags: ["lunch", "gluten-free", "tofu", "simple"]
 categories: ["Savory"]
+prep_time: 5
+cook_time: 5
 ---
 
 Tofu scramble is one of the simplest dishes to make using tofu.
@@ -13,9 +15,6 @@ I usually make mine with curry spice, but as any simple dish like this you can
 use whatever you have on hand.
 
 <div class="recipe" id="recipe">
-Prep time: 5 minutes
-
-Cooking time: 5 minutes
 
 ### Ingredients for 1 serving
 - [ ] 1 block of tofu
