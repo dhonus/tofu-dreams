@@ -1,372 +1,1267 @@
-// define color
-$link: #729264
+// ---------------------------------------------------------------
+// Tofu Dreams — palette & tokens
+// ---------------------------------------------------------------
+$link: #4c7a41
 
+$bg: #f7f2e6
+$bg-soft: #efe6d1
+$card: #fffdf8
+$ink: #211e19
+$ink-soft: #6d6858
+$ink-faint: #96907d
+$line: #e3d9c0
+$line-soft: #ece3cd
+
+$accent: #4c7a41
+$accent-dark: #35592c
+$accent-soft: #e6eede
+$rust: #bd5f2e
+$rust-soft: #f7e2cf
+$frame: #14110d
+
+$radius-sm: 6px
+$radius-md: 9px
+$radius-lg: 13px
+
+$shadow-sm: 0 1px 3px rgba(20,17,12,.09)
+$shadow-md: 0 14px 34px -14px rgba(20,17,12,.28)
+$shadow-lg: 0 30px 60px -18px rgba(8,7,5,.4)
+
+// ---------------------------------------------------------------
+// Fonts
+// ---------------------------------------------------------------
 @font-face
   font-family: 'Playfair Display'
   src: url('PlayfairDisplay-VariableFont_wght.ttf') format('truetype')
+  font-weight: 400 900
+  font-style: normal
+  font-display: swap
+
+@font-face
+  font-family: 'Playfair Display'
+  src: url('PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype')
+  font-weight: 400 900
+  font-style: italic
+  font-display: swap
+
+*
+  box-sizing: border-box
+
+::selection
+  background: $accent
+  color: #fff
 
 html
-  background: #212020
-  font-family: 'Cabin', sans-serif
-  font-family: 'Playfair Display'
+  background: $frame
+  font-family: 'Playfair Display', Georgia, serif
   scroll-behavior: smooth
+  -webkit-font-smoothing: antialiased
+
+*:focus-visible
+  outline: 2px solid $accent
+  outline-offset: 2px
+
 body
-  margin: .8rem
+  margin: 1.1rem
   padding: 0
-  background: #e9e8e3
-  main
+  background: $bg
+  color: $ink
+  border-radius: $radius-lg
+  box-shadow: $shadow-lg
+  font-size: 15px
+  > main
     width: 70%
     margin: auto
     max-width: 1500px
+  &.kind-home > main, &.kind-term > main
+    width: 50%
+    max-width: 1080px
 
 p, a, h1, h2, h3, h4, h5, h6
   color: inherit
 
+h1, h2, h3, h4
+  font-weight: 700
+  letter-spacing: -.01em
+
 a
   text-decoration: none
+  transition: color .15s ease
   &:hover
     color: $link
 
-.identity
-  width: 100%
-  a
-    flex-direction: row
-    display: flex
-    text-align: left
-    height: 7rem
-    width: 100%
-    gap: .5rem
-    vertical-align: middle
-    span.identity-text
-      display: flex
-      flex-direction: column
-      justify-content: center
-      gap: .3rem
-    h3
-      font-size: 1.4rem
-      line-height: 1.4rem
-      margin: 1rem 0 0 0
-      padding: 0
-      align-self: left
-  .logo
-    height: 7rem
-    width: 7rem
-    border-radius: 25px
-    -webkit-filter: drop-shadow(5px 4px 2px #00000012)
-    filter: drop-shadow(5px 4px 2px #00000012)
-
-.nav
-  display: flex
-  flex-direction: row
-  justify-content: left
-  margin: .3rem 0 0 5rem
-  gap: 1rem
-  span
-    display: flex
-    flex-direction: row
-    gap: 1rem
-    border-left: 1px solid silver
-    border-right: 1px solid silver
-    padding: 0 7px
+// ---------------------------------------------------------------
+// Header / nav
+// ---------------------------------------------------------------
+#nav-border
+  position: sticky
+  top: 0
+  z-index: 40
+  border-radius: $radius-lg $radius-lg 0 0
+  // clip the nav here, on the PARENT: backdrop-filter bleeds past the nav's own
+  // rounded corners (the right-side seam) and the element's own overflow won't
+  // catch it — the parent's does. Safe: the search dropdown is portaled to <body>.
+  overflow: hidden
 
 nav#nav
-  background: #e6dfcd
-  padding: .3rem .3rem 1rem 4rem
-  border-bottom: 1px solid #bcbcbc
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: 1rem
+  background: rgba(247, 242, 230, .82)
+  -webkit-backdrop-filter: blur(12px) saturate(1.2)
+  backdrop-filter: blur(12px) saturate(1.2)
+  padding: .5rem 1.1rem
+  box-shadow: inset 0 -1px 0 $line
+  border-radius: $radius-lg $radius-lg 0 0
+  // clips the backdrop-filtered nav to its rounded corners so it can't sub-pixel
+  // overflow the body's rounded edge (the seam). Safe now the search dropdown is
+  // portaled to <body> and no longer a descendant that would get clipped.
+  overflow: hidden
+
+// --- brand ---
+.brand
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: .65rem
+  flex-shrink: 0
+  .logo
+    height: 3.2rem
+    width: 3.2rem
+    border-radius: 11px
+    -webkit-filter: drop-shadow(0 3px 8px rgba(20,17,12,.16))
+    filter: drop-shadow(0 3px 8px rgba(20,17,12,.16))
+    transition: transform .25s ease
+  .brand-text
+    display: flex
+    flex-direction: column
+    line-height: 1.15
+  .brand-name
+    font-size: 1.48rem
+    font-weight: 800
+    letter-spacing: -.02em
+    color: $ink
+  .brand-tag
+    font-size: .88rem
+    font-style: italic
+    color: $ink-soft
+  &:hover
+    color: inherit
+    .logo
+      transform: rotate(-5deg) scale(1.05)
+
+// --- search ---
+.nav-search
+  position: relative
+  flex: 1
+  max-width: 24rem
+  margin: 0 auto
+  display: flex
+  align-items: center
+  .nav-search-icon
+    position: absolute
+    left: .85rem
+    color: $ink-faint
+    pointer-events: none
+    display: block
+  .nav-search-input
+    width: 100%
+    font-family: 'Playfair Display', serif
+    font-size: .92rem
+    color: $ink
+    background: $card
+    border: 1px solid $line
+    border-radius: 999px
+    padding: .45rem 2.2rem .45rem 2.35rem
+    box-shadow: $shadow-sm
+    transition: border-color .15s ease, box-shadow .15s ease
+    &::placeholder
+      color: $ink-faint
+    &::-webkit-search-cancel-button
+      -webkit-appearance: none
+    &:focus
+      outline: none
+      border-color: $accent
+      box-shadow: 0 0 0 3px $accent-soft
+  .nav-search-kbd
+    position: absolute
+    right: .7rem
+    font-family: 'Cabin', sans-serif
+    font-size: .8rem
+    color: $ink-faint
+    background: $bg-soft
+    border: 1px solid $line
+    border-radius: 6px
+    padding: .05rem .45rem
+    pointer-events: none
+  &:focus-within .nav-search-kbd
+    display: none
+
+// search dropdown is portaled to <body> (see header.html) so the sticky nav can
+// use overflow:hidden to clip its rounded-corner seam without clipping the results.
+// JS sets top/left/width from the input's position each time it opens.
+.nav-search-results
+  display: none
+  position: fixed
+  background: $card
+  border: 1px solid $line
+  border-radius: $radius-md
+  box-shadow: $shadow-lg
+  overflow: hidden
+  max-height: 70vh
+  overflow-y: auto
+  z-index: 60
+  &.is-open
+    display: block
+
+.search-empty
+  padding: 1rem 1.1rem
+  color: $ink-soft
+  font-style: italic
+  font-size: .95rem
+
+.sr-item
+  display: flex
+  align-items: center
+  gap: .8rem
+  padding: .6rem .8rem
+  border-bottom: 1px solid $line-soft
+  color: $ink
+  &:last-child
+    border-bottom: none
+  .sr-thumb
+    width: 3rem
+    height: 3rem
+    border-radius: 10px
+    background-size: cover
+    background-position: center
+    flex-shrink: 0
+    box-shadow: $shadow-sm
+  .sr-thumb-empty
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $accent-soft
+    font-size: 1.2rem
+  .sr-body
+    display: flex
+    flex-direction: column
+    gap: .25rem
+    min-width: 0
+  .sr-title
+    font-weight: 700
+    font-size: 1.02rem
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+  .sr-tags
+    display: flex
+    gap: .3rem
+    flex-wrap: wrap
+  .sr-tag
+    font-family: 'Cabin', sans-serif
+    font-size: .7rem
+    font-weight: 600
+    color: $accent-dark
+    background: $accent-soft
+    padding: .1rem .45rem
+    border-radius: 999px
+  &:hover, &.is-active
+    background: $bg-soft
+    color: $ink
+    .sr-title
+      color: $accent-dark
+
+// --- menu ---
+.nav-menu
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: .2rem
+  flex-shrink: 0
+  .nav-link
+    display: inline-flex
+    align-items: center
+    font-weight: 600
+    font-size: .92rem
+    color: $ink-soft
+    padding: .4rem .6rem
+    position: relative
+    transition: color .15s ease
+    &::after
+      content: ""
+      position: absolute
+      left: .6rem
+      right: .6rem
+      bottom: .18rem
+      height: 1.5px
+      background: $accent
+      border-radius: 2px
+      transform: scaleX(0)
+      transform-origin: left
+      transition: transform .2s ease
+    &:hover
+      color: $ink
+      &::after
+        transform: scaleX(1)
+    &.active
+      color: $accent-dark
+      &::after
+        transform: scaleX(1)
 
 nav.pagination
-  margin: 1rem auto 0 auto
+  margin: 2.6rem auto 1rem auto
   display: flex
   flex-direction: row
   justify-content: center
-  p,a
-    display: inline-block
-    padding: .5rem
-    border: 1px solid #bcbcbc
-    border-radius: 5px
-    margin: 0 .2rem
+  align-items: center
+  a.prev, a.next, p.prev, p.next
+    display: inline-flex
+    align-items: center
+    padding: .55rem 1.1rem
+    border: 1px solid $line
+    background: $card
+    border-radius: 999px
+    margin: 0 .4rem
+    font-weight: 600
+    font-size: .95rem
     cursor: pointer
-    &:hover
-      background: #e6dfcd
-      color: $link
+    transition: all .18s ease
+    box-shadow: $shadow-sm
+  a.prev:hover, a.next:hover
+    background: $accent
+    color: #fff
+    border-color: $accent
+    box-shadow: $shadow-md
   p.prev, p.next
-    color: gray
-    &:hover
-      background: inherit
-      color: gray
-      cursor: default
+    color: $ink-faint
+    background: transparent
+    box-shadow: none
+    cursor: default
   ul.pages
     display: flex
     flex-direction: row
-    gap: .2rem
-    margin: 0 .6rem
+    align-items: center
+    gap: .35rem
+    margin: 0 .5rem
     padding: 0
     a
-      display: inline-block
-      line-height: 2rem
-      font-size: 1.2rem
-      padding: 0 .5rem
-      &.active
-        background: #e6dfcd
-        color: $link
-    a.disabled
-      color: gray
-      cursor: default
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      min-width: 2.4rem
+      height: 2.4rem
+      font-size: 1.05rem
+      font-weight: 600
+      border-radius: 50%
+      cursor: pointer
+      transition: all .18s ease
       &:hover
-        background: inherit
-        color: gray
-    li.active
-      background: #e6dfcd
+        background: $bg-soft
+        color: $accent-dark
+      &.active
+        background: $accent
+        color: #fff
+        box-shadow: $shadow-sm
+        &:hover
+          background: $accent
+          color: #fff
+    a.disabled
+      color: $ink-faint
+      cursor: default
+      background: transparent
+      min-width: 1.4rem
+      &:hover
+        background: transparent
+        color: $ink-faint
+
+// ---------------------------------------------------------------
+// Shared buttons + eyebrow
+// ---------------------------------------------------------------
+.eyebrow
+  display: inline-block
+  font-family: 'Cabin', sans-serif
+  text-transform: uppercase
+  letter-spacing: .16em
+  font-size: .68rem
+  font-weight: 700
+  color: $accent-dark
+  background: $accent-soft
+  padding: .28rem .7rem
+  border-radius: 999px
+
+// shared recipe excerpt style — used by both the recipe cards and the spotlight
+p.card-summary
+  margin: .35rem 0 0 0
+  font-size: .86rem
+  line-height: 1.45
+  color: $ink-soft
+
+.btn
+  font-family: 'Playfair Display', serif
+  font-size: .92rem
+  font-weight: 700
+  padding: .55rem 1.15rem
+  border-radius: 999px
+  cursor: pointer
+  border: 1px solid transparent
+  transition: all .2s ease
+  display: inline-flex
+  align-items: center
+  gap: .4rem
+.btn-primary
+  background: $accent
+  color: #fff !important
+  box-shadow: 0 6px 16px -6px rgba(53,89,44,.5)
+  &:hover
+    background: $accent-dark
+    box-shadow: 0 10px 22px -6px rgba(53,89,44,.55)
+.btn-ghost
+  background: $card
+  color: $ink !important
+  border: 1px solid $line
+  box-shadow: $shadow-sm
+  &:hover
+    border-color: $accent
+    color: $accent-dark !important
+    box-shadow: $shadow-md
+
+// ---------------------------------------------------------------
+// Homepage hero
+// ---------------------------------------------------------------
+@keyframes floaty
+  0%
+    transform: translateY(0) rotate(0deg)
+  50%
+    transform: translateY(-14px) rotate(2deg)
+  100%
+    transform: translateY(0) rotate(0deg)
+
+@keyframes blobDrift
+  0%
+    transform: translate(0, 0) scale(1)
+  50%
+    transform: translate(20px, -18px) scale(1.08)
+  100%
+    transform: translate(0, 0) scale(1)
+
+header.homepage-header
+  position: relative
+  width: 100%
+  padding: 2.2rem 0 2.4rem 0
+  overflow: hidden
+  .hero-blob
+    position: absolute
+    border-radius: 50%
+    filter: blur(60px)
+    z-index: 0
+    opacity: .5
+    animation: blobDrift 14s ease-in-out infinite
+  .hero-blob-a
+    width: 26rem
+    height: 26rem
+    background: $accent-soft
+    top: -11rem
+    left: -5rem
+  .hero-blob-b
+    width: 22rem
+    height: 22rem
+    background: $rust-soft
+    top: -6rem
+    right: -4rem
+    animation-delay: -6s
+  .hero-grid
+    position: relative
+    z-index: 1
+    width: 50%
+    max-width: 1080px
+    margin: 0 auto
+    display: grid
+    grid-template-columns: 1.25fr .75fr
+    align-items: center
+    gap: 1.6rem
+  .hero-copy
+    .eyebrow
+      margin-bottom: 1rem
+    h1
+      font-size: 2.85rem
+      line-height: 1.05
+      margin: 0
+      font-weight: 800
+      letter-spacing: -.025em
+      em
+        color: $accent
+        font-style: italic
+  .hero-subtitle
+    max-width: 32rem
+    margin: 1rem 0 0 0
+    font-size: 1.12rem
+    color: $ink-soft
+    line-height: 1.55
+  .subtitle
+    display: block
+    margin-top: .7rem
+    color: $ink-faint
+    font-style: italic
+  .hero-actions
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    gap: .7rem
+    margin-top: 1.4rem
+  .hero-stats
+    display: flex
+    flex-direction: row
+    align-items: center
+    flex-wrap: wrap
+    gap: .7rem
+    margin-top: 1.4rem
+    font-size: .88rem
+    color: $ink-soft
+    strong
+      color: $ink
+      font-size: 1.05rem
+    .dot
+      width: 4px
+      height: 4px
+      border-radius: 50%
+      background: $ink-faint
+      display: inline-block
+  .hero-art
+    display: flex
+    justify-content: center
+    align-items: center
+    img
+      width: 100%
+      max-width: 18rem
+      height: auto
+      filter: drop-shadow(0 20px 34px rgba(20,17,12,.2))
+      animation: floaty 7s ease-in-out infinite
+
+// ---------------------------------------------------------------
+// Latest recipe spotlight
+// ---------------------------------------------------------------
+.spotlight
+  display: grid
+  grid-template-columns: .8fr 1.2fr
+  gap: 0
+  margin: 1.2rem 0 2.4rem 0
+  background: $card
+  border: 1px solid $line
+  border-radius: $radius-md
+  overflow: hidden
+  box-shadow: $shadow-md
+  cursor: pointer
+  transition: box-shadow .3s ease, border-color .3s ease, transform .3s ease
+  &:hover
+    transform: translateY(-3px)
+    box-shadow: $shadow-md
+    border-color: $accent
+    .spotlight-img::after
+      opacity: 1
+    .spotlight-cta
+      background: $accent-dark
+  .spotlight-media
+    position: relative
+    min-height: 9rem
+    overflow: hidden
+  .spotlight-img
+    position: absolute
+    inset: 0
+    background-size: cover
+    background-position: center
+    &::after
+      content: ""
+      position: absolute
+      inset: 0
+      background: linear-gradient(120deg, rgba(53,89,44,.16), rgba(53,89,44,0) 60%)
+      opacity: 0
+      transition: opacity .35s ease
+  .spotlight-ribbon
+    position: absolute
+    top: .8rem
+    left: .8rem
+    z-index: 1
+    background: rgba(15,12,8,.72)
+    -webkit-backdrop-filter: blur(6px)
+    backdrop-filter: blur(6px)
+    color: #fff
+    font-weight: 700
+    font-size: .78rem
+    padding: .35rem .7rem
+    border-radius: 999px
+  .spotlight-body
+    padding: 1.2rem 1.4rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+  .spotlight-kicker
+    font-family: 'Cabin', sans-serif
+    text-transform: uppercase
+    letter-spacing: .1em
+    font-size: .68rem
+    font-weight: 700
+    color: $rust
+    .card-time
+      color: $ink-faint
+      margin-left: .35rem
+  h2
+    font-size: 1.65rem
+    line-height: 1.15
+    margin: .3rem 0 0 0
+    font-weight: 800
+    a
+      color: $ink
+  .spotlight-meta
+    display: flex
+    flex-wrap: wrap
+    gap: .4rem
+    margin-top: .6rem
+    .mini-tag
+      font-family: 'Cabin', sans-serif
+      font-size: .74rem
+      font-weight: 600
+      color: $accent-dark
+      background: $accent-soft
+      padding: .22rem .6rem
+      border-radius: 999px
+      transition: all .18s ease
+      &:hover
+        background: $accent
+        color: #fff
+  .spotlight-cta
+    align-self: flex-end
+    margin-top: .8rem
+
+// ---------------------------------------------------------------
+// Section headers
+// ---------------------------------------------------------------
+.section-head
+  display: flex
+  align-items: baseline
+  gap: .7rem
+  margin: 2rem .3rem .9rem .3rem
+  padding-bottom: .55rem
+  border-bottom: 1px solid $line
+  h2
+    margin: 0
+    font-size: 1.5rem
+    line-height: 1
+    &::before
+      display: none
+  .section-count
+    font-family: 'Cabin', sans-serif
+    font-size: .8rem
+    color: $ink-faint
+    font-weight: 600
+  .section-all
+    margin-left: auto
+    font-size: .88rem
+    font-weight: 700
+    color: $accent-dark
+    &:hover
       color: $link
 
-// .category_container:first-of-type
-//   margin-left: 5px
+// ---------------------------------------------------------------
+// Taxonomy header + live tag filter
+// ---------------------------------------------------------------
+.taxonomy-head
+  margin: 1.6rem .3rem 1.2rem .3rem
+  .eyebrow
+    margin-bottom: .8rem
+  h1
+    font-size: 2.9rem
+    font-weight: 800
+    letter-spacing: -.02em
+    margin: 0
+  .taxonomy-sub
+    color: $ink-soft
+    margin: .55rem 0 0 0
+    font-size: 1.05rem
 
+.browse-toolbar
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: .8rem
+  margin: 0 .3rem 1rem .3rem
+  flex-wrap: wrap
+  .browse-search-wrap
+    position: relative
+    flex: 1
+    min-width: 14rem
+    display: flex
+    align-items: center
+    .browse-search-icon
+      position: absolute
+      left: .9rem
+      color: $ink-faint
+      pointer-events: none
+      display: block
+  .browse-search
+    width: 100%
+    font-family: 'Playfair Display', serif
+    font-size: 1.05rem
+    color: $ink
+    background: $card
+    border: 1px solid $line
+    border-radius: 999px
+    padding: .75rem 1.1rem .75rem 2.7rem
+    box-shadow: $shadow-sm
+    transition: border-color .15s ease, box-shadow .15s ease
+    &::placeholder
+      color: $ink-faint
+    &:focus
+      outline: none
+      border-color: $accent
+      box-shadow: 0 0 0 3px $accent-soft
+  .browse-sort-wrap
+    display: flex
+    align-items: center
+    gap: .5rem
+    font-size: .9rem
+    color: $ink-soft
+    font-weight: 600
+  .browse-sort
+    font-family: 'Playfair Display', serif
+    font-size: 1rem
+    font-weight: 600
+    color: $ink
+    background: $card
+    border: 1px solid $line
+    border-radius: 999px
+    padding: .7rem 2.2rem .7rem 1.1rem
+    box-shadow: $shadow-sm
+    cursor: pointer
+    appearance: none
+    -webkit-appearance: none
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236d6858' d='M1 1l5 5 5-5'/%3E%3C/svg%3E")
+    background-repeat: no-repeat
+    background-position: right 1rem center
+    transition: border-color .15s ease
+    &:focus
+      outline: none
+      border-color: $accent
+
+.filter-bar
+  background: $card
+  border: 1px solid $line
+  border-radius: $radius-lg
+  padding: 1.1rem 1.25rem
+  margin: 0 .3rem 1.8rem .3rem
+  box-shadow: $shadow-sm
+  .filter-chips
+    display: flex
+    flex-wrap: wrap
+    gap: .5rem
+  .filter-chip
+    display: inline-flex
+    align-items: center
+    gap: .4rem
+    font-weight: 600
+    font-size: .95rem
+    color: $ink
+    background: $bg
+    border: 1px solid $line
+    padding: .4rem .85rem
+    border-radius: 999px
+    cursor: pointer
+    user-select: none
+    transition: background .15s ease, color .15s ease, border-color .15s ease, opacity .2s ease, transform .15s ease
+    .chip-count
+      font-family: 'Cabin', sans-serif
+      font-size: .72em
+      font-weight: 700
+      color: $ink-faint
+      background: $bg-soft
+      padding: .14em .55em
+      border-radius: 999px
+      transition: all .15s ease
+    &:hover
+      border-color: $accent
+      color: $accent-dark
+    &.active
+      background: $accent
+      border-color: $accent
+      color: #fff
+      box-shadow: 0 6px 14px -5px rgba(53,89,44,.5)
+      .chip-count
+        background: rgba(255,255,255,.24)
+        color: #fff
+    &.disabled
+      opacity: .3
+      pointer-events: none
+      cursor: default
+  .filter-status
+    display: flex
+    align-items: center
+    gap: 1rem
+    margin-top: .95rem
+    padding-top: .9rem
+    border-top: 1px dashed $line
+    .filter-count
+      font-weight: 600
+      color: $ink-soft
+      font-size: .95rem
+    .filter-clear
+      font-family: 'Playfair Display', serif
+      font-weight: 700
+      font-size: .9rem
+      color: $rust
+      background: $rust-soft
+      border: none
+      padding: .38rem .9rem
+      border-radius: 999px
+      cursor: pointer
+      transition: all .15s ease
+      &:hover
+        background: $rust
+        color: #fff
+
+.no-results
+  text-align: center
+  color: $ink-soft
+  font-size: 1.15rem
+  font-style: italic
+  padding: 2.5rem 1rem
+
+// paginating scrolls #recipeGrid to top — leave room for the sticky nav so the
+// first row lands below it instead of tucked underneath
+#recipeGrid
+  scroll-margin-top: 6rem
+
+// ---------------------------------------------------------------
+// Category grid
+// ---------------------------------------------------------------
 .category_container
   display: flex
   flex-direction: column
-  h2
-    margin: .4rem
   h1
     margin: .6rem 0 .4rem 5px
   div.category
     display: grid
-    flex-direction: row
-    flex-wrap: wrap
-    grid-gap: .3rem
+    grid-gap: .9rem
     grid-template-columns: 1fr 1fr 1fr
     span.article
       position: relative
-      text-align: center
-      padding: 10px 10px 15px 10px
-      border: 1px solid #bcbcbc
-      border-radius: 5px
-      margin: 5px
+      text-align: left
+      border: 1px solid $line
+      background: $card
+      border-radius: $radius-md
+      margin: 0
       cursor: pointer
       display: flex
       flex-direction: column
-      justify-content: space-between
-      // min-height: 26rem
+      overflow: hidden
+      box-shadow: $shadow-sm
+      transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease
       &:hover
-        a
-          color: $link
-      div.bottom-link
-        position: relative
-        text-align: right
-        margin-top: 1rem
+        transform: translateY(-3px)
+        box-shadow: $shadow-md
+        border-color: $accent
+        div.cover_image::after
+          opacity: 1
       div.cover_image
+        position: relative
         width: 100%
         aspect-ratio: 4 / 3
-        // height: 200px
         background-size: cover
         background-position: center
         background-repeat: no-repeat
-        border-radius: 5px
-        margin-bottom: 10px
-      &:hover
-        background: #e6dfcd
+        &::after
+          content: ""
+          position: absolute
+          inset: 0
+          background: linear-gradient(to top, rgba(53,89,44,.30), rgba(53,89,44,0) 55%)
+          opacity: 0
+          transition: opacity .3s ease
+      div.card-body
+        display: flex
+        flex-direction: column
+        flex: 1
+        padding: .8rem 1rem 1rem 1rem
+      span.card-kicker
+        font-family: 'Cabin', sans-serif
+        text-transform: uppercase
+        letter-spacing: .1em
+        font-size: .64rem
+        font-weight: 700
+        color: $rust
+        .card-time
+          color: $ink-faint
+          margin-left: .35rem
+      h2
+        font-size: 1.25rem
+        margin: .25rem 0 0 0
+        line-height: 1.2
+        color: $ink
+      div.card-tags
+        display: flex
+        flex-wrap: wrap
+        gap: .4rem
+        margin-top: auto
+        padding-top: .8rem
+        .mini-tag
+          font-family: 'Cabin', sans-serif
+          font-size: .76rem
+          font-weight: 600
+          color: $accent-dark
+          background: $accent-soft
+          padding: .28rem .7rem
+          border-radius: 999px
+          transition: all .18s ease
+          &:hover
+            background: $accent
+            color: #fff
       div.new
         position: absolute
-        top: 1rem
-        right: 1rem
-        background: #819e75
+        top: .7rem
+        right: .7rem
+        z-index: 1
+        background: $rust
         color: white
-        padding: .2rem .5rem
-        border-radius: 5px
-        font-size: .8rem
-        box-shadow: 0 0 5px #00000061
-        font-weight: 600
+        padding: .2rem .55rem
+        border-radius: 999px
+        font-size: .66rem
+        letter-spacing: .04em
+        box-shadow: 0 4px 12px rgba(189,95,46,.4)
+        font-weight: 700
+        text-transform: uppercase
+      a.card-category
+        position: absolute
+        top: .7rem
+        left: .7rem
+        z-index: 1
+        background: rgba(15,12,8,.72)
+        -webkit-backdrop-filter: blur(6px)
+        backdrop-filter: blur(6px)
+        color: #fff
+        padding: .2rem .6rem
+        border-radius: 999px
+        font-family: 'Cabin', sans-serif
+        font-size: .66rem
+        font-weight: 700
+        letter-spacing: .04em
+        text-transform: uppercase
+        transition: background .18s ease
+        &:hover
+          background: $accent
+          color: #fff
 
-div.round-teasers
+div.flex-left
   display: flex
   flex-direction: row
-  flex-wrap: wrap
-  gap: 1.5rem
-  justify-content: center
-  div a
-    img
-      width: 100px
-      height: 100px
-      border-radius: 50%
-      border: 3px solid #e6dfcd
-      box-shadow: 0 0 5px #00000036
-      display: block
-      margin: 0
-      transition: border .2s ease-in-out
-    h3
-      margin: .3rem 0 0 0
-      font-size: 1rem
-      text-align: center
-      transition: color .2s ease-in-out
-    &:hover img
-      border: 3px solid $link
-      transition: border .2s ease-in-out
-    &:hover h3
-      color: $link
-      transition: color .2s ease-in-out
-div.recent-posts
-  border-top: 1px solid silver
-  div.article
-    display: flex
-    flex-direction: column
-    padding: 1rem
-    border-bottom: 1px solid silver
-    gap: .5rem
-    cursor: pointer
-    position: relative
+  margin-top: .6rem
+  div.flex-push
+    flex: 1
+  h3
+    font-weight: 600
+    font-size: .95rem
+    margin: 0
+    padding: .5rem 1rem
+    border-radius: 999px
+    border: 1px solid $line
+    background: $card
+    transition: all .2s ease
     &:hover
-      background: #e6dfcd
-      a
-        color: $link
-    h2
-      margin: 0
-      font-size: 1.35rem
+      background: $accent
+      color: #fff
+      border-color: $accent
 
-    div.vertical
-      display: flex
-      flex-direction: row
-      align-items: center
-    div.cover_image
-      width: 5rem
-      height: 5rem
-      border-radius: 25px
-      background-size: cover
-      background-position: center
-      background-repeat: no-repeat
-      margin-right: 10px
-    div.new
+// ---------------------------------------------------------------
+// Featured categories (round teasers)
+// ---------------------------------------------------------------
+div.teaser_container
+  margin-top: 4rem
+  padding: 3rem 0 1rem 0
+  border-top: 1px solid $line
+  .teaser-heading
+    text-align: center
+    margin-bottom: 2.2rem
+    .eyebrow
+      margin-bottom: .8rem
+    h2
+      text-align: center
+      font-size: 1.9rem
+      margin: 0
+
+div.round-teasers
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  gap: 1.1rem
+  padding-bottom: 1rem
+  a.teaser-card
+    position: relative
+    display: flex
+    align-items: flex-end
+    height: 12rem
+    border-radius: $radius-md
+    overflow: hidden
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    box-shadow: $shadow-md
+    transition: transform .3s ease, box-shadow .3s ease
+    &::after
+      content: ""
       position: absolute
-      top: .4rem
-      right: .4rem
-      background: #819e75
-      color: white
-      padding: .2rem .5rem
-      border-radius: 5px
-      font-size: .65rem
-      box-shadow: 0 0 5px #00000061
-      font-weight: 600
+      inset: 0
+      background: linear-gradient(to top, rgba(15,12,8,.82) 0%, rgba(15,12,8,.28) 42%, rgba(15,12,8,0) 72%)
+      transition: background .3s ease
+    &:first-child
+      grid-column: span 2
+      height: 12rem
+    .teaser-label
+      position: relative
+      z-index: 1
+      color: #fff
+      font-size: 1.35rem
+      font-weight: 700
+      letter-spacing: -.01em
+      padding: 1rem 1.1rem
+      text-shadow: 0 2px 12px rgba(0,0,0,.5)
+      transition: transform .3s ease
+    &:hover
+      transform: translateY(-3px)
+      box-shadow: $shadow-lg
+      color: #fff
+      &::after
+        background: linear-gradient(to top, rgba(53,89,44,.86) 0%, rgba(53,89,44,.35) 45%, rgba(15,12,8,0) 75%)
+      .teaser-label
+        transform: translateY(-3px)
+
+// ---------------------------------------------------------------
+// Tag cloud
+// ---------------------------------------------------------------
+.tagcloud-container
+  margin-top: 4rem
+  padding: 3rem 0 1rem 0
+  border-top: 1px solid $line
+  .teaser-heading
+    text-align: center
+    margin-bottom: 2rem
+    .eyebrow
+      margin-bottom: .8rem
+    h2
+      font-size: 1.9rem
+      margin: 0
+.tagcloud
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  gap: .55rem .7rem
+  max-width: 60rem
+  margin: 0 auto
+  a.cloud-tag
+    display: inline-flex
+    align-items: center
+    gap: .35rem
+    line-height: 1
+    font-weight: 600
+    color: $ink
+    background: $card
+    border: 1px solid $line
+    padding: .4rem .85rem
+    border-radius: 999px
+    box-shadow: $shadow-sm
+    transition: all .18s ease
+    .cloud-count
+      font-family: 'Cabin', sans-serif
+      font-size: .62em
+      font-weight: 700
+      color: $ink-faint
+      background: $bg-soft
+      padding: .12em .5em
+      border-radius: 999px
+    &:hover
+      background: $accent
+      color: #fff
+      border-color: $accent
+      box-shadow: $shadow-sm
+      .cloud-count
+        background: rgba(255,255,255,.25)
+        color: #fff
 
 aside.meta-tags
-  margin: auto
+  margin: 2.4rem auto 2.4rem auto
   padding: 0 0.6rem
+  .eyebrow
+    margin-bottom: .8rem
 
 .tags
     display: flex
     flex-direction: row
     flex-wrap: wrap
-    border-radius: 5px
-    gap: .5rem
+    gap: .55rem .7rem
     a
-      background: #cfcdcd
-      display: flex
+      display: inline-flex
       flex-direction: row
       align-items: center
-      color: black
+      gap: .45rem
+      color: $ink
+      background: $card
+      border: 1px solid $line
+      border-radius: 999px
+      padding: .38rem .85rem
+      box-shadow: $shadow-sm
+      transition: all .18s ease
       &:visited
-        color: black
+        color: $ink
       button.tag-button
         font-family: 'Playfair Display', serif
-        font-size: 1rem
+        font-weight: 600
+        font-size: .92rem
         border: none
-        padding: .3rem
-        background: #d8d8d0
+        padding: 0
+        background: transparent
         cursor: pointer
-        color: black
+        color: inherit
       div
-        background: #c5c4bb
-        height: 100%
-        display: flex
-        align-items: center
-        padding: 0 .3rem
-      &:hover *
-        color: white
-        background: #819e75!important
-      &:hover button.tag-button
-        color: white
+        font-family: 'Cabin', sans-serif
+        font-size: .68rem
+        font-weight: 700
+        color: $ink-faint
+        background: $bg-soft
+        padding: .12em .5em
+        border-radius: 999px
+        transition: all .18s ease
+      &:hover
+        background: $accent
+        border-color: $accent
+        button.tag-button
+          color: #fff
+        div
+          background: rgba(255,255,255,.25)
+          color: #fff
 
 .tags p
   margin: 0
 
+// ---------------------------------------------------------------
+// Article / single post
+// ---------------------------------------------------------------
 article.content
   span.main-content
     h3
       margin-bottom: 0
     p
       text-align: justify
-      font-size: 1.1rem
-      margin-top: .6rem
+      font-size: 1.12rem
+      line-height: 1.75
+      margin-top: .7rem
     a
       color: $link
+      text-underline-offset: 3px
       &:hover
-        color: inherit
+        color: $ink
         text-decoration: underline
   div.meta
     display: flex
     flex-direction: column
     justify-content: center
+    align-items: center
     text-align: center
+    padding-top: 2.2rem
+    .eyebrow
+      margin-bottom: .9rem
     h1
-        font-size: 3rem
-        margin: 1.5rem 0 1rem 0
-        color: #2a2926
-        text-decoration: overline
+        font-size: 3.1rem
+        line-height: 1.1
+        margin: 0 0 1.2rem 0
+        color: $ink
+        font-weight: 800
+        letter-spacing: -.02em
+        text-decoration: none
+        position: relative
+        display: inline-block
+        align-self: center
+        &::after
+          content: ""
+          display: block
+          width: 4.5rem
+          height: 3px
+          background: $rust
+          border-radius: 3px
+          margin: 1rem auto 0 auto
     section.post-meta
-      margin-top: 1rem
-      span p
-        display: flex
-        flex-direction: row
-        justify-content: center
-        margin: .5rem 0 
-        gap: .6rem
-        span.new
-          background: #819e75
-          color: white
-          border-radius: 5px
-          font-size: .7rem
-          box-shadow: 0 0 5px #00000061
-          font-weight: 600
-          height: 1.5rem
-          display: flex
-          align-items: center
-          padding: 0 .5rem
-      button.jump-to-recipe
-        background: #e6dfcd
-        color: #2a2926
-        border-radius: 5px
-        font-weight: 600
-        height: 2rem
-        padding: 0 .5rem
-        border: none
-        cursor: pointer
-        &:hover
-          background: #819e75
-          color: white
+      display: flex
+      flex-direction: column
+      align-items: center
+      gap: 1rem
+      margin-top: 1.4rem
+    .post-meta-stats
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: center
+      gap: .55rem
+      color: $ink-soft
+      font-size: .92rem
+      .dot
+        width: 3px
+        height: 3px
+        border-radius: 50%
+        background: $ink-faint
+        display: inline-block
+      .new
+        background: $rust
+        color: white
+        border-radius: 999px
+        font-size: .68rem
+        text-transform: uppercase
+        letter-spacing: .03em
+        box-shadow: 0 4px 10px rgba(189,95,46,.35)
+        font-weight: 700
+        height: 1.5rem
+        display: inline-flex
+        align-items: center
+        padding: 0 .6rem
   p
     img
       width: 70%
       margin: auto
-      border-radius: 7px
+      border-radius: $radius-md
       display: block
-      box-shadow: 0 0 5px #00000036
+      box-shadow: $shadow-md
   div.cover
+    position: relative
     display: flex
     width: 100%
     justify-content: center
+    // glow only renders when there's actually a cover image (posts), never on
+    // plain pages like About where the cover wrapper is absent
+    &:has(.wrapper)
+      margin-top: .4rem
+      &::before
+        content: ""
+        position: absolute
+        top: -2rem
+        left: 50%
+        transform: translateX(-50%)
+        width: 28rem
+        height: 16rem
+        max-width: 90%
+        background: radial-gradient(circle, $accent-soft 0%, $rust-soft 60%, transparent 75%)
+        filter: blur(50px)
+        opacity: .6
+        z-index: 0
     div.wrapper
-      width: 60%
+      position: relative
+      z-index: 1
+      width: 58%
       height: auto
-      margin: 0rem 3rem 0 3rem
-      border-radius: 7px
-      border: 1px solid silver
-      padding: 10px
+      border-radius: $radius-lg
+      overflow: hidden
+      box-shadow: $shadow-lg
     img
       width: 100%
       height: auto
-      border-radius: 7px
+      border-radius: $radius-lg
       margin: 0
       display: block
   div.image-split p
-    // put images side by side
     display: flex
     flex-direction: row
     justify-content: center
@@ -376,93 +1271,288 @@ article.content
     img
       height: 300px
       width: auto
-      border-radius: 7px
-      box-shadow: 0 0 5px #00000036
+      border-radius: $radius-md
+      box-shadow: $shadow-md
       margin: 0
       cursor: zoom-in
+      transition: transform .25s ease
+      &:hover
+        transform: scale(1.02)
     span.caption
       font-size: .9rem
       text-align: center
       margin: 0
       padding: 0
-      color: gray
+      color: $ink-faint
 
-div.flex-left
-  display: flex
-  flex-direction: row
-  div.flex-push
-    flex: 1
-  h3
-    font-weight: 400
-    margin: .3rem 0 0 0
-
+// ---------------------------------------------------------------
+// Recipe box
+// ---------------------------------------------------------------
 div.recipe
+  position: relative
   width: 80%
-  margin: 2rem auto
-  background: #f5f4ee
-  padding: .6rem
-  border-radius: 7px
-  border: 1px solid silver
-  p:first-of-type
-    margin-top: .3rem
-    margin-bottom: 0
-  p:nth-of-type(2)
-    margin-top: .2rem
+  margin: 2.6rem auto
+  background: $card
+  padding: 1.8rem 2rem
+  border-radius: $radius-md
+  border: 1px solid $line
+  box-shadow: $shadow-md
+  // cooking-mode toggle + #statusDiv are injected by JS as the first real
+  // children (see static/js/screen.js) — keep them in normal flow, right-aligned
+  .cooking-mode
+    justify-content: flex-end
+    margin: 0 0 .9rem 0
+    font-size: .85rem
+    color: $ink-soft
+  #statusDiv
+    text-align: right
+    font-size: .78rem
+    color: $ink-faint
+    margin: -.6rem 0 .9rem 0
+    &:empty
+      display: none
+  // prep / cook time as an editorial stat row (label + serif value), driven by frontmatter
+  .recipe-meta
+    display: flex
+    flex-wrap: wrap
+    gap: 2.4rem
+    margin: 0 0 1.6rem 0
+    padding-bottom: 1.3rem
+    border-bottom: 1px solid $line
+  .recipe-stat
+    display: flex
+    flex-direction: column
+    gap: .15rem
+  .recipe-stat-label
+    font-family: 'Cabin', sans-serif
+    text-transform: uppercase
+    letter-spacing: .12em
+    font-size: .64rem
+    font-weight: 700
+    color: $ink-faint
+  .recipe-stat-value
+    font-family: 'Playfair Display', serif
+    font-size: 1.2rem
+    font-weight: 700
+    color: $ink
+  .recipe-stat-total .recipe-stat-value
+    color: $accent-dark
   h3, h4
-    margin-bottom: 0
+    font-size: 1.3rem
+    font-weight: 800
+    color: $ink
+    margin: 1.9rem 0 .6rem 0
     &.title
       margin-top: 0
   h4
-    margin-top: .6rem
-  ul 
-    margin: .6rem 0 0 0
-    padding: 0 0 0 .6rem
+    font-size: 1.08rem
+    color: $accent-dark
+    margin-top: 1.2rem
+  // ingredients checklist
+  ul
+    margin: .7rem 0 1.6rem 0
+    padding: 0
     list-style-type: none
     li
-      margin: .3rem 0
+      display: flex
+      align-items: baseline
+      gap: .7rem
+      margin: 0
+      padding: .5rem 0
+      border-bottom: 1px solid $line-soft
+      font-size: 1rem
+      transition: color .15s ease
       input
-        accent-color: #2a2926
+        accent-color: $accent
+        width: 1.1rem
+        height: 1.1rem
+        flex-shrink: 0
+        cursor: pointer
+    li:last-child
+      border-bottom: none
+    li:has(input:checked)
+      color: $ink-faint
+      text-decoration: line-through
+      text-decoration-color: $line
+  // numbered steps — restrained accent numerals hanging in the gutter
   ol
-    margin-top: 0
+    margin-top: .5rem
+    padding: 0
+    list-style: none
+    counter-reset: step
     li
-      margin: .3rem 0
+      counter-increment: step
+      position: relative
+      margin: 0
+      padding: .3rem 0 .3rem 2.2rem
+      font-size: 1rem
+      line-height: 1.6
+      &::before
+        content: counter(step) "."
+        position: absolute
+        left: 0
+        top: .3rem
+        font-weight: 700
+        color: $accent-dark
+        line-height: 1.6
+
+// ---------------------------------------------------------------
+// Scroll reveal — pre-hidden via .reveal-on (set in <head> before paint)
+// ---------------------------------------------------------------
+.reveal-on
+  .section-head, .category, .teaser_container, .tagcloud-container
+    opacity: 0
+    transform: translateY(16px)
+    transition: opacity .45s ease, transform .45s ease
+    &.is-visible
+      opacity: 1
+      transform: none
 
 footer
   margin: 0
   text-align: center
-  padding: 1rem
+  padding: 2.2rem 1rem 1.6rem 1rem
+  border-top: 1px solid $line
+  border-radius: 0 0 $radius-lg $radius-lg
   a
-    color: #2a2926
+    color: $ink
+    font-weight: 600
     &:hover
       color: $link
+  .subtitle
+    display: block
+    font-style: italic
+    color: $ink-soft
+    margin-bottom: .5rem
+  p.footer
+    margin: .3rem 0
+  p.gray-text
+    margin: .3rem 0 0 0
 
 .gray-text
-    color: gray
+    color: $ink-faint
 
 .dark-gray-text
-    color: #34332f
+    color: $ink-soft
 
 article.split-me
   display: flex
   flex-direction: row
-  section
-    flex: 3
-    padding: 0 1rem
-  div.sidebar
+  align-items: flex-start
+  padding-bottom: 3.5rem
+  > section
     flex: 1
-    border-left: 1px solid #bcbcbc
-    .sidebar-padding
-      padding: 0 0 0 1rem
-      p
-        margin-top: .6rem
-      img
-        border-radius: 25px
-        height: 5em
-        width: 5em
-        float: left
-        margin-right: .6rem
+    min-width: 0
+    padding: 0 2.2rem 0 .3rem
+  div.sidebar
+    flex: 0 0 17rem
+    padding: 2.2rem 0 0 2rem
+    border-left: 1px solid $line
+    .sidebar-block
+      margin-bottom: 2.6rem
+      &:last-child
+        margin-bottom: 0
+    .sidebar-about
+      .eyebrow
+        margin-bottom: .8rem
+      .sidebar-avatar
+        display: block
+        width: 4.5rem
+        height: 4.5rem
+        border-radius: 50%
+        object-fit: cover
+        box-shadow: $shadow-sm
+        border: 3px solid $card
+        margin-bottom: 1rem
       h2
-        margin-bottom: .6rem
+        margin: 0 0 .7rem 0
+        font-size: 1.4rem
+      p
+        margin: 0 0 .8rem 0
+        line-height: 1.6
+        color: $ink-soft
+        font-size: .95rem
+        a
+          color: $link
+          &:hover
+            color: $ink
+        &:last-child
+          margin-bottom: 0
+    h2.sidebar-heading
+      margin: 0 0 1rem 0
+      padding-bottom: .55rem
+      font-size: 1.1rem
+      border-bottom: 1px solid $line
+    .recent-posts
+      display: flex
+      flex-direction: column
+      .recent-item
+        display: flex
+        align-items: center
+        gap: .75rem
+        padding: .6rem 0
+        border-bottom: 1px solid $line-soft
+        color: $ink
+        &:last-child
+          border-bottom: none
+        &:hover .recent-title
+          color: $accent-dark
+        .recent-thumb
+          width: 3.2rem
+          height: 3.2rem
+          border-radius: $radius-sm
+          background-size: cover
+          background-position: center
+          flex-shrink: 0
+          box-shadow: $shadow-sm
+        .recent-body
+          display: flex
+          flex-direction: column
+          gap: .25rem
+          min-width: 0
+        .recent-title
+          font-weight: 700
+          font-size: .95rem
+          line-height: 1.28
+          transition: color .15s ease
+        .recent-date
+          font-family: 'Cabin', sans-serif
+          text-transform: uppercase
+          letter-spacing: .06em
+          font-size: .64rem
+          font-weight: 600
+          color: $ink-faint
+    .sidebar-cats
+      list-style: none
+      margin: 0
+      padding: 0
+      li
+        border-bottom: 1px solid $line-soft
+        &:last-child
+          border-bottom: none
+      a
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: .58rem .1rem
+        color: $ink
+        font-size: .98rem
+        font-weight: 600
+        transition: color .15s ease
+        &:hover
+          color: $accent-dark
+          .sidebar-cat-count
+            background: $accent
+            color: #fff
+      .sidebar-cat-count
+        font-family: 'Cabin', sans-serif
+        font-size: .68rem
+        font-weight: 700
+        color: $ink-faint
+        background: $bg-soft
+        padding: .12em .55em
+        border-radius: 999px
+        transition: all .15s ease
 
 $gallery-gap: 1rem
 .masonry-gallery
@@ -473,18 +1563,22 @@ $gallery-gap: 1rem
     width: 100%
     margin: 0 0 $gallery-gap 0
     padding: 10px
-    border: 1px solid #bcbcbc
-    border-radius: 5px
+    border: 1px solid $line
+    background: $card
+    border-radius: $radius-sm
+    box-shadow: $shadow-sm
     img
       width: 100%
       height: auto
-      border-radius: 5px
+      border-radius: $radius-sm
 
 video.not-full-width
-  border-radius: 5px
+  border-radius: $radius-md
   padding: 10px
   display: block
-  border: 1px solid #bcbcbc
+  border: 1px solid $line
+  background: $card
+  box-shadow: $shadow-md
   max-width: 80%
   margin: auto
 
@@ -492,18 +1586,19 @@ video.not-full-width
   display: flex
   flex-direction: row
   gap: .5rem
+  align-items: center
   .switch
     position: relative
     display: inline-block
     width: 3rem
     height: 1.5rem
 
-  .switch input 
+  .switch input
     opacity: 0
     width: 0
     height: 0
 
-  .slider 
+  .slider
     position: absolute
     cursor: pointer
     top: 0
@@ -515,7 +1610,7 @@ video.not-full-width
     transition: .4s
     border-radius: 10px
 
-  .slider:before 
+  .slider:before
     position: absolute
     content: ""
     height: 1rem
@@ -527,20 +1622,20 @@ video.not-full-width
     transition: .4s
     border-radius: 50%
 
-  input:checked + .slider 
-    background-color: $link
+  input:checked + .slider
+    background-color: $accent
 
-  input:focus + .slider 
-    box-shadow: 0 0 1px $link
+  input:focus + .slider
+    box-shadow: 0 0 1px $accent
 
-  input:checked + .slider:before 
+  input:checked + .slider:before
     -webkit-transform: translateX(24px)
     -ms-transform: translateX(24px)
     transform: translateX(24px)
 
 .image-modal
   position: fixed
-  z-index: 1
+  z-index: 100
   left: 0
   top: 0
   width: 100%
@@ -549,14 +1644,13 @@ video.not-full-width
   justify-content: center
   align-items: center
   overflow: auto
-  background-color: rgb(0, 0, 0)
-  background-color: rgba(0, 0, 0, 0.9)
+  background-color: rgba(10, 8, 6, 0.92)
   opacity: 0
-  transition: opacity .1s ease
+  transition: opacity .15s ease
 
   &.visible
     opacity: 1
-    transition: opacity .1s ease
+    transition: opacity .15s ease
 
   .modal-content
     text-align: center
@@ -566,8 +1660,8 @@ video.not-full-width
       display: block
       max-width: 85%
       max-height: 85vh
-      border-radius: 7px
-      box-shadow: 0 0 5px #00000036
+      border-radius: $radius-md
+      box-shadow: 0 20px 60px rgba(0,0,0,.5)
       cursor: zoom-out
 
   span.close
@@ -577,21 +1671,32 @@ video.not-full-width
     color: #f1f1f1
     font-size: 40px
     font-weight: bold
-    transition: 0.5s ease
+    transition: 0.2s ease
     cursor: pointer
 
     &:hover
-      color: #bbb
+      color: $rust
 
 
 div#statusDiv
-  color: #2a2926
+  color: $ink
   margin-bottom: .6rem
+
+@media (prefers-reduced-motion: reduce)
+  *
+    transition: none !important
+    animation: none !important
+    scroll-behavior: auto !important
 
 @media screen and (max-width: 1700px)
   body
-    main
+    > main
       width: 80%
+    &.kind-home > main, &.kind-term > main
+      width: 64%
+  header.homepage-header
+    .hero-grid
+      width: 64%
   article.content
     div.meta
       h1
@@ -600,20 +1705,41 @@ div#statusDiv
         div.wrapper
           width: 75%
           margin: auto
-  div.recent-posts div.article h2
-    font-size: 1.2rem
 
 @media screen and (max-width: 1400px)
   article.content
     div.image-split p
       img
         height: 220px
+
 @media screen and (max-width: 1200px)
   body
-    main
+    > main
       width: 90%
+    &.kind-home > main, &.kind-term > main
+      width: 80%
   div.recipe, video.not-full-width
     width: 95%
+  header.homepage-header
+    .hero-grid
+      width: 80%
+      grid-template-columns: 1fr
+      text-align: center
+    .hero-copy h1
+      font-size: 2.7rem
+    .hero-subtitle
+      margin-left: auto
+      margin-right: auto
+    .hero-actions, .hero-stats
+      justify-content: center
+    .hero-art
+      order: -1
+      img
+        max-width: 15rem
+  .spotlight
+    grid-template-columns: 1fr
+    .spotlight-media
+      min-height: 15rem
   article.content
     div.meta
       h1
@@ -636,35 +1762,91 @@ div#statusDiv
     column-gap: 2em
 
 @media screen and (max-width: 1000px)
-  body main
+  body > main
     width: 96%
+  body.kind-home > main, body.kind-term > main
+    width: 92%
+  header.homepage-header .hero-grid
+    width: 92%
   nav#nav
-    padding: .4rem
+    flex-wrap: wrap
+    padding: .6rem 1rem
+    row-gap: .6rem
+    column-gap: .8rem
+  .brand .brand-tag
+    display: none
+  .nav-search
+    order: 3
+    flex: 1 1 100%
+    max-width: none
+    margin: 0
+  .nav-menu
+    margin-left: auto
   .category_container div.category
     display: grid
     flex-direction: row
     flex-wrap: wrap
-    grid-gap: 0.3rem
+    grid-gap: 0.8rem
     grid-template-columns: 1fr 1fr
+  div.round-teasers
+    grid-template-columns: repeat(3, 1fr)
 
 @media screen and (max-width: 700px)
   body
     margin: 0
-    main
+    border-radius: 0
+    box-shadow: none
+    > main
       width: 100%
-  .identity
-    a
-      height: initial
-      line-height: 1.4rem
-      h3
-        font-size: 1.2rem
-        line-height: 1.4rem
+    &.kind-home > main, &.kind-term > main
+      width: 100%
+  header.homepage-header .hero-grid
+    width: 100%
+  #nav-border
+    border-radius: 0
+  footer
+    border-radius: 0
   span.main-content > p:not(p > p)
     padding: 0 .3rem
-  .nav
-    margin: 1rem 0
-    flex-wrap: wrap
+  // clean stacked nav: brand, then full-width search, then a centered link row
+  nav#nav
+    padding: .55rem 1rem
+    row-gap: .7rem
+  .brand
+    order: 1
+    .brand-name
+      font-size: 1.2rem
+  .nav-search
+    order: 2
+  .nav-menu
+    order: 3
+    flex: 1 1 100%
+    margin-left: 0
     justify-content: center
+    flex-wrap: wrap
+    gap: .2rem
+    padding-top: .2rem
+    border-top: 1px solid $line-soft
+    .nav-link
+      padding: .4rem .6rem
+      font-size: .92rem
+  header.homepage-header
+    padding: 2rem .3rem 1.6rem .3rem
+    .hero-copy h1
+      font-size: 2.3rem
+    .hero-subtitle
+      font-size: 1.05rem
+  .spotlight
+    margin-left: .9rem
+    margin-right: .9rem
+    .spotlight-body
+      padding: 1.6rem
+    h2
+      font-size: 1.8rem
+  .section-head
+    flex-wrap: wrap
+    .section-all
+      margin-left: 0
   .category_container
     padding: .8rem
     h1
@@ -680,12 +1862,13 @@ div#statusDiv
           height: 300px
   article.split-me
     flex-direction: column
-    section
-      padding: 0 .3rem
+    > section
+      padding: 0 1rem
     div.sidebar
-      border: none
-      div.sidebar-padding
-        padding: 0 1rem
+      flex: 1 1 auto
+      border-left: none
+      border-top: 1px solid $line
+      padding: 1.8rem 1rem 0 1rem
   article.content
     div.cover
       div.wrapper
@@ -694,28 +1877,31 @@ div#statusDiv
         img
           width: 100%
           height: auto
-          border-radius: 7px
+          border-radius: $radius-md
           margin: 0
           display: block
     div.meta
       h1
         line-height: 2.5rem
         margin: 1rem 0 1.3rem 0
-        text-decoration: none
     p
       img
         width: 75%
-  div.recent-posts div.article h2
-    font-size: revert
   .masonry-gallery
     column-count: 1
     column-gap: 2em
     width: 96%
+  div.teaser_container, .tagcloud-container
+    padding-left: .9rem
+    padding-right: .9rem
   div.teaser_container
     div.round-teasers
-      gap: 2.5rem
-      width: 96%
-      margin: auto
+      grid-template-columns: 1fr 1fr
+      gap: .8rem
+      a.teaser-card
+        height: 9rem
+        &:first-child
+          height: 9rem
 
 @media screen and ( max-width: 750px )
   article.content
@@ -728,9 +1914,14 @@ div#statusDiv
 p.isso-post-action
   input[type="button"],input[type="submit"]
     font-family: 'Playfair Display', serif
-    background: #d8d8d0
-    color: black
-    border: none
+    background: $card
+    border: 1px solid $line
+    color: $ink
+    border-radius: 999px
+    padding: .4rem 1rem
+    cursor: pointer
+    transition: all .2s ease
     &:hover
-      background: #819e75 !important
-      color: #d8d8d0
+      background: $accent !important
+      color: white !important
+      border-color: $accent

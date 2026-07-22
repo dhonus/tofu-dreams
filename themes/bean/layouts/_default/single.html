@@ -4,6 +4,7 @@
         <section>
             <article class="content">
                 <div class="meta">
+                    {{ with index (.GetTerms "categories") 0 }}<span class="eyebrow">{{ .LinkTitle }}</span>{{ end }}
                     <h1>{{ strings.Title .Title }}</h1>
                     <div class="cover">
                         {{ with .Resources.GetMatch "{cover.*}" }}
@@ -15,30 +16,31 @@
                         {{ end }}
                     </div>
                     <section class="post-meta">
-                        <span>
-                            <p id="date"> Posted on {{ .Date.Format "Mon Jan 2, 2006" }}
+                        <div class="post-meta-stats">
+                            <span>{{ .Date.Format "Mon Jan 2, 2006" }}</span>
                             {{ $diff := now.Sub .Lastmod }}
-                            {{ if lt $diff.Hours 72 }}
-                                <span class="new">NEW</span>
-                            {{ end }}
-                            </p>
-                        </span>
-                        <p class="dark-gray-text" id="wordcount"> {{ .WordCount }} Words - reading time: {{ math.Round (div (countwords .Content) 180.0) }} minutes. </p>
+                            {{ if lt $diff.Hours 72 }}<span class="new">NEW</span>{{ end }}
+                            <span class="dot"></span>
+                            <span>{{ .WordCount }} words</span>
+                            <span class="dot"></span>
+                            <span>{{ math.Round (div (countwords .Content) 180.0) }} min read</span>
+                        </div>
                         {{ if .Params.tags }}
-                            <a href="#recipe">
-                                <button class="jump-to-recipe">Jump to recipe</button>
-                            </a>
+                            <a class="btn btn-ghost" href="#recipe">Jump to recipe ↓</a>
                         {{ end }}
                     </section>
                 </div>
+                {{ $content := replace .Content "disabled" "" }}
+                {{ $content = replace $content "<div class=\"recipe\" id=\"recipe\">" (printf "<div class=\"recipe\" id=\"recipe\">%s" (partial "recipe-time-badges.html" .)) 1 }}
                 <span class="main-content">
-                    {{ replace .Content "disabled" "" | safeHTML }}
+                    {{ $content | safeHTML }}
                 </span>
             </article>
         </section>
         <aside id="meta" class="meta-tags">
-            <div class="tags">
             {{ with .GetTerms "tags" }}
+            <span class="eyebrow">Tagged</span>
+            <div class="tags">
                     {{ range . }}
                     <a href="{{ .RelPermalink }}">
                         <button uk-filter-control='[data-tag~="{{ . }}"]' class="tag-button">
@@ -47,11 +49,11 @@
                         <div>{{ len .Pages}}</div>
                     </a>
                     {{ end }}
-                {{ end }}
             </div>
-
+            {{ end }}
         </aside>
 
+{{ if eq .Type "posts" }}
 <section id="comments">
   <script
     data-isso="https://comments.tofudreams.com/"
@@ -60,57 +62,59 @@
 
   <div id="isso-thread"></div>
 </section>
+{{ end }}
 
 
 
     </section>
 
     <div class="sidebar">
-        <div class="sidebar-padding">
-        <h2>Tofu Dreams</h2>
-        <img src="/me.jpg" alt="me">
-        <p>
-            Hi, I'm Daniel and this is my little vegan cooking blog.
-            I love comfort food and baking. I hope you find some of my recipes interesting and decide to try them yourself.
-        </p>
-        <p>
-            This site is intentionally minimal and doesn't need javascript to run. I don't want <i>your</i> <a href="/posts/sweet/cookies/">cookies</a>!
-        </p>
-        <h2>Recent recipes</h2>
-        </div>
-        <div class="recent-posts">
-            {{ range ( where .Site.RegularPages "Type" "posts" | first 5 ) }}
-                <div class="article" onclick="location.href='{{ .RelPermalink }}';">
-                    {{ $diff := now.Sub .Lastmod }}
-                    {{ if lt $diff.Hours 120 }}
-                        <div class="new">NEW</div>
-                    {{ end }}
-                        <div class="vertical"><a href="{{ .RelPermalink }}">
-                            {{ with .Resources }}
-                                {{ $image := .GetMatch "{cover.*}" }}
-                                {{ $image := $image.Process "resize 250x" }}
-                                {{ if $image }}
-                                    <div class="cover_image"
-                                            style="background-image: url({{ $image.RelPermalink }});"></div>
-                                {{ end }}
+        <section class="sidebar-block sidebar-about">
+            <img src="/me.jpg" class="sidebar-avatar" alt="Daniel">
+            <h2>Tofu Dreams</h2>
+            <p>
+                Hi, I'm Daniel and this is my little vegan cooking blog.
+                I love comfort food and baking. I hope you find some of my recipes interesting and decide to try them yourself.
+            </p>
+            <p>
+                This site is intentionally minimal and doesn't need javascript to run. I don't want <i>your</i> <a href="/posts/sweet/cookies/">cookies</a>!
+            </p>
+        </section>
+
+        <section class="sidebar-block">
+            <h2 class="sidebar-heading">Recent recipes</h2>
+            <div class="recent-posts">
+                {{ range ( where .Site.RegularPages "Type" "posts" | first 6 ) }}
+                    <a class="recent-item" href="{{ .RelPermalink }}">
+                        {{ with .Resources }}
+                            {{ $image := .GetMatch "{cover.*}" }}
+                            {{ $image := $image.Process "resize 250x" }}
+                            {{ if $image }}
+                                <div class="recent-thumb" style="background-image: url({{ $image.RelPermalink }});"></div>
                             {{ end }}
-                        </a>
-                        <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
-                    </div>
-                    <span>
-                        {{ .Summary | truncate 210 }}
-                        </span>
-                        <span>
-                        {{ if .Truncated }}
-                            <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-                        <!--<div class="bottom-link">
-                            <a href="{{ .RelPermalink }}">Continue reading…</a>
-                        </div>-->
                         {{ end }}
-                        </span>
-                </div>
-            {{ end }}
-        </div>
+                        <div class="recent-body">
+                            <span class="recent-title">{{ strings.Title .Title }}</span>
+                            <span class="recent-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+                        </div>
+                    </a>
+                {{ end }}
+            </div>
+        </section>
+
+        <section class="sidebar-block">
+            <h2 class="sidebar-heading">Browse categories</h2>
+            <ul class="sidebar-cats">
+                {{ range $name, $items := .Site.Taxonomies.categories }}
+                    <li>
+                        <a href="/categories/{{ $name | urlize }}">
+                            <span>{{ $name | humanize }}</span>
+                            <span class="sidebar-cat-count">{{ len $items }}</span>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </section>
     </div>
 </article>
 

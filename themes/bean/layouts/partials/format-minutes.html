@@ -1,0 +1,12 @@
+{{- $total := . -}}
+{{- if lt $total 60 -}}
+    {{ $total }} min
+{{- else -}}
+    {{- $h := div $total 60 -}}
+    {{- $m := mod $total 60 -}}
+    {{- if eq $m 0 -}}
+        {{ $h }} hr
+    {{- else -}}
+        {{ $h }} hr {{ $m }} min
+    {{- end -}}
+{{- end -}}

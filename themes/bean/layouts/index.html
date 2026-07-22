@@ -1,14 +1,68 @@
+{{ define "hero" }}
+{{ $recipes := where .Site.RegularPages "Type" "posts" }}
+<header class="homepage-header">
+    <div class="hero-blob hero-blob-a"></div>
+    <div class="hero-blob hero-blob-b"></div>
+    <div class="hero-grid">
+        <div class="hero-copy">
+            <h1>Vegan recipes<br>to <em>dream</em> about</h1>
+            <p class="hero-subtitle">A personal project to write down and share the recipes I love to cook and bake — all vegan. Simple and fast, without an autobiographical novel before you get to the food.</p>
+            {{ with .Params.subtitle }}<span class="subtitle">{{.}}</span>{{ end }}
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="{{ absURL "/categories/savory/" }}">Browse recipes</a>
+                <button class="btn btn-ghost" onclick="surpriseRecipe()">Surprise me</button>
+            </div>
+            <div class="hero-stats">
+                <span><strong>{{ len $recipes }}</strong> recipes</span>
+                <span class="dot"></span>
+                <span><strong>{{ len .Site.Taxonomies.tags }}</strong> ingredients</span>
+                <span class="dot"></span>
+                <span><strong>0</strong> ads &amp; trackers</span>
+            </div>
+        </div>
+        <div class="hero-art">
+            <img src="{{.Site.BaseURL}}{{ .Site.Params.logo }}" alt="A cube of tofu surrounded by leaves">
+        </div>
+    </div>
+</header>
+{{ end }}
+
 {{ define "main" }}
-<main aria-role="main">
-    <header class="homepage-header">
-        {{ with .Params.subtitle }}
-        <span class="subtitle">{{.}}</span>
-        {{ end }}
-    </header>
+{{ $recipes := where .Site.RegularPages "Type" "posts" }}
+
+    <!-- ============ LATEST SPOTLIGHT ============ -->
+    {{ range first 1 $recipes.ByDate.Reverse }}
+    <section class="spotlight" onclick="location.href='{{ .RelPermalink }}';">
+        <div class="spotlight-media">
+            {{ with .Resources.GetMatch "{cover.*}" }}
+                {{ $img := .Process "resize 700x jpg q80" }}
+                <div class="spotlight-img" style="background-image: url({{ $img.RelPermalink }});"></div>
+            {{ end }}
+            <span class="spotlight-ribbon">Fresh out the oven</span>
+        </div>
+        <div class="spotlight-body">
+            <span class="spotlight-kicker">Latest recipe — {{ .Date.Format "Jan 2, 2006" }}{{ with partial "time-badge.html" . }}<span class="card-time">{{ . }}</span>{{ end }}</span>
+            <h2><a href="{{ .RelPermalink }}">{{ strings.Title .Title }}</a></h2>
+            <p class="card-summary">{{ .Summary | plainify | truncate 110 }}</p>
+            <div class="spotlight-meta">
+                {{ with .GetTerms "tags" }}
+                    {{ range first 4 . }}<a class="mini-tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                {{ end }}
+            </div>
+            <a class="btn btn-primary spotlight-cta" href="{{ .RelPermalink }}">Read the recipe →</a>
+        </div>
+    </section>
+    {{ end }}
+
+    <!-- ============ CATEGORY SECTIONS ============ -->
     <div class="category_container">
         {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle}}
         {{ if ne .Name "Oatmeal" }}
-        <h2>{{ .Title }}</h2>
+        <div class="section-head">
+            <h2>{{ .Title }}</h2>
+            <span class="section-count">{{ len .Pages }} recipes</span>
+            <a class="section-all" href="{{ .RelPermalink }}">See all →</a>
+        </div>
 
         <div class="category">
             {{ range (.Paginate (.Pages).ByDate.Reverse).Pages | first 6 }}
@@ -17,7 +71,7 @@
                     {{ if lt $diff.Hours 120 }}
                         <div class="new">NEW</div>
                     {{ end }}
-                    <span><a href="{{ .RelPermalink }}">
+                    <a href="{{ .RelPermalink }}">
                         {{ with .Resources }}
                             {{ $image := .GetMatch "{cover.*}" }}
                             {{ $image := $image.Process "resize 800x" }}
@@ -26,93 +80,77 @@
                             {{ end }}
                         {{ end }}
                     </a>
-                    <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
-                    {{ .Summary | truncate 210 }}
-                    </span>
-                    <span>
-                    {{ if .Truncated }}
-                    <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-                    <!--<div class="bottom-link">
-                        <a href="{{ .RelPermalink }}">Continue reading…</a>
-                    </div>-->
-                    {{ end }}
-                    </span>
+                    <div class="card-body">
+                        <span class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}{{ with partial "time-badge.html" . }}<span class="card-time">{{ . }}</span>{{ end }}</span>
+                        <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
+                        <p class="card-summary">{{ .Summary | plainify | truncate 175 }}</p>
+                        {{ with .GetTerms "tags" }}
+                        <div class="card-tags">
+                            {{ range first 3 . }}<a class="mini-tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
                 </span>
-
             {{ end }}
         </div>
-        <div class="flex-left">
-            <div class="flex-push"></div>
-            <div>
-                <a href="{{ .RelPermalink }}">
-                    {{ $total := len .Pages  }}
-                    {{ $total := sub $total 6 }}
-                    <h3>{{ $total }} more {{ .Title }} > </h3>
-                </a>
-            </div>
-        </div>
 
         {{end}}
         {{end}}
-<!--
-        {{ range .Data.Pages }}
-            <h4>{{ .Title }}</h4>
-            <ul>
-                {{ range .Data.Pages }}
-                <li>
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        {{ end }}
--->
     </div>
-</main>
-<div class="teaser_container">
-    <h2 style="text-align: center">Featured categories 🌱</h2>
-    <div class="round-teasers">
-        <div>
-            <a href="{{ absURL "/tags/soup" }}">
-                <img src="/teasers/soup.jpg" alt="me">
-                <h3>Soup</h3>
-            </a>
+
+    <!-- ============ FEATURED CATEGORIES ============ -->
+    <div class="teaser_container">
+        <div class="teaser-heading">
+            <span class="eyebrow">Browse by mood</span>
+            <h2>Featured categories</h2>
         </div>
-        <div>
-            <a href="{{ absURL "/tags/lunch" }}">
-                <img src="/teasers/lunch.jpg" alt="me">
-                <h3>Lunch</h3>
+        <div class="round-teasers">
+            <a class="teaser-card" href="{{ absURL "/tags/soup" }}" style="background-image: url(/teasers/soup.jpg)">
+                <span class="teaser-label">Soup</span>
             </a>
-        </div>
-        <div>
-            <a href="{{ absURL "/tags/pasta" }}">
-                <img src="/teasers/pasta.jpg" alt="me">
-                <h3>Pasta</h3>
+            <a class="teaser-card" href="{{ absURL "/tags/lunch" }}" style="background-image: url(/teasers/lunch.jpg)">
+                <span class="teaser-label">Lunch</span>
             </a>
-        </div>
-        <div>
-            <a href="{{ absURL "/tags/gluten-free" }}">
-                <img src="/teasers/gluten-free.jpg" alt="me">
-                <h3>Gluten-free</h3>
+            <a class="teaser-card" href="{{ absURL "/tags/pasta" }}" style="background-image: url(/teasers/pasta.jpg)">
+                <span class="teaser-label">Pasta</span>
             </a>
-        </div>
-        <div>
-            <a href="{{ absURL "/tags/baked" }}">
-                <img src="/teasers/baked.jpg" alt="me">
-                <h3>Baked<br>goods</h3>
+            <a class="teaser-card" href="{{ absURL "/tags/gluten-free" }}" style="background-image: url(/teasers/gluten-free.jpg)">
+                <span class="teaser-label">Gluten-free</span>
             </a>
-        </div>
-        <div>
-            <a href="{{ absURL "/categories/oatmeal" }}">
-                <img src="/teasers/oatmeal.jpg" alt="me">
-                <h3>Oatmeal</h3>
+            <a class="teaser-card" href="{{ absURL "/tags/baked" }}" style="background-image: url(/teasers/baked.jpg)">
+                <span class="teaser-label">Baked goods</span>
             </a>
-        </div>
-        <div>
-            <a href="{{ absURL "/tags/simple" }}">
-                <img src="/teasers/simple.jpg" alt="me">
-                <h3>Something<br>simple</h3>
+            <a class="teaser-card" href="{{ absURL "/categories/oatmeal" }}" style="background-image: url(/teasers/oatmeal.jpg)">
+                <span class="teaser-label">Oatmeal</span>
+            </a>
+            <a class="teaser-card" href="{{ absURL "/tags/simple" }}" style="background-image: url(/teasers/simple.jpg)">
+                <span class="teaser-label">Something simple</span>
             </a>
         </div>
     </div>
-</div>
+
+    <!-- ============ TAG CLOUD ============ -->
+    <div class="tagcloud-container">
+        <div class="teaser-heading">
+            <span class="eyebrow">Every last one</span>
+            <h2>Explore by ingredient</h2>
+        </div>
+        <div class="tagcloud">
+            {{ range $key, $value := .Site.Taxonomies.tags }}
+                {{ $size := math.Min (add 0.86 (mul $value.Count 0.04)) 1.25 }}
+                <a href="/tags/{{ $key }}" style="font-size: {{ $size }}rem" class="cloud-tag">
+                    {{ $key | humanize }}<span class="cloud-count">{{ $value.Count }}</span>
+                </a>
+            {{ end }}
+        </div>
+    </div>
+
+<script>
+    // "Surprise me" — jump to a random recipe
+    var tofuRecipes = [{{ range $recipes }}"{{ .RelPermalink }}",{{ end }}];
+    function surpriseRecipe() {
+        if (!tofuRecipes.length) return;
+        window.location.href = tofuRecipes[Math.floor(Math.random() * tofuRecipes.length)];
+    }
+</script>
 {{ end }}

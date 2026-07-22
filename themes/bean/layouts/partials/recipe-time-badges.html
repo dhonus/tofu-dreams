@@ -1,0 +1,9 @@
+{{- $prep := .Params.prep_time | default 0 -}}
+{{- $cook := .Params.cook_time | default 0 -}}
+{{- if or (gt $prep 0) (gt $cook 0) -}}
+<div class="recipe-meta">
+    {{- if gt $prep 0 }}<div class="recipe-stat"><span class="recipe-stat-label">Prep</span><span class="recipe-stat-value">{{ partial "format-minutes.html" $prep }}</span></div>{{ end -}}
+    {{- if gt $cook 0 }}<div class="recipe-stat"><span class="recipe-stat-label">Cook</span><span class="recipe-stat-value">{{ partial "format-minutes.html" $cook }}</span></div>{{ end -}}
+    {{- if and (gt $prep 0) (gt $cook 0) }}<div class="recipe-stat recipe-stat-total"><span class="recipe-stat-label">Total</span><span class="recipe-stat-value">{{ partial "format-minutes.html" (add $prep $cook) }}</span></div>{{ end -}}
+</div>
+{{- end -}}

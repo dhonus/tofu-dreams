@@ -1,0 +1,17 @@
+{{- $list := slice -}}
+{{- range where .Site.RegularPages "Type" "posts" -}}
+    {{- $img := "" -}}
+    {{- with .Resources.GetMatch "{cover.*}" -}}
+        {{- $img = (.Process "resize 120x jpg q70").Permalink -}}
+    {{- end -}}
+    {{- $item := dict
+        "title" .Title
+        "url" .Permalink
+        "summary" (.Summary | plainify | truncate 140)
+        "date" .Date.Unix
+        "tags" (.Params.tags | default slice)
+        "image" $img
+    -}}
+    {{- $list = $list | append $item -}}
+{{- end -}}
+{{- $list | jsonify -}}

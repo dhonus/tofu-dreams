@@ -1,0 +1,6 @@
+{{- $prep := .Params.prep_time | default 0 -}}
+{{- $cook := .Params.cook_time | default 0 -}}
+{{- $total := add $prep $cook -}}
+{{- if gt $total 0 -}}
+    {{ partial "format-minutes.html" $total }}
+{{- end -}}

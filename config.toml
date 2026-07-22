@@ -9,6 +9,9 @@ relativeURLs = true
 summaryLength = 10
 capitalizeListTitles = false
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [markup.goldmark.renderer]
     unsafe = true
 

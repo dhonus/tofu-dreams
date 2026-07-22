@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     {{- partial "head.html" . -}}
-    <body>
+    <body class="kind-{{ .Kind }}">
         {{- partial "header.html" . -}}
+        {{- block "hero" . }}{{- end }}
         <main>
         {{- block "main" . }}{{- end }}
         </main>

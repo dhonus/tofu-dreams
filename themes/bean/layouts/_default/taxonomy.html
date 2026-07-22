@@ -1,120 +1,246 @@
 {{ define "main" }}
-<main aria-role="main">
-    <!-- get subtags -->
-    {{ $tags := dict }}
 
-    {{ $categories := slice }}
+    {{/* Collect every tag used across this taxonomy's recipes (map dedupes by key) */}}
+    {{ $tags := dict }}
     {{ range .Pages }}
-        {{ with .GetTerms "tags" }}
-            {{ range . }}
-                {{ $categories = $categories | append .LinkTitle }}
-                {{ if in $tags .LinkTitle}}
-                {{ else }}
-                {{ $tags = merge $tags (dict .LinkTitle (len .Pages)) }}
-                {{ end }}
-            {{ end }}
+        {{ range .GetTerms "tags" }}
+            {{ $tags = merge $tags (dict .LinkTitle (len .Pages)) }}
         {{ end }}
     {{ end }}
 
-    {{ if ( gt ( len $categories ) 0 ) }}
-    <div class="category_container">
-        <h3>All categories:</h3>
-        <div class="tags">
-            {{ range $key, $value := $tags }}
-                <a href="/tags/{{ $key }}">
-                    <button uk-filter-control='[data-tag~="{{ $key }}"]' class="tag-button">
-                        {{ $key }}
-                    </button>
-                    <div>{{ $value }}</div>
-                </a>
-            {{ end }}
-        </div>
-    </div>
-    {{ end }}
+    {{ $first := substr .Title 0 1 }}
+    {{ $rest := substr .Title 1 }}
+    {{ $first = upper $first }}
+    {{ $title := print $first $rest }}
 
     <div class="category_container">
-        <div class="container">
-            {{ $first := substr .Title 0 1 }}
-            {{ $rest := substr .Title 1 }}
-            {{ $first = upper $first }}
-            {{ $title := print $first $rest }}
+        <div class="taxonomy-head">
+            <span class="eyebrow">{{ if eq .Type "categories" }}Category{{ else }}Tagged{{ end }}</span>
             <h1>{{ $title }}</h1>
-            <div class="category">
-                {{ range .Paginator.Pages.ByDate.Reverse }}
-                <span class="article" onclick="location.href='{{ .RelPermalink }}';">
-                        {{ $diff := now.Sub .Lastmod }}
-                        {{ if lt $diff.Hours 120 }}
-                            <div class="new">NEW</div>
-                        {{ end }}
-                        <span><a href="{{ .RelPermalink }}">
-                            {{ with .Resources }}
-                                {{ $image := .GetMatch "{cover.*}" }}
-                                {{ $image := $image.Process "resize 800x" }}
-                                {{ if $image }}
-                                        <div class="cover_image" style="background-image: url({{ $image.RelPermalink }});"></div>
-                                {{ end }}
-                            {{ end }}
-                        </a>
-                        <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
-                        {{ .Summary | truncate 210 }}
-                        </span>                        
-                        <span>
-                        {{ if .Truncated }}
-                            <!-- This <div> includes a read more link, but only if the summary is truncated... -->
-                        <!--<div class="bottom-link">
-                            <a href="{{ .RelPermalink }}">Continue reading…</a>
-                        </div>-->
-                        {{ end }}
-                        </span>
-                    </span>
+            <p class="taxonomy-sub">{{ len .Pages }} recipes{{ if gt (len $tags) 0 }} · search, sort and combine tags below{{ end }}</p>
+        </div>
+
+        {{/* Search + sort controls — hidden until JS enhances them */}}
+        <div class="browse-toolbar" id="browseToolbar" hidden>
+            <div class="browse-search-wrap">
+                <svg class="browse-search-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="search" class="browse-search" id="browseSearch" placeholder="Search these recipes…" autocomplete="off" aria-label="Search recipes">
+            </div>
+            <label class="browse-sort-wrap">
+                <span>Sort</span>
+                <select class="browse-sort" id="browseSort" aria-label="Sort recipes">
+                    <option value="date-desc">Newest first</option>
+                    <option value="date-asc">Oldest first</option>
+                    <option value="title-asc">Title A–Z</option>
+                    <option value="title-desc">Title Z–A</option>
+                </select>
+            </label>
+        </div>
+
+        {{ if gt (len $tags) 0 }}
+        <div class="filter-bar" id="filterBar">
+            <div class="filter-chips">
+                {{ range $key, $value := $tags }}
+                <a class="filter-chip" href="/tags/{{ $key | urlize }}" data-tag="{{ $key | urlize }}">
+                    {{ $key | humanize }}<span class="chip-count">{{ $value }}</span>
+                </a>
                 {{ end }}
             </div>
+            <div class="filter-status">
+                <span id="filterCount" class="filter-count"></span>
+                <button type="button" id="filterClear" class="filter-clear" hidden>Clear filters ✕</button>
+            </div>
         </div>
+        {{ end }}
+
+        <div class="category" id="recipeGrid">
+            {{ range .Pages.ByDate.Reverse }}
+            <span class="article"
+                  data-tags="{{ range .GetTerms "tags" }}{{ .LinkTitle | urlize }} {{ end }}"
+                  data-date="{{ .Date.Unix }}"
+                  data-title="{{ .Title | lower }}"
+                  data-search="{{ (printf "%s %s" .Title (.Summary | plainify)) | lower }}{{ range .GetTerms "tags" }} {{ .LinkTitle | lower }}{{ end }}"
+                  onclick="location.href='{{ .RelPermalink }}';">
+                {{ $diff := now.Sub .Lastmod }}
+                {{ if lt $diff.Hours 120 }}
+                    <div class="new">NEW</div>
+                {{ end }}
+                {{ if ne $.Type "categories" }}
+                    {{ with index (.GetTerms "categories") 0 }}
+                        <a class="card-category" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                    {{ end }}
+                {{ end }}
+                <a href="{{ .RelPermalink }}">
+                    {{ with .Resources.GetMatch "{cover.*}" }}
+                        {{ $image := .Process "resize 800x" }}
+                        <div class="cover_image" style="background-image: url({{ $image.RelPermalink }});"></div>
+                    {{ end }}
+                </a>
+                <div class="card-body">
+                    <span class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}{{ with partial "time-badge.html" . }}<span class="card-time">{{ . }}</span>{{ end }}</span>
+                    <a href="{{ .RelPermalink }}"><h2>{{ strings.Title .Title }}</h2></a>
+                    <p class="card-summary">{{ .Summary | plainify | truncate 175 }}</p>
+                    {{ with .GetTerms "tags" }}
+                    <div class="card-tags">
+                        {{ range first 3 . }}<a class="mini-tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </span>
+            {{ end }}
+        </div>
+
+        <p class="no-results" id="noResults" hidden>No recipes match — try removing a tag or clearing the search.</p>
+        <nav class="pagination" id="browsePagination" hidden></nav>
     </div>
 
-    <nav class="pagination">
-        {{ $pag := $.Paginator }}
-            {{ $window := $.Site.Params.paginateWindow | default 1 }}
-            {{ if gt $pag.TotalPages 1 }}
-            {{ $total := $pag.TotalPages }}
-            {{ $size := add 5 (add $window $window) }}
-            {{ $cur := $pag.PageNumber }}
-            {{ if gt $total $size }}
-                {{ if lt $cur (sub $size (add $window 1)) }}
-                {{ $.Scratch.Set "show" (seq 1 (sub $size 2)) }}
-                {{ else if lt (sub $total $cur) (sub $size (add $window 2)) }}
-                {{ $.Scratch.Set "show" (seq (add (sub $total $size) 3) $total) }}
-                {{ else }}
-                {{ $.Scratch.Set "show" (seq (sub $cur $window) (add $cur $window)) }}
-                {{ end }}
-                {{ $.Scratch.Add "show" 1 }}
-                {{ $.Scratch.Add "show" $total }}
-            {{ else }}
-                {{ $.Scratch.Set "show" (seq 1 $total) }}
-            {{ end }}
-            {{ if .Paginator.HasPrev }}
-                <a class="prev" href="{{ if .Paginator.HasPrev }}{{ .Paginator.Prev.URL }}{{ else }}#{{ end }}">« Prev</a>
-            {{ else }}
-                <p class="prev">« Prev</p>
-            {{ end }}
-            <ul class="pages">
-                {{ range $pag.Pagers }}
-                {{ $cur := .PageNumber }}
-                {{ if in ($.Scratch.Get "show") $cur }}
-                    <a href="{{ .URL }}"
-                    {{ if eq . $pag }}class="active"{{ end }}>{{ .PageNumber }}</a>
-                {{ else if in (slice 2 (sub $total 1)) $cur }}
-                    <a class="disabled">&hellip;</a>
-                {{ end }}
-                {{ end }}
-            </ul>
-            {{ if .Paginator.HasNext }}
-                <a class="next" href="{{ if .Paginator.HasNext }}{{ .Paginator.Next.URL }}{{ else }}#{{ end }}">Next »</a>
-            {{ else }}
-                <p class="next">Next
-            {{ end }}
-        {{ end }}
-    </nav>
-</main>
-{{ end }}
+<script>
+    // Client-side recipe browser: search + sort + tag filter + pagination.
+    // Progressive enhancement — with JS off, every card is server-rendered and
+    // visible, and the tag chips stay ordinary links to their tag pages.
+    (function () {
+        var grid = document.getElementById('recipeGrid');
+        if (!grid) return;
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.article'));
+        if (!cards.length) return;
 
+        var PER_PAGE = 9;
+        var toolbar = document.getElementById('browseToolbar');
+        var searchInput = document.getElementById('browseSearch');
+        var sortSelect = document.getElementById('browseSort');
+        var bar = document.getElementById('filterBar');
+        var chips = bar ? Array.prototype.slice.call(bar.querySelectorAll('.filter-chip')) : [];
+        var countEl = document.getElementById('filterCount');
+        var clearBtn = document.getElementById('filterClear');
+        var noResults = document.getElementById('noResults');
+        var pag = document.getElementById('browsePagination');
+
+        var active = [];
+        var query = '';
+        var sortBy = 'date-desc';
+        var page = 1;
+
+        function cardTags(card) {
+            return (card.getAttribute('data-tags') || '').trim().split(/\s+/);
+        }
+        function hasAll(tags, wanted) {
+            for (var i = 0; i < wanted.length; i++) {
+                if (tags.indexOf(wanted[i]) === -1) return false;
+            }
+            return true;
+        }
+        function matches(card, tags, q) {
+            if (!hasAll(cardTags(card), tags)) return false;
+            if (q && (card.getAttribute('data-search') || '').indexOf(q) === -1) return false;
+            return true;
+        }
+        function comparator(mode) {
+            return function (a, b) {
+                if (mode === 'date-asc') return (+a.dataset.date) - (+b.dataset.date);
+                if (mode === 'title-asc') return a.dataset.title.localeCompare(b.dataset.title);
+                if (mode === 'title-desc') return b.dataset.title.localeCompare(a.dataset.title);
+                return (+b.dataset.date) - (+a.dataset.date); // date-desc default
+            };
+        }
+
+        function renderPagination(totalPages) {
+            if (totalPages <= 1) { pag.hidden = true; pag.innerHTML = ''; return; }
+            pag.hidden = false;
+            var html = '';
+            html += page > 1
+                ? '<a class="prev" data-page="' + (page - 1) + '">« Prev</a>'
+                : '<p class="prev">« Prev</p>';
+            html += '<ul class="pages">';
+            for (var p = 1; p <= totalPages; p++) {
+                var show = p === 1 || p === totalPages || (p >= page - 1 && p <= page + 1);
+                if (show) {
+                    html += '<a data-page="' + p + '"' + (p === page ? ' class="active"' : '') + '>' + p + '</a>';
+                } else if (p === 2 || p === totalPages - 1) {
+                    html += '<a class="disabled">…</a>';
+                }
+            }
+            html += '</ul>';
+            html += page < totalPages
+                ? '<a class="next" data-page="' + (page + 1) + '">Next »</a>'
+                : '<p class="next">Next »</p>';
+            pag.innerHTML = html;
+            Array.prototype.forEach.call(pag.querySelectorAll('a[data-page]'), function (a) {
+                a.addEventListener('click', function () {
+                    page = +a.getAttribute('data-page');
+                    render(true);
+                    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        }
+
+        function render(keepPage) {
+            if (!keepPage) page = 1;
+
+            var filtered = cards.filter(function (c) { return matches(c, active, query); });
+            filtered.sort(comparator(sortBy));
+
+            var totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+            if (page > totalPages) page = totalPages;
+            var start = (page - 1) * PER_PAGE;
+            var pageItems = filtered.slice(start, start + PER_PAGE);
+
+            // Hide everything, then reveal just this page's items in sorted order.
+            // Hidden cards don't fetch their cover images — free lazy-loading.
+            cards.forEach(function (c) { c.style.display = 'none'; });
+            pageItems.forEach(function (c) { c.style.display = ''; grid.appendChild(c); });
+
+            // Chip states: reflect current search too, and dim dead-end combinations.
+            chips.forEach(function (chip) {
+                var t = chip.getAttribute('data-tag');
+                var isActive = active.indexOf(t) !== -1;
+                chip.classList.toggle('active', isActive);
+                if (isActive) { chip.classList.remove('disabled'); return; }
+                var probe = active.concat([t]);
+                var possible = cards.some(function (c) { return matches(c, probe, query); });
+                chip.classList.toggle('disabled', !possible);
+            });
+
+            // Count + clear button
+            var filtering = active.length || query;
+            if (clearBtn) clearBtn.hidden = !filtering;
+            if (countEl) {
+                countEl.textContent = filtering
+                    ? 'Showing ' + filtered.length + ' of ' + cards.length
+                    : cards.length + ' recipes';
+            }
+            if (noResults) noResults.hidden = filtered.length !== 0;
+
+            renderPagination(totalPages);
+        }
+
+        // Wire up controls and reveal the toolbar (JS is on)
+        if (toolbar) toolbar.hidden = false;
+        if (searchInput) searchInput.addEventListener('input', function () {
+            query = searchInput.value.trim().toLowerCase();
+            render();
+        });
+        if (sortSelect) sortSelect.addEventListener('change', function () {
+            sortBy = sortSelect.value;
+            render();
+        });
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (chip.classList.contains('disabled')) return;
+                var t = chip.getAttribute('data-tag');
+                var i = active.indexOf(t);
+                if (i === -1) active.push(t); else active.splice(i, 1);
+                render();
+            });
+        });
+        if (clearBtn) clearBtn.addEventListener('click', function () {
+            active = [];
+            query = '';
+            if (searchInput) searchInput.value = '';
+            render();
+        });
+
+        render();
+    })();
+</script>
+{{ end }}
