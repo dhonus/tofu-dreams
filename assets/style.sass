@@ -1085,7 +1085,7 @@ div.round-teasers
         color: #fff
 
 aside.meta-tags
-  margin: 2.4rem auto 2.4rem auto
+  margin: 2.4rem auto 0 auto
   padding: 0 0.6rem
   .eyebrow
     margin-bottom: .8rem
@@ -1869,6 +1869,8 @@ div#statusDiv
       border-left: none
       border-top: 1px solid $line
       padding: 1.8rem 1rem 0 1rem
+  aside.meta-tags
+    margin-bottom: 2rem
   article.content
     div.cover
       div.wrapper
@@ -1908,6 +1910,50 @@ div#statusDiv
     p
       img
         width: 100%
+
+// small phones (iPhone 13 mini etc.) — tighten the recipe page so more text and
+// more steps are visible at once
+@media screen and (max-width: 480px)
+  article.content
+    span.main-content
+      p
+        font-size: 1rem
+        line-height: 1.6
+        text-align: left
+    div.meta
+      padding-top: 1.1rem
+      h1
+        font-size: 1.85rem
+        line-height: 1.15
+        margin: .7rem 0 .9rem 0
+  div.recipe
+    width: 100%
+    margin: 1.4rem 0
+    padding: 1.1rem
+    .recipe-meta
+      gap: 1.3rem
+      margin-bottom: 1rem
+      padding-bottom: .85rem
+    .recipe-stat-value
+      font-size: 1.05rem
+    h3, h4
+      margin: 1.1rem 0 .4rem 0
+      font-size: 1.15rem
+    h4
+      margin-top: .9rem
+      font-size: 1rem
+    ul
+      margin: .5rem 0 1rem 0
+      li
+        padding: .35rem 0
+        font-size: .95rem
+    ol li
+      padding: .2rem 0 .45rem 1.8rem
+      font-size: .95rem
+      line-height: 1.5
+      &::before
+        top: .2rem
+        line-height: 1.5
 
 #isso-thread
   margin-top: 2rem
