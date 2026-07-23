@@ -1884,8 +1884,9 @@ div#statusDiv
     opacity: 0
     transform: translateY(-6px)
     pointer-events: none
-  // iOS auto-zooms the page when a focused field is < 16px — keep inputs at 16px
-  .nav-search-input, .browse-search, .browse-sort
+  // iOS auto-zooms the page when a focused field is < 16px — keep inputs at 16px.
+  // Match the base rules' specificity (.parent .child) or they won't win here.
+  .nav-search .nav-search-input, .browse-toolbar .browse-search, .browse-toolbar .browse-sort
     font-size: 16px
   // tag filter collapses behind a toggle on phones — the full chip list is long
   .filter-bar
