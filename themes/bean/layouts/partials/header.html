@@ -130,4 +130,25 @@
         window.addEventListener('resize', function () { if (results.classList.contains('is-open')) position(); });
         window.addEventListener('scroll', function () { if (results.classList.contains('is-open')) position(); }, { passive: true });
     })();
+
+    // Slim the sticky bar while scrolling (mobile): collapse the search row away
+    // once you're past the top, but keep it while the search is focused.
+    (function () {
+        var nb = document.getElementById('nav-border');
+        if (!nb) return;
+        var input = document.getElementById('siteSearch');
+        var on = false;
+        function update() {
+            var y = window.scrollY;
+            // hysteresis: collapse past 90, only re-expand below 40. The dead zone
+            // stops jitter at the boundary from restarting the animation.
+            var next = on ? y > 40 : y > 90;
+            if (input && document.activeElement === input) next = false;
+            if (next !== on) { on = next; nb.classList.toggle('nav-collapsed', on); }
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        document.addEventListener('focusout', update);
+        document.addEventListener('focusin', update);
+        update();
+    })();
 </script>

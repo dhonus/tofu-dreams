@@ -1808,28 +1808,47 @@ div#statusDiv
     border-radius: 0
   span.main-content > p:not(p > p)
     padding: 0 .3rem
-  // clean stacked nav: brand, then full-width search, then a centered link row
+  // clean stacked nav: brand, then full-width search, then a centered link row.
+  // spacing lives on per-row margins (not row-gap) so the search row's height AND
+  // its gap can animate away together when the bar collapses on scroll.
   nav#nav
-    padding: .55rem 1rem
-    row-gap: .7rem
+    padding: .45rem .9rem
+    row-gap: 0
   .brand
     order: 1
+    gap: .55rem
+    .logo
+      height: 2.5rem
+      width: 2.5rem
     .brand-name
-      font-size: 1.2rem
+      font-size: 1.15rem
   .nav-search
     order: 2
+    margin-top: .5rem
+    max-height: 2.8rem
+    overflow: hidden
+    transition: max-height .3s ease, opacity .22s ease, margin-top .3s ease, transform .3s ease
   .nav-menu
     order: 3
     flex: 1 1 100%
+    margin-top: .5rem
     margin-left: 0
     justify-content: center
     flex-wrap: wrap
     gap: .2rem
-    padding-top: .2rem
+    padding-top: .35rem
     border-top: 1px solid $line-soft
     .nav-link
-      padding: .4rem .6rem
+      padding: .35rem .6rem
       font-size: .92rem
+  // once scrolled, smoothly collapse the search row away so the sticky bar stays
+  // slim while reading (JS toggles .nav-collapsed past ~72px)
+  #nav-border.nav-collapsed .nav-search
+    max-height: 0
+    margin-top: 0
+    opacity: 0
+    transform: translateY(-6px)
+    pointer-events: none
   header.homepage-header
     padding: 2rem .3rem 1.6rem .3rem
     .hero-copy h1
@@ -1954,6 +1973,24 @@ div#statusDiv
       &::before
         top: .2rem
         line-height: 1.5
+
+// really small phones (≤ ~iPhone 13 mini) — nudge the type down another notch
+@media screen and (max-width: 400px)
+  article.content
+    span.main-content p
+      font-size: .95rem
+    div.meta h1
+      font-size: 1.65rem
+  div.recipe
+    padding: 1rem
+    h3, h4
+      font-size: 1.1rem
+    h4
+      font-size: .98rem
+    ul li
+      font-size: .9rem
+    ol li
+      font-size: .9rem
 
 #isso-thread
   margin-top: 2rem
