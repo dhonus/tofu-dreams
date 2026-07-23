@@ -751,6 +751,36 @@ header.homepage-header
   padding: 1.1rem 1.25rem
   margin: 0 .3rem 1.8rem .3rem
   box-shadow: $shadow-sm
+  // toggle only appears on phones (see the mobile block); chips are always open on desktop
+  .filter-toggle
+    display: none
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    font-family: 'Playfair Display', serif
+    font-weight: 700
+    font-size: 1rem
+    color: $ink
+    background: none
+    border: none
+    padding: 0
+    cursor: pointer
+    .filter-toggle-count
+      font-family: 'Cabin', sans-serif
+      font-size: .7rem
+      font-weight: 700
+      color: $ink-faint
+      background: $bg-soft
+      padding: .12em .6em
+      border-radius: 999px
+      margin-left: auto
+      margin-right: .7rem
+    &::after
+      content: "▾"
+      color: $ink-faint
+      transition: transform .2s ease
+  &.tags-open .filter-toggle::after
+    transform: rotate(180deg)
   .filter-chips
     display: flex
     flex-wrap: wrap
@@ -1814,6 +1844,11 @@ div#statusDiv
   nav#nav
     padding: .45rem .9rem
     row-gap: 0
+    // solid, not frosted, on phones: iOS tints the notch / status-bar area with the
+    // page's top colour and the translucent blur read as muddy up there
+    background: $bg
+    -webkit-backdrop-filter: none
+    backdrop-filter: none
   .brand
     order: 1
     gap: .55rem
@@ -1849,6 +1884,15 @@ div#statusDiv
     opacity: 0
     transform: translateY(-6px)
     pointer-events: none
+  // tag filter collapses behind a toggle on phones — the full chip list is long
+  .filter-bar
+    .filter-toggle
+      display: flex
+    .filter-chips
+      display: none
+      margin-top: 1rem
+    &.tags-open .filter-chips
+      display: flex
   header.homepage-header
     padding: 2rem .3rem 1.6rem .3rem
     .hero-copy h1

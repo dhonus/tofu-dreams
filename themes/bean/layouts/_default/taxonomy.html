@@ -39,6 +39,9 @@
 
         {{ if gt (len $tags) 0 }}
         <div class="filter-bar" id="filterBar">
+            <button type="button" class="filter-toggle" id="filterToggle" aria-expanded="false">
+                Filter by tag <span class="filter-toggle-count">{{ len $tags }}</span>
+            </button>
             <div class="filter-chips">
                 {{ range $key, $value := $tags }}
                 <a class="filter-chip" href="/tags/{{ $key | urlize }}" data-tag="{{ $key | urlize }}">
@@ -215,6 +218,14 @@
 
         // Wire up controls and reveal the toolbar (JS is on)
         if (toolbar) toolbar.hidden = false;
+        // Collapsible tag list (styling shows the toggle on phones only)
+        var filterToggle = document.getElementById('filterToggle');
+        if (filterToggle && bar) {
+            filterToggle.addEventListener('click', function () {
+                var open = bar.classList.toggle('tags-open');
+                filterToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        }
         if (searchInput) searchInput.addEventListener('input', function () {
             query = searchInput.value.trim().toLowerCase();
             render();
