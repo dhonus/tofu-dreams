@@ -18,7 +18,7 @@
     toggle.className = 'cook-toggle';
     toggle.setAttribute('aria-pressed', 'false');
     toggle.innerHTML =
-        '<span class="cook-toggle-text">Cook mode</span>' +
+        '<span class="cook-toggle-text">Cooking mode</span>' +
         '<span class="cook-toggle-switch"><span class="cook-toggle-knob"></span></span>';
 
     header.appendChild(title);
@@ -42,7 +42,7 @@
     function paint() {
         toggle.classList.toggle('is-on', on);
         toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-        textEl.textContent = on ? 'Screen awake' : 'Cook mode';
+        textEl.textContent = on ? 'Screen awake' : 'Cooking mode';
     }
 
     function enable() {
