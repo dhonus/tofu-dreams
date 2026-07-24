@@ -1987,6 +1987,20 @@ video.not-full-width
         height: 9rem
         &:first-child
           height: 9rem
+  // scale the pagination down so the prev/next pills aren't oversized on phones
+  nav.pagination
+    margin: 2rem auto .5rem auto
+    a.prev, a.next, p.prev, p.next
+      padding: .4rem .7rem
+      margin: 0 .25rem
+      font-size: .8rem
+    ul.pages
+      margin: 0 .3rem
+      gap: .2rem
+      a
+        min-width: 2rem
+        height: 2rem
+        font-size: .9rem
 
 @media screen and ( max-width: 750px )
   article.content
@@ -2063,6 +2077,14 @@ video.not-full-width
       font-size: .9rem
     ol li
       font-size: .9rem
+  nav.pagination
+    a.prev, a.next, p.prev, p.next
+      padding: .35rem .6rem
+      font-size: .72rem
+    ul.pages a
+      min-width: 1.8rem
+      height: 1.8rem
+      font-size: .85rem
 
 #isso-thread
   margin-top: 2rem
