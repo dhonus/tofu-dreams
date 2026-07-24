@@ -1,0 +1,10 @@
+{{- /* Stamp intrinsic width/height on markdown images so their space is reserved
+       before they load. Without this, tall image-heavy recipe pages shift as images
+       arrive, and scroll-anchoring makes the page "creep" on every refresh. */ -}}
+{{- $dest := .Destination -}}
+{{- $img := "" -}}
+{{- $u := urls.Parse $dest -}}
+{{- if and (not $u.IsAbs) (not (strings.HasPrefix $dest "/")) -}}
+  {{- $img = .Page.Resources.GetMatch (strings.TrimPrefix "./" $dest) -}}
+{{- end -}}
+<img src="{{ $dest | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $img }} width="{{ .Width }}" height="{{ .Height }}"{{ end }} loading="lazy" decoding="async">

@@ -13,6 +13,26 @@
 <script defer language="javascript" type="text/javascript"  src="{{ "/js/screen.js" | urlize | relURL }}"></script>
 
 <script>
+    // Smooth-scroll for same-page anchor links (e.g. "Jump to recipe"). Done in JS
+    // rather than CSS `scroll-behavior: smooth` so it never animates the browser's
+    // scroll restoration on reload (which made tall pages creep down each refresh).
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href^="#"]');
+            if (!a) return;
+            var id = a.getAttribute('href').slice(1);
+            if (!id) return;
+            var target = document.getElementById(id);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', '#' + id);
+        });
+    })();
+</script>
+
+<script>
     // Progressive enhancement: scroll-reveal + count-up.
     // If JS is off or motion is reduced, nothing is hidden and content shows as-is.
     (function () {

@@ -1,40 +1,20 @@
 // Cooking mode — keep the screen awake while cooking (Screen Wake Lock API).
-// Injects a header bar onto the recipe box ("🍳 Recipe" + a toggle). The toggle's
-// own label reflects the state, so there is no separate status line.
+// The header bar ("Recipe" + toggle) is rendered server-side (partials/recipe-header.html)
+// so nothing shifts on load; this only wires up the toggle's behaviour. The button
+// ships hidden and is revealed here only when the browser supports wake lock.
 (function () {
-    var recipe = document.querySelector('div.recipe');
-    if (!recipe) return;
+    var toggle = document.querySelector('.recipe-header .cook-toggle');
+    if (!toggle) return;
 
-    // --- build the header bar ---
-    var header = document.createElement('div');
-    header.className = 'recipe-header';
-
-    var title = document.createElement('span');
-    title.className = 'recipe-header-title';
-    title.textContent = 'Recipe';
-
-    var toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'cook-toggle';
-    toggle.setAttribute('aria-pressed', 'false');
-    toggle.innerHTML =
-        '<span class="cook-toggle-text">Cooking mode</span>' +
-        '<span class="cook-toggle-switch"><span class="cook-toggle-knob"></span></span>';
-
-    header.appendChild(title);
-    header.appendChild(toggle);
-    recipe.prepend(header);
-
-    var textEl = toggle.querySelector('.cook-toggle-text');
-
-    // No wake-lock support: show a disabled, explanatory state.
+    // No wake-lock support: leave the toggle hidden (the "Recipe" title bar stays).
     if (!('wakeLock' in navigator) || !navigator.wakeLock || !navigator.wakeLock.request) {
-        toggle.classList.add('is-off');
-        toggle.disabled = true;
-        textEl.textContent = 'Not supported';
-        toggle.title = "This browser can't keep the screen awake";
         return;
     }
+
+    var textEl = toggle.querySelector('.cook-toggle-text');
+    // reserved via `visibility: hidden` in CSS so revealing it causes NO reflow
+    // (which would otherwise shift the header height and creep the scroll on reload)
+    toggle.style.visibility = 'visible';
 
     var lock = null;
     var on = false;

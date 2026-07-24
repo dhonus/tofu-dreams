@@ -54,7 +54,9 @@ $shadow-lg: 0 30px 60px -18px rgba(8,7,5,.4)
 html
   background: $frame
   font-family: 'Playfair Display', Georgia, serif
-  scroll-behavior: smooth
+  // NB: no `scroll-behavior: smooth` here — it animates the browser's scroll
+  // restoration on reload, which drifts on tall pages and makes them "creep" down a
+  // little each refresh. Smooth scrolling for anchor clicks is done in JS (footer).
   -webkit-font-smoothing: antialiased
 
 *:focus-visible
@@ -1372,6 +1374,10 @@ div.recipe
     border-radius: 999px
     padding: .28rem .32rem .28rem .75rem
     cursor: pointer
+    // hidden but space reserved until screen.js confirms wake-lock support; using
+    // visibility (not display:none) keeps the header height constant so revealing
+    // it never reflows / creeps the scroll on reload
+    visibility: hidden
     transition: background .2s ease, border-color .2s ease, color .2s ease
     .cook-toggle-switch
       position: relative
@@ -1503,6 +1509,26 @@ div.recipe
       opacity: 1
       transform: none
 
+// recipe / post content fades in on load — a self-contained CSS animation (no JS or
+// IntersectionObserver dependency) so there's no hidden-content gap that flashes the
+// dark root while the deferred reveal script boots
+@keyframes content-fade-in
+  from
+    opacity: 0
+    transform: translateY(16px)
+  to
+    opacity: 1
+    transform: none
+article.content
+  animation: content-fade-in .5s ease both
+  // don't let the browser adjust scroll to compensate for any late height change
+  // above the viewport — that scroll-anchoring is what made recipe pages creep down
+  // on every reload
+  overflow-anchor: none
+@media (prefers-reduced-motion: reduce)
+  article.content
+    animation: none
+
 footer
   margin: 0
   text-align: center
@@ -1565,7 +1591,7 @@ article.split-me
       p
         margin: 0 0 .8rem 0
         line-height: 1.6
-        color: $ink-soft
+        color: #54503f
         font-size: .95rem
         a
           color: $link
