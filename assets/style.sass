@@ -56,6 +56,9 @@ html
   font-family: 'Playfair Display', Georgia, serif
   scroll-behavior: smooth
   -webkit-font-smoothing: antialiased
+  // always keep the scrollbar gutter so short/tall pages (e.g. pagination) don't
+  // shift the centered layout and flash the dark frame on the right
+  overflow-y: scroll
 
 *:focus-visible
   outline: 2px solid $accent
