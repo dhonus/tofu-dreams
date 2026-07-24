@@ -4,7 +4,7 @@
         <section>
             <article class="content">
                 <div class="meta">
-                    {{ with index (.GetTerms "categories") 0 }}<span class="eyebrow">{{ .LinkTitle }}</span>{{ end }}
+                    {{ with index (.GetTerms "categories") 0 }}<a class="eyebrow eyebrow-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
                     <h1>{{ strings.Title .Title }}</h1>
                     <div class="cover">
                         {{ with .Resources.GetMatch "{cover.*}" }}

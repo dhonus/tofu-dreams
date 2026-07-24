@@ -391,6 +391,12 @@ nav.pagination
   padding: .28rem .7rem
   border-radius: 999px
 
+a.eyebrow-link
+  transition: background .15s ease, color .15s ease
+  &:hover
+    background: $accent
+    color: #fff
+
 // shared recipe excerpt style — used by both the recipe cards and the spotlight
 p.card-summary
   margin: .35rem 0 0 0
@@ -575,9 +581,9 @@ header.homepage-header
       content: ""
       position: absolute
       inset: 0
-      background: linear-gradient(120deg, rgba(53,89,44,.16), rgba(53,89,44,0) 60%)
+      background: linear-gradient(to top, rgba(53,89,44,.30), rgba(53,89,44,0) 55%)
       opacity: 0
-      transition: opacity .35s ease
+      transition: opacity .3s ease
   .spotlight-ribbon
     position: absolute
     top: .8rem
@@ -667,47 +673,47 @@ header.homepage-header
 // Taxonomy header + live tag filter
 // ---------------------------------------------------------------
 .taxonomy-head
-  margin: 1.6rem .3rem 1.2rem .3rem
+  margin: 1.2rem 0 .9rem 0
   .eyebrow
-    margin-bottom: .8rem
+    margin-bottom: .6rem
   h1
-    font-size: 2.9rem
+    font-size: 2.2rem
     font-weight: 800
     letter-spacing: -.02em
     margin: 0
   .taxonomy-sub
     color: $ink-soft
-    margin: .55rem 0 0 0
-    font-size: 1.05rem
+    margin: .4rem 0 0 0
+    font-size: .95rem
 
 .browse-toolbar
   display: flex
   flex-direction: row
   align-items: center
-  gap: .8rem
-  margin: 0 .3rem 1rem .3rem
+  gap: .6rem
+  margin: 0 0 .7rem 0
   flex-wrap: wrap
   .browse-search-wrap
     position: relative
     flex: 1
-    min-width: 14rem
+    min-width: 12rem
     display: flex
     align-items: center
     .browse-search-icon
       position: absolute
-      left: .9rem
+      left: .8rem
       color: $ink-faint
       pointer-events: none
       display: block
   .browse-search
     width: 100%
     font-family: 'Playfair Display', serif
-    font-size: 1.05rem
+    font-size: .95rem
     color: $ink
     background: $card
     border: 1px solid $line
     border-radius: 999px
-    padding: .75rem 1.1rem .75rem 2.7rem
+    padding: .5rem 1rem .5rem 2.35rem
     box-shadow: $shadow-sm
     transition: border-color .15s ease, box-shadow .15s ease
     &::placeholder
@@ -719,26 +725,26 @@ header.homepage-header
   .browse-sort-wrap
     display: flex
     align-items: center
-    gap: .5rem
-    font-size: .9rem
+    gap: .4rem
+    font-size: .85rem
     color: $ink-soft
     font-weight: 600
   .browse-sort
     font-family: 'Playfair Display', serif
-    font-size: 1rem
+    font-size: .9rem
     font-weight: 600
     color: $ink
     background: $card
     border: 1px solid $line
     border-radius: 999px
-    padding: .7rem 2.2rem .7rem 1.1rem
+    padding: .5rem 1.9rem .5rem 1rem
     box-shadow: $shadow-sm
     cursor: pointer
     appearance: none
     -webkit-appearance: none
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236d6858' d='M1 1l5 5 5-5'/%3E%3C/svg%3E")
     background-repeat: no-repeat
-    background-position: right 1rem center
+    background-position: right .85rem center
     transition: border-color .15s ease
     &:focus
       outline: none
@@ -748,8 +754,8 @@ header.homepage-header
   background: $card
   border: 1px solid $line
   border-radius: $radius-lg
-  padding: 1.1rem 1.25rem
-  margin: 0 .3rem 1.8rem .3rem
+  padding: .8rem .9rem
+  margin: 0 0 1.2rem 0
   box-shadow: $shadow-sm
   // toggle only appears on phones (see the mobile block); chips are always open on desktop
   .filter-toggle
@@ -784,17 +790,17 @@ header.homepage-header
   .filter-chips
     display: flex
     flex-wrap: wrap
-    gap: .5rem
+    gap: .4rem
   .filter-chip
     display: inline-flex
     align-items: center
-    gap: .4rem
+    gap: .35rem
     font-weight: 600
-    font-size: .95rem
+    font-size: .88rem
     color: $ink
     background: $bg
     border: 1px solid $line
-    padding: .4rem .85rem
+    padding: .3rem .7rem
     border-radius: 999px
     cursor: pointer
     user-select: none
@@ -826,9 +832,9 @@ header.homepage-header
   .filter-status
     display: flex
     align-items: center
-    gap: 1rem
-    margin-top: .95rem
-    padding-top: .9rem
+    gap: .8rem
+    margin-top: .7rem
+    padding-top: .65rem
     border-top: 1px dashed $line
     .filter-count
       font-weight: 600
@@ -1226,9 +1232,15 @@ article.content
       flex-wrap: wrap
       align-items: center
       justify-content: center
-      gap: .55rem
-      color: $ink-soft
-      font-size: .92rem
+      gap: .5rem
+      font-family: 'Cabin', sans-serif
+      text-transform: uppercase
+      letter-spacing: .09em
+      font-size: .7rem
+      font-weight: 700
+      color: $ink-faint
+      > span:first-child
+        color: $rust
       .dot
         width: 3px
         height: 3px
@@ -1766,10 +1778,6 @@ div#statusDiv
       order: -1
       img
         max-width: 15rem
-  .spotlight
-    grid-template-columns: 1fr
-    .spotlight-media
-      min-height: 15rem
   article.content
     div.meta
       h1
@@ -1903,13 +1911,20 @@ div#statusDiv
       font-size: 2.3rem
     .hero-subtitle
       font-size: 1.05rem
+    // drop the decorative logo art on phones — it just pushes the headline and
+    // the CTAs below the fold (the logo already sits in the nav)
+    .hero-art
+      display: none
   .spotlight
+    grid-template-columns: 1fr
     margin-left: .9rem
     margin-right: .9rem
+    .spotlight-media
+      min-height: 13rem
     .spotlight-body
-      padding: 1.6rem
+      padding: 1.4rem
     h2
-      font-size: 1.8rem
+      font-size: 1.55rem
   .section-head
     flex-wrap: wrap
     .section-all
