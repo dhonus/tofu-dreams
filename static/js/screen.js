@@ -1,131 +1,72 @@
-// This magical script can prevent the screen from sleeping so you can cook in peace.
+// Cooking mode — keep the screen awake while cooking (Screen Wake Lock API).
+// Injects a header bar onto the recipe box ("🍳 Recipe" + a toggle). The toggle's
+// own label reflects the state, so there is no separate status line.
+(function () {
+    var recipe = document.querySelector('div.recipe');
+    if (!recipe) return;
 
-/*
-<span class="cooking-mode">
-    <label class="switch">
-        <input type="checkbox" id="wakeLockCheckbox">
-        <span class="slider"></span>
-    </label>
-    <span>Cooking mode</span>
-</span>
-<div id="statusDiv"></div>
-*/
-try {
-    const recipeDiv = document.querySelector('div.recipe');
-    const cookingModeSpan = document.createElement('span');
-    cookingModeSpan.classList.add('cooking-mode');
-        const cookingModeLabel = document.createElement('label');
-        cookingModeLabel.classList.add('switch');
-            const cookingModeInput = document.createElement('input');
-            cookingModeInput.setAttribute('type', 'checkbox');
-            cookingModeInput.setAttribute('id', 'wakeLockCheckbox');
-            const cookingModeSlider = document.createElement('span');
-            cookingModeSlider.classList.add('slider');
-        const cookingModeText = document.createElement('span');
-            cookingModeText.textContent = 'Cooking mode';
-        const cookingModeStatus = document.createElement('div');
-        cookingModeStatus.setAttribute('id', 'statusDiv');
-    
-    cookingModeLabel.appendChild(cookingModeInput);
-    cookingModeLabel.appendChild(cookingModeSlider);
-    cookingModeSpan.appendChild(cookingModeLabel);
-    cookingModeSpan.appendChild(cookingModeText);
-    recipeDiv.prepend(cookingModeStatus);
-    recipeDiv.prepend(cookingModeSpan);
+    // --- build the header bar ---
+    var header = document.createElement('div');
+    header.className = 'recipe-header';
 
-    const wakeLockCheckbox = document.querySelector('#wakeLockCheckbox');
-    const statusDiv = document.querySelector('#statusDiv');
+    var title = document.createElement('span');
+    title.className = 'recipe-header-title';
+    title.textContent = 'Recipe';
 
-    if ('WakeLock' in window && 'request' in window.WakeLock) {  
-        let wakeLock = null;
-        
-        const requestWakeLock = () => {
-            const controller = new AbortController();
-            const signal = controller.signal;
-            window.WakeLock.request('screen', {signal})
-            .catch((e) => {      
-                if (e.name === 'AbortError') {
-                    wakeLockCheckbox.checked = false;
-                    statusDiv.textContent = 'Wake Lock was aborted';
-                    console.log('Wake Lock was aborted');
-                } else {
-                    statusDiv.textContent = `${e.name}, ${e.message}`;
-                    console.error(`${e.name}, ${e.message}`);
-                }
-            });
-            wakeLockCheckbox.checked = true;
-            statusDiv.textContent = 'Wake Lock is active';
-            console.log('Wake Lock is active');
-            return controller;
-        };
-        
-        wakeLockCheckbox.addEventListener('change', () => {
-            console.log(wakeLockCheckbox.checked);
-            if (wakeLockCheckbox.checked) {
-                wakeLock = requestWakeLock();
-            } else {
-                wakeLock.abort();
-                wakeLock = null;
-            }
-        });
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'cook-toggle';
+    toggle.setAttribute('aria-pressed', 'false');
+    toggle.innerHTML =
+        '<span class="cook-toggle-text">Cook mode</span>' +
+        '<span class="cook-toggle-switch"><span class="cook-toggle-knob"></span></span>';
 
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        
-        const handleVisibilityChange = () => {    
-            if (wakeLock !== null && document.visibilityState === 'visible') {
-                wakeLock = requestWakeLock();
-            }
-        };
-    } else if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {  
-    let wakeLock = null;
-    
-    const requestWakeLock = async () => {
-        try {
-            wakeLock = await navigator.wakeLock.request('screen');
-            wakeLock.addEventListener('release', (e) => {
-                console.log(e);
-                wakeLockCheckbox.checked = false;
-                statusDiv.textContent = 'Screen sleep restored';
-                console.log('Wake Lock was released');                    
-            });
-            wakeLockCheckbox.checked = true;
-            statusDiv.textContent = 'Your screen will not sleep';
-            console.log('Wake Lock is active');      
-        } catch (e) {      
-            wakeLockCheckbox.checked = false;
-            statusDiv.textContent = `${e.name}, ${e.message}`;
-            console.error(`${e.name}, ${e.message}`);
-        } 
-    };
+    header.appendChild(title);
+    header.appendChild(toggle);
+    recipe.prepend(header);
 
-    // release if exists, we don't want it to persist
-    navigator.wakeLock.request('screen').then((wakeLock) => {
-        if (wakeLock !== null) {
-            wakeLock.release();
-            wakeLock = null;
-        }
-    });
-    
-    wakeLockCheckbox.addEventListener('change', () => {
-        if (wakeLockCheckbox.checked) {
-            requestWakeLock();
-        } else {
-            wakeLock.release();
-            wakeLock = null;
-        }
-    });
-    } else {  
-        statusDiv.textContent = 'Wake Lock API not supported.';
-        console.error('Wake Lock API not supported.');
+    var textEl = toggle.querySelector('.cook-toggle-text');
+
+    // No wake-lock support: show a disabled, explanatory state.
+    if (!('wakeLock' in navigator) || !navigator.wakeLock || !navigator.wakeLock.request) {
+        toggle.classList.add('is-off');
+        toggle.disabled = true;
+        textEl.textContent = 'Not supported';
+        toggle.title = "This browser can't keep the screen awake";
+        return;
     }
-} catch (e) {
-    console.log('Not a recipe page');
-    // release wakeLock if exists
-    const wakeLock = navigator.wakeLock.request('screen').then((wakeLock) => {
-        if (wakeLock !== null) {
-            wakeLock.release();
-            wakeLock = null;
-            console.log('Wake Lock was released');
-        }
+
+    var lock = null;
+    var on = false;
+
+    function paint() {
+        toggle.classList.toggle('is-on', on);
+        toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+        textEl.textContent = on ? 'Screen awake' : 'Cook mode';
+    }
+
+    function enable() {
+        navigator.wakeLock.request('screen').then(function (l) {
+            lock = l;
+            lock.addEventListener('release', function () { on = false; lock = null; paint(); });
+            on = true; paint();
+        }).catch(function () {
+            on = false; paint();
+            textEl.textContent = 'Tap to retry';
+        });
+    }
+
+    function disable() {
+        if (lock) { try { lock.release(); } catch (e) {} lock = null; }
+        on = false; paint();
+    }
+
+    toggle.addEventListener('click', function () {
+        if (on) disable(); else enable();
     });
-}
+
+    // Re-acquire the lock if the tab was backgrounded then shown again while on.
+    document.addEventListener('visibilitychange', function () {
+        if (on && document.visibilityState === 'visible') enable();
+    });
+})();

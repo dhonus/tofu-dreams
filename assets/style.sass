@@ -1339,20 +1339,73 @@ div.recipe
   border-radius: $radius-md
   border: 1px solid $line
   box-shadow: $shadow-md
-  // cooking-mode toggle + #statusDiv are injected by JS as the first real
-  // children (see static/js/screen.js) — keep them in normal flow, right-aligned
-  .cooking-mode
-    justify-content: flex-end
-    margin: 0 0 .9rem 0
-    font-size: .85rem
-    color: $ink-soft
-  #statusDiv
-    text-align: right
-    font-size: .78rem
-    color: $ink-faint
-    margin: -.6rem 0 .9rem 0
-    &:empty
-      display: none
+  overflow: hidden
+  // header bar injected by JS (static/js/screen.js): "🍳 Recipe" + cook-mode toggle.
+  // Full-bleeds to the box edges via negative margins matching the box padding.
+  .recipe-header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 1rem
+    margin: -1.8rem -2rem 1.5rem -2rem
+    padding: .6rem 1.2rem
+    background: $bg
+    border-bottom: 1px solid $line
+  .recipe-header-title
+    font-family: 'Playfair Display', serif
+    font-size: 1.05rem
+    font-weight: 700
+    letter-spacing: .01em
+    color: $ink
+  .cook-toggle
+    display: inline-flex
+    align-items: center
+    gap: .55rem
+    font-family: 'Cabin', sans-serif
+    text-transform: uppercase
+    letter-spacing: .07em
+    font-size: .66rem
+    font-weight: 700
+    color: $accent-dark
+    background: $card
+    border: 1px solid $line
+    border-radius: 999px
+    padding: .28rem .32rem .28rem .75rem
+    cursor: pointer
+    transition: background .2s ease, border-color .2s ease, color .2s ease
+    .cook-toggle-switch
+      position: relative
+      width: 2rem
+      height: 1.1rem
+      border-radius: 999px
+      background: $line
+      flex-shrink: 0
+      transition: background .2s ease
+    .cook-toggle-knob
+      position: absolute
+      top: .15rem
+      left: .15rem
+      width: .8rem
+      height: .8rem
+      border-radius: 50%
+      background: #fff
+      box-shadow: $shadow-sm
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1)
+    &:hover
+      border-color: $accent
+    &.is-on
+      background: $accent
+      border-color: $accent
+      color: #fff
+      .cook-toggle-switch
+        background: rgba(255,255,255,.35)
+      .cook-toggle-knob
+        transform: translateX(.9rem)
+    &.is-off
+      opacity: .5
+      cursor: default
+      &:hover
+        border-color: $line
   // prep / cook time as an editorial stat row (label + serif value), driven by frontmatter
   .recipe-meta
     display: flex
@@ -1624,57 +1677,6 @@ video.not-full-width
   max-width: 80%
   margin: auto
 
-.cooking-mode
-  display: flex
-  flex-direction: row
-  gap: .5rem
-  align-items: center
-  .switch
-    position: relative
-    display: inline-block
-    width: 3rem
-    height: 1.5rem
-
-  .switch input
-    opacity: 0
-    width: 0
-    height: 0
-
-  .slider
-    position: absolute
-    cursor: pointer
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: #ccc
-    -webkit-transition: .4s
-    transition: .4s
-    border-radius: 10px
-
-  .slider:before
-    position: absolute
-    content: ""
-    height: 1rem
-    width: 1rem
-    left: 4px
-    bottom: 4px
-    background-color: white
-    -webkit-transition: .4s
-    transition: .4s
-    border-radius: 50%
-
-  input:checked + .slider
-    background-color: $accent
-
-  input:focus + .slider
-    box-shadow: 0 0 1px $accent
-
-  input:checked + .slider:before
-    -webkit-transform: translateX(24px)
-    -ms-transform: translateX(24px)
-    transform: translateX(24px)
-
 .image-modal
   position: fixed
   z-index: 100
@@ -1719,10 +1721,6 @@ video.not-full-width
     &:hover
       color: $rust
 
-
-div#statusDiv
-  color: $ink
-  margin-bottom: .6rem
 
 @media (prefers-reduced-motion: reduce)
   *
@@ -2012,6 +2010,11 @@ div#statusDiv
     width: 100%
     margin: 1.4rem 0
     padding: 1.1rem
+    .recipe-header
+      margin: -1.1rem -1.1rem 1.2rem -1.1rem
+      padding: .55rem .8rem
+    .recipe-header-title
+      font-size: .98rem
     .recipe-meta
       gap: 1.3rem
       margin-bottom: 1rem
@@ -2046,6 +2049,9 @@ div#statusDiv
       font-size: 1.65rem
   div.recipe
     padding: 1rem
+    .recipe-header
+      margin: -1rem -1rem 1.1rem -1rem
+      padding: .55rem .75rem
     h3, h4
       font-size: 1.1rem
     h4
