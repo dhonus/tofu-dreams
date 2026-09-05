@@ -438,73 +438,27 @@ p.card-summary
 // ---------------------------------------------------------------
 // Homepage hero
 // ---------------------------------------------------------------
-@keyframes floaty
-  0%
-    transform: translateY(0) rotate(0deg)
-  50%
-    transform: translateY(-14px) rotate(2deg)
-  100%
-    transform: translateY(0) rotate(0deg)
-
-@keyframes blobDrift
-  0%
-    transform: translate(0, 0) scale(1)
-  50%
-    transform: translate(20px, -18px) scale(1.08)
-  100%
-    transform: translate(0, 0) scale(1)
-
 header.homepage-header
   position: relative
   width: 100%
-  padding: 2.2rem 0 2.4rem 0
-  overflow: hidden
-  .hero-blob
-    position: absolute
-    border-radius: 50%
-    filter: blur(60px)
-    z-index: 0
-    opacity: .5
-    animation: blobDrift 14s ease-in-out infinite
-  .hero-blob-a
-    width: 26rem
-    height: 26rem
-    background: $accent-soft
-    top: -11rem
-    left: -5rem
-  .hero-blob-b
-    width: 22rem
-    height: 22rem
-    background: $rust-soft
-    top: -6rem
-    right: -4rem
-    animation-delay: -6s
+  padding: 2.6rem 0 2rem 0
   .hero-grid
-    position: relative
-    z-index: 1
     width: 50%
     max-width: 1080px
     margin: 0 auto
-    display: grid
-    grid-template-columns: 1.25fr .75fr
-    align-items: center
-    gap: 1.6rem
-  .hero-copy
-    .eyebrow
-      margin-bottom: 1rem
-    h1
-      font-size: 2.85rem
-      line-height: 1.05
-      margin: 0
-      font-weight: 800
-      letter-spacing: -.025em
-      em
-        color: $accent
-        font-style: italic
+  h1
+    font-size: 2.6rem
+    line-height: 1.1
+    margin: 0
+    font-weight: 800
+    letter-spacing: -.02em
+    em
+      color: $accent
+      font-style: italic
   .hero-subtitle
-    max-width: 32rem
-    margin: 1rem 0 0 0
-    font-size: 1.12rem
+    max-width: 44rem
+    margin: .9rem 0 0 0
+    font-size: 1.05rem
     color: $ink-soft
     line-height: 1.55
   .subtitle
@@ -514,38 +468,10 @@ header.homepage-header
     font-style: italic
   .hero-actions
     display: flex
-    flex-direction: row
-    flex-wrap: wrap
-    gap: .7rem
-    margin-top: 1.4rem
-  .hero-stats
-    display: flex
-    flex-direction: row
     align-items: center
     flex-wrap: wrap
-    gap: .7rem
-    margin-top: 1.4rem
-    font-size: .88rem
-    color: $ink-soft
-    strong
-      color: $ink
-      font-size: 1.05rem
-    .dot
-      width: 4px
-      height: 4px
-      border-radius: 50%
-      background: $ink-faint
-      display: inline-block
-  .hero-art
-    display: flex
-    justify-content: center
-    align-items: center
-    img
-      width: 100%
-      max-width: 18rem
-      height: auto
-      filter: drop-shadow(0 20px 34px rgba(20,17,12,.2))
-      animation: floaty 7s ease-in-out infinite
+    gap: .6rem
+    margin: 1.3rem 0 0 0
 
 // ---------------------------------------------------------------
 // Latest recipe spotlight
@@ -1789,19 +1715,8 @@ video.not-full-width
   header.homepage-header
     .hero-grid
       width: 80%
-      grid-template-columns: 1fr
-      text-align: center
-    .hero-copy h1
-      font-size: 2.7rem
-    .hero-subtitle
-      margin-left: auto
-      margin-right: auto
-    .hero-actions, .hero-stats
-      justify-content: center
-    .hero-art
-      order: -1
-      img
-        max-width: 15rem
+    h1
+      font-size: 2.4rem
   article.content
     div.meta
       h1
@@ -1930,15 +1845,11 @@ video.not-full-width
     &.tags-open .filter-chips
       display: flex
   header.homepage-header
-    padding: 2rem .3rem 1.6rem .3rem
-    .hero-copy h1
-      font-size: 2.3rem
+    padding: 1.8rem .9rem 1.4rem .9rem
+    h1
+      font-size: 2.1rem
     .hero-subtitle
-      font-size: 1.05rem
-    // drop the decorative logo art on phones — it just pushes the headline and
-    // the CTAs below the fold (the logo already sits in the nav)
-    .hero-art
-      display: none
+      font-size: 1rem
   .spotlight
     grid-template-columns: 1fr
     margin-left: .9rem

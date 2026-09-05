@@ -1,28 +1,13 @@
 {{ define "hero" }}
-{{ $recipes := where .Site.RegularPages "Type" "posts" }}
 <header class="homepage-header">
-    <div class="hero-blob hero-blob-a"></div>
-    <div class="hero-blob hero-blob-b"></div>
     <div class="hero-grid">
-        <div class="hero-copy">
-            <h1>Vegan recipes<br>to <em>dream</em> about</h1>
-            <p class="hero-subtitle">A personal project to write down and share the recipes I love to cook and bake — all vegan. Simple and fast, without an autobiographical novel before you get to the food.</p>
-            {{ with .Params.subtitle }}<span class="subtitle">{{.}}</span>{{ end }}
-            <div class="hero-actions">
-                <a class="btn btn-primary" href="{{ absURL "/categories/savory/" }}">Browse recipes</a>
-                <button class="btn btn-ghost" onclick="surpriseRecipe()">Surprise me</button>
-            </div>
-            <div class="hero-stats">
-                <span><strong>{{ len $recipes }}</strong> recipes</span>
-                <span class="dot"></span>
-                <span><strong>{{ len .Site.Taxonomies.tags }}</strong> ingredients</span>
-                <span class="dot"></span>
-                <span><strong>0</strong> ads &amp; trackers</span>
-            </div>
-        </div>
-        <div class="hero-art">
-            <img src="{{.Site.BaseURL}}{{ .Site.Params.logo }}" alt="A cube of tofu surrounded by leaves">
-        </div>
+        <h1>Vegan recipes to <em>dream</em> about</h1>
+        <p class="hero-subtitle">A personal project to write down and share the recipes I love to cook and bake — all vegan. Simple and fast, without an autobiographical novel before you get to the food.</p>
+        {{ with .Params.subtitle }}<span class="subtitle">{{.}}</span>{{ end }}
+        <p class="hero-actions">
+            <a class="btn btn-primary" href="{{ absURL "/categories/savory/" }}">Browse recipes</a>
+            <button class="btn btn-ghost" onclick="surpriseRecipe()">Surprise me</button>
+        </p>
     </div>
 </header>
 {{ end }}
