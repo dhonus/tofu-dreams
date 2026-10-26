@@ -57,8 +57,15 @@
      server — skip it there to keep the console clean (it can't work locally anyway). */}}
 {{ if and (eq .Type "posts") (not hugo.IsServer) }}
 <section id="comments">
+  {{/* data-isso-css=false: isso appends its own stylesheet to <head> at runtime,
+       i.e. after our fingerprinted CSS, so it wins every tie. The widget is
+       themed in style.sass instead (see "Comments (Isso)"). The avatar colours
+       are the identicon palette — isso can't read them from CSS. */}}
   <script
     data-isso="https://comments.tofudreams.com/"
+    data-isso-css="false"
+    data-isso-avatar-bg="#efe6d1"
+    data-isso-avatar-fg="#4c7a41 #bd5f2e #7a9b5e #c08a3e #35592c #8a6f3c #6d8f7a #a8552f"
     src="https://comments.tofudreams.com/js/embed.min.js">
   </script>
 

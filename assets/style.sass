@@ -1260,7 +1260,13 @@ article.content
 // ---------------------------------------------------------------
 div.recipe
   position: relative
-  width: 80%
+  // Inset panel when the column is wide enough, full column width when it isn't.
+  // NB: do NOT go back to a percentage. The column already narrows on its own
+  // (main 70/80/90/96% minus the 17rem sidebar), so a percentage narrowed it a
+  // second time and the card ended up cramped — and, because main's % steps UP as
+  // the viewport steps DOWN, 80% was actually *wider* at 1699px than at 1701px.
+  width: 100%
+  max-width: 56rem
   margin: 2.6rem auto
   background: $card
   padding: 1.8rem 2rem
@@ -1710,7 +1716,7 @@ video.not-full-width
       width: 90%
     &.kind-home > main, &.kind-term > main
       width: 80%
-  div.recipe, video.not-full-width
+  video.not-full-width
     width: 95%
   header.homepage-header
     .hero-grid
@@ -1958,7 +1964,6 @@ video.not-full-width
         line-height: 1.15
         margin: .7rem 0 .9rem 0
   div.recipe
-    width: 100%
     margin: 1.4rem 0
     padding: 1.1rem
     .recipe-header
@@ -2020,19 +2025,421 @@ video.not-full-width
       height: 1.8rem
       font-size: .85rem
 
+// ---------------------------------------------------------------
+// Comments (Isso) — live site only, see _default/single.html
+// ---------------------------------------------------------------
+// Isso ships its own stylesheet and injects it into <head> at RUNTIME, i.e.
+// after this file — so it won every specificity tie and overrides here were
+// mostly dead. It's switched off with data-isso-css="false" on the embed, which
+// means this block owns the whole widget: the functional rules (preview-mode
+// toggling, thread nesting, vote visibility) live here too, not just the paint.
+// Markup reference: https://github.com/isso-comments/isso -> isso/js/app/text/
+#comments
+  margin: 2.8rem auto 0 auto
+  padding: 0 .6rem
+
 #isso-thread
-  margin-top: 2rem
-p.isso-post-action
-  input[type="button"],input[type="submit"]
-    font-family: 'Playfair Display', serif
+  // "3 Comments" / "No comments yet" — same treatment as .section-head
+  h4.isso-thread-heading
+    margin: 0 0 1.2rem 0
+    padding-bottom: .55rem
+    border-bottom: 1px solid $line
+    font-size: 1.5rem
+    font-weight: 700
+    letter-spacing: -.01em
+    color: $ink
+  .isso-feedlink
+    float: right
+    font-family: 'Cabin', sans-serif
+    font-size: .68rem
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: .12em
+    color: $ink-faint
+    a
+      color: inherit
+      &:hover
+        color: $link
+
+  // -------------------------------------------------------------
+  // Postbox
+  // -------------------------------------------------------------
+  .isso-postbox
+    margin: 0 0 1.6rem 0
     background: $card
     border: 1px solid $line
+    border-radius: $radius-lg
+    box-shadow: $shadow-sm
+    padding: 1rem 1.1rem
+
+  .isso-textarea
+    display: block
+    width: 100%
+    min-height: 6.5rem
+    resize: vertical
+    padding: .7rem .9rem
+    font-family: 'Playfair Display', Georgia, serif
+    font-size: 1rem
+    line-height: 1.65
     color: $ink
-    border-radius: 999px
-    padding: .4rem 1rem
-    cursor: pointer
-    transition: all .2s ease
-    &:hover
-      background: $accent !important
-      color: white !important
+    background: $bg
+    border: 1px solid $line
+    border-radius: $radius-md
+    outline: 0
+    transition: border-color .15s ease
+    &::placeholder
+      color: $ink-faint
+    &:focus
       border-color: $accent
+
+  .isso-auth-section
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-end
+    // keeps the buttons on the right edge once the row wraps; on the unwrapped
+    // row the inputs grow and eat the free space, so it's a no-op there
+    justify-content: flex-end
+    gap: .55rem .7rem
+    margin-top: .85rem
+
+  .isso-input-wrapper
+    flex: 1 1 9rem
+    margin: 0
+    label
+      display: block
+      margin-bottom: .22rem
+      font-family: 'Cabin', sans-serif
+      text-transform: uppercase
+      letter-spacing: .12em
+      font-size: .63rem
+      font-weight: 700
+      color: $ink-faint
+    input
+      width: 100%
+      font-family: 'Playfair Display', Georgia, serif
+      font-size: .95rem
+      padding: .45rem .8rem
+      color: $ink
+      background: $bg
+      border: 1px solid $line
+      border-radius: 999px
+      outline: 0
+      transition: border-color .15s ease
+      &::placeholder
+        color: $ink-faint
+      &:focus
+        border-color: $accent
+
+  // buttons: same pills as .btn-primary / .btn-ghost
+  .isso-post-action
+    flex: 0 0 auto
+    margin: 0
+    input
+      font-family: 'Playfair Display', Georgia, serif
+      font-size: .88rem
+      font-weight: 700
+      padding: .5rem 1.15rem
+      border: 1px solid transparent
+      border-radius: 999px
+      cursor: pointer
+      outline: 0
+      transition: all .2s ease
+    input[type="submit"]
+      background: $accent
+      color: #fff
+      box-shadow: 0 6px 16px -6px rgba(53,89,44,.5)
+      &:hover
+        background: $accent-dark
+        box-shadow: 0 10px 22px -6px rgba(53,89,44,.55)
+    input[type="button"]
+      background: $card
+      color: $ink
+      border-color: $line
+      box-shadow: $shadow-sm
+      &:hover
+        border-color: $accent
+        color: $accent-dark
+        box-shadow: $shadow-md
+
+  .isso-notification-section
+    padding-top: .5rem
+    font-family: 'Cabin', sans-serif
+    font-size: .78rem
+    color: $ink-soft
+    label
+      display: flex
+      align-items: center
+      gap: .4rem
+      cursor: pointer
+    input[type="checkbox"]
+      accent-color: $accent
+      margin: 0
+
+  // -------------------------------------------------------------
+  // Postbox — preview mode (these toggles are load-bearing)
+  // -------------------------------------------------------------
+  .isso-preview,
+  .isso-post-action input[name="edit"]
+    display: none
+  .isso-postbox.isso-preview-mode
+    .isso-textarea,
+    .isso-post-action input[name="preview"]
+      display: none
+    .isso-preview
+      display: block
+    .isso-post-action input[name="edit"]
+      display: inline-block
+  .isso-preview
+    padding: .7rem .9rem
+    background: $bg-soft
+    border: 1px dashed $line
+    border-radius: $radius-md
+    cursor: pointer
+
+  // -------------------------------------------------------------
+  // A comment
+  // -------------------------------------------------------------
+  .isso-comment
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    margin: 0 0 .85rem 0
+    padding: .85rem 1rem
+    background: $card
+    border: 1px solid $line-soft
+    border-radius: $radius-md
+    box-shadow: $shadow-sm
+    &:last-child
+      margin-bottom: 0
+  // the post author's own comments get the green nod
+  .isso-comment.isso-is-page-author
+    border-color: rgba(76,122,65,.35)
+    background: linear-gradient(180deg, $accent-soft 0%, $card 55%)
+  // ...and the preview pane reuses .isso-comment markup, so undo the card there
+  .isso-preview .isso-comment
+    display: block
+    margin: 0
+    padding: 0
+    background: none
+    border: 0
+    border-radius: 0
+    box-shadow: none
+
+  .isso-avatar
+    flex: 0 0 auto
+    margin: .1rem .8rem 0 0
+    svg
+      display: block
+      width: 2.4rem
+      height: 2.4rem
+      background: $bg-soft
+      border: 1px solid $line
+      border-radius: 50%
+
+  .isso-text-wrapper
+    flex: 1 1 0
+    min-width: 0
+    padding: 0
+
+  // replies: full-width row under the parent, nudged in and hung off a rule
+  .isso-follow-up
+    flex: 0 0 100%
+    &:not(:empty)
+      margin: .85rem 0 0 0
+      padding-left: .9rem
+      border-left: 2px solid $line
+    .isso-comment
+      box-shadow: none
+      background: $bg
+
+  .isso-comment-header
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    font-family: 'Cabin', sans-serif
+    font-size: .7rem
+    text-transform: uppercase
+    letter-spacing: .09em
+    font-weight: 700
+    color: $ink-faint
+    .isso-author
+      font-family: 'Playfair Display', Georgia, serif
+      font-size: 1rem
+      font-weight: 700
+      letter-spacing: -.01em
+      text-transform: none
+      color: $ink
+    a.isso-author:hover
+      color: $link
+    .isso-spacer
+      padding: 0 .45rem
+      color: $line
+    .isso-permalink
+      color: $ink-faint
+      &:hover
+        color: $accent-dark
+    // "author" badge + moderation notes — the .eyebrow pill, shrunk
+    .isso-page-author-suffix
+      padding: .16rem .5rem
+      border-radius: 999px
+      font-size: .62rem
+      letter-spacing: .14em
+      color: $accent-dark
+      background: $accent-soft
+    .isso-note
+      margin-left: auto
+      padding-left: .6rem
+      font-size: .64rem
+      letter-spacing: .12em
+      color: $rust
+      &:empty
+        padding: 0
+
+  .isso-text
+    word-break: break-word
+    p
+      margin: .3rem 0 0 0
+      font-size: 1rem
+      line-height: 1.65
+      color: $ink
+      &:last-child
+        margin-bottom: 0
+    a
+      color: $link
+      text-underline-offset: 3px
+      &:hover
+        color: $ink
+        text-decoration: underline
+    h1, h2, h3, h4, h5, h6
+      margin: .7rem 0 .2rem 0
+      font-size: 1.1rem
+      font-weight: 700
+    ul, ol
+      margin: .4rem 0
+      padding-left: 1.3rem
+      line-height: 1.6
+    blockquote
+      margin: .6rem 0
+      padding: .2rem 0 .2rem .9rem
+      border-left: 2px solid $line
+      color: $ink-soft
+      font-style: italic
+    img
+      max-width: 100%
+      border-radius: $radius-sm
+    pre
+      margin: .6rem 0
+      padding: .7rem .9rem
+      overflow: auto
+      line-height: 1.5
+      background: $bg-soft
+      border: 1px solid $line
+      border-radius: $radius-sm
+    code
+      font-size: .88em
+    *:not(pre) > code
+      padding: .12em .4em
+      background: $bg-soft
+      border-radius: $radius-sm
+
+  .isso-comment-footer
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: .8rem
+    margin-top: .5rem
+    font-family: 'Cabin', sans-serif
+    font-size: .68rem
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: .1em
+    color: $ink-faint
+    a
+      color: $ink-faint
+      &:hover
+        color: $accent-dark
+    a.isso-delete:hover
+      color: $rust
+    // the "|" between the vote arrows; flex gap already separates them
+    .isso-spacer
+      display: none
+    .isso-votes
+      color: $ink-soft
+    .isso-upvote,
+    .isso-downvote
+      display: inline-flex
+      svg
+        width: .85rem
+        height: .85rem
+        fill: currentColor
+  // isso hangs .isso-no-votes on the comment when the score is 0
+  .isso-comment.isso-no-votes .isso-comment-footer .isso-votes
+    display: none
+  // inline edit swaps .isso-text for a textarea
+  .isso-comment .isso-textarea
+    min-height: 5rem
+    margin-top: .4rem
+  .isso-comment .isso-postbox
+    margin: .8rem 0 0 0
+    background: $bg
+    box-shadow: none
+
+  // "Show N more comments"
+  .isso-comment-loader
+    margin: 0 0 .85rem 0
+    text-align: center
+    a.isso-load-hidden
+      display: inline-block
+      padding: .4rem 1.05rem
+      font-family: 'Cabin', sans-serif
+      font-size: .7rem
+      font-weight: 700
+      text-transform: uppercase
+      letter-spacing: .1em
+      color: $ink-soft
+      background: $card
+      border: 1px solid $line
+      border-radius: 999px
+      box-shadow: $shadow-sm
+      transition: all .18s ease
+      &:hover
+        color: $accent-dark
+        border-color: $accent
+
+  // the comment a #isso-123 permalink points at
+  .isso-target
+    animation: isso-target-fade 4s ease-out
+    border-radius: $radius-sm
+
+@keyframes isso-target-fade
+  0%
+    background-color: $rust-soft
+  100%
+    background-color: transparent
+
+@media (prefers-reduced-motion: reduce)
+  #isso-thread .isso-target
+    animation: none
+
+@media screen and (max-width: 700px)
+  #comments
+    margin-top: 2rem
+    padding: 0
+  #isso-thread
+    h4.isso-thread-heading
+      font-size: 1.3rem
+    .isso-postbox
+      padding: .85rem
+    .isso-input-wrapper
+      flex: 1 1 100%
+    .isso-post-action
+      flex: 1 1 auto
+      input
+        width: 100%
+    .isso-comment
+      padding: .75rem .85rem
+    .isso-avatar svg
+      width: 2rem
+      height: 2rem
+    .isso-follow-up:not(:empty)
+      padding-left: .55rem
